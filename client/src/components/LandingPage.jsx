@@ -8,6 +8,7 @@ import {
   Message,
   Segment
 } from 'semantic-ui-react';
+import GoogleAuth from './GoogleAuth';
 
 const LandingPage = () => {
   return (
@@ -25,32 +26,18 @@ const LandingPage = () => {
         verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='teal' textAlign='center'>
-            <Image src='/logo.png' /> Log-in to your account
+            <Image src='https://www.wethinkcode.co.za/assets/images/wethinkcode-logo-blue.png' />{' '}
+            Log-in to your account
           </Header>
-          <Form size='large'>
-            <Segment stacked>
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='E-mail address'
-              />
-              <Form.Input
-                fluid
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-              />
 
-              <Button color='teal' fluid size='large'>
-                Login
-              </Button>
-            </Segment>
-          </Form>
-          <Message>
-            New to us? <a href='#'>Sign Up</a>
-          </Message>
+          <Segment Raised>
+            <img
+              height='192'
+              width='192'
+              src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'
+            />
+            <GoogleAuth />
+          </Segment>
         </Grid.Column>
       </Grid>
     </div>

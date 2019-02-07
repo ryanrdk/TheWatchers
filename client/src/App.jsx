@@ -5,10 +5,17 @@ import LandingPage from './components/LandingPage';
 
 const App = () => {
   return (
-    <div className='ui container'>
+    <div
+      class='ui container'
+      style={{
+        alignContent: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        flexWrap: 'wrap'
+      }}>
       <BrowserRouter>
-        <div>
-          <Header />
+        {/* <Header /> */}
+        <div class='ui middle aligned grid'>
           <Route path='/' exact component={LandingPage} />
         </div>
       </BrowserRouter>
