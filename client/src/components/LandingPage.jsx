@@ -1,18 +1,10 @@
 import React from 'react';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment
-} from 'semantic-ui-react';
+import { Grid, Header, Image, Segment } from 'semantic-ui-react';
 import GoogleAuth from './GoogleAuth';
 
 const LandingPage = () => {
   return (
-    <div className='login-form'>
+    <div class='login-form'>
       <style>{`
       body > div,
       body > div > div,
