@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
+import './components/styles.css';
 
 const App = () => {
   return (
     <div
-      class='ui container'
+      className='full-screen'
       style={{
         alignContent: 'center',
         justifyContent: 'center',
@@ -15,8 +16,9 @@ const App = () => {
       }}>
       <BrowserRouter>
         {/* <Header /> */}
-        <div class='ui middle aligned grid'>
+        <div className='full-screen'>
           <Route path='/' exact component={LandingPage} />
+          <Route path='/watcher' exact component={Header} />
         </div>
       </BrowserRouter>
     </div>

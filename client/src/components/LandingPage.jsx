@@ -4,7 +4,7 @@ import GoogleAuth from './GoogleAuth';
 
 const LandingPage = () => {
   return (
-    <div class='login-form'>
+    <div className='login-form'>
       <style>{`
       body > div,
       body > div > div,
