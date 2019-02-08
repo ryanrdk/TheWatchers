@@ -9,7 +9,7 @@
     "Mark2": 0,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -22,7 +22,7 @@
     "Mark2": 0,
     "Comment2": "Marchall didn't close VIM properly and has a hidden .swp file that may cause Moulinette to fail him on ex01, and he misnamed his libft file libstr! He is aware of his mistakes and also asked some clarification on ex02 he struggled with a bit. He seems like he is handling failing very well :) Next time he'll do better!!!",
     "Mark3": 35,
-    "Commment3": "Marchall knows the work, made his library  and they do work and he knows how to gcc a program without being in the library where the functions are in. Keep up the great work!!",
+    "Comment3": "Marchall knows the work, made his library  and they do work and he knows how to gcc a program without being in the library where the functions are in. Keep up the great work!!",
     "Cheating": ""
   },
   {
@@ -35,7 +35,7 @@
     "Mark2": 0,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -48,7 +48,7 @@
     "Mark2": 34,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -61,7 +61,7 @@
     "Mark2": 0,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -74,7 +74,7 @@
     "Mark2": 70,
     "Comment2": "You're doing really well, well done on making it through most of the exercises. Just don't forget to norm check and read the questions properly. Otherwise, keep it up!",
     "Mark3": 70,
-    "Commment3": "Did a great job on todays exercises. Helped me out with the day as-well",
+    "Comment3": "Did a great job on todays exercises. Helped me out with the day as-well",
     "Cheating": ""
   },
   {
@@ -87,7 +87,7 @@
     "Mark2": 0,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -100,7 +100,7 @@
     "Mark2": 70,
     "Comment2": "Rachel forgot to dereference her ft_swap and will fail ex04 because of this but she was still busy working on her code and would have perfected it with more time. She knows her code very very well and her code is very meticulous :)",
     "Mark3": 70,
-    "Commment3": "Rachel shows great understanding of her work and is able to explain her code very well. Keep up the good work!",
+    "Comment3": "Rachel shows great understanding of her work and is able to explain her code very well. Keep up the good work!",
     "Cheating": ""
   },
   {
@@ -113,7 +113,7 @@
     "Mark2": 0,
     "Comment2": "Missing peer-evaluation replaced by a 0",
     "Mark3": 0,
-    "Commment3": "Missing peer-evaluation replaced by a 0",
+    "Comment3": "Missing peer-evaluation replaced by a 0",
     "Cheating": ""
   },
   {
@@ -126,7 +126,7 @@
     "Mark2": 70,
     "Comment2": "Really excellent work! Well done!",
     "Mark3": 100,
-    "Commment3": "Hanno's strcmp code doesn't do what is expected but I do think he will pass Moulinette as she will be grading his sh file to see if he could compile functions into a library and this he has done very well, more efficiently than I have. The rest of his exercises work flawlessly, and I wish my code worked as well as his does :) Well done!",
+    "Comment3": "Hanno's strcmp code doesn't do what is expected but I do think he will pass Moulinette as she will be grading his sh file to see if he could compile functions into a library and this he has done very well, more efficiently than I have. The rest of his exercises work flawlessly, and I wish my code worked as well as his does :) Well done!",
     "Cheating": ""
   },
   {
@@ -139,7 +139,59 @@
     "Mark2": 70,
     "Comment2": "Student did well and understood the questions and how to do them. Well done!",
     "Mark3": 40,
-    "Commment3": "Submitted all his work, ex04 did not pass norminette, he was unaware of needing to use the extra flags when checking if it compiles.",
+    "Comment3": "Submitted all his work, ex04 did not pass norminette, he was unaware of needing to use the extra flags when checking if it compiles.",
+    "Cheating": ""
+  },
+  {
+    "Username": "txyrrel",
+    "User_id": 49628,
+    "Campus": "CPT",
+    "Final_mark": 55,
+    "Mark1": 85,
+    "Comment1": "Wow u soh goooood! OMJAY!!",
+    "Mark2": 85,
+    "Comment2": "Hoooooooou you excite mark so high",
+    "Mark3": 50,
+    "Comment3": "Noooooooo u hurt brain bad sad",
+    "Cheating": ""
+  },
+  {
+    "Username": "sisaroh",
+    "User_id": 49629,
+    "Campus": "CPT",
+    "Final_mark": 11,
+    "Mark1": 11,
+    "Comment1": "Stop trying",
+    "Mark2": 11,
+    "Comment2": "To be A HIPSTER",
+    "Mark3": 125,
+    "Comment3": "Soooo cool that you did great!",
+    "Cheating": ""
+  },
+  {
+    "Username": "marvin",
+    "User_id": 49630,
+    "Campus": "CPT",
+    "Final_mark": 125,
+    "Mark1": 125,
+    "Comment1": "He lacks emotion",
+    "Mark2": 125,
+    "Comment2": "He is void of emotion",
+    "Mark3": 125,
+    "Comment3": "I'm so depressed",
+    "Cheating": ""
+  },
+  {
+    "Username": "charlsly",
+    "User_id": 49631,
+    "Campus": "CPT",
+    "Final_mark": 0,
+    "Mark1": 1,
+    "Comment1": "How d'you get a 1?",
+    "Mark2": 2,
+    "Comment2": "stahp",
+    "Mark3": 3,
+    "Comment3": "missing person alert replaced by a 0",
     "Cheating": ""
   }
 ]

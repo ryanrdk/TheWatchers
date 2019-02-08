@@ -12,7 +12,7 @@ class ActiveStudents extends React.Component {
   }
 
   componentDidMount() {
-    const jay = require('../csvjson.json');
+    const jay = require('../bootcampers.json');
     this.setState({ users: jay });
   }
   render() {

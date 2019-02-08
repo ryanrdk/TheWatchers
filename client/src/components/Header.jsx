@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ActiveStudents from './ActiveStudents';
 
 class Header extends React.Component {
@@ -6,18 +7,18 @@ class Header extends React.Component {
     return (
       <div>
         <div className='ui vertical inverted left visible sidebar menu'>
-          <a className='item'>
+          <Link to='/watcher' className='item'>
             <i className='home icon' />
             Home
-          </a>
-          <a className='item'>
+          </Link>
+          <Link to='/watcher' className='item'>
             <i className='block layout icon' />
             Active Students
-          </a>
-          <a className='item'>
+          </Link>
+          <Link to='/watcher' className='item'>
             <i className='block layout icon' />
             Mailing List
-          </a>
+          </Link>
         </div>
         <div className='pusher'>
           <ActiveStudents />
