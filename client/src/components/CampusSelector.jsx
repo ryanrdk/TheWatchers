@@ -1,4 +1,5 @@
 import React from 'react';
+import DemoStatsTable from './DemoStatsTable';
 import { Dropdown } from 'semantic-ui-react'
 // import 'semantic-ui-css/semantic.min.css';
 
@@ -25,12 +26,19 @@ class CampusSelector extends React.Component {
     render() {
         const { options, searchQuery, selected } = this.state;
         return (
-            <Dropdown placeholder='Campus' search selection
-            value={selected}
-            text={searchQuery}
-            onChange={this.onChange}
-            onSearchChange={this.onSearchChange}
-            options={options} />
+            <div>
+                <div>
+                    <Dropdown placeholder='Campus' search selection
+                    value={selected}
+                    text={searchQuery}
+                    onChange={this.onChange}
+                    onSearchChange={this.onSearchChange}
+                    options={options} />
+                </div>
+                <div>
+                    <DemoStatsTable filter={this.state} />
+                </div>
+            </div>
         );
     }
 }

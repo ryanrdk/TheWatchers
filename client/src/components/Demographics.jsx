@@ -34,6 +34,7 @@ render() {
         <div>
             <CampusSelector campus_selection={this.state.campus_selection} />
         </div>
+        
         <div>
             <StatusSelector status_selection={this.state.status_selection}/>
         </div>
