@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ActiveStudents from './ActiveStudents';
 import Demographics from './Demographics';
 
 class Header_demo extends React.Component {
