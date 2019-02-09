@@ -7,7 +7,7 @@
       "campus": "capetown",
       "gender": "male",
       "ethnicity": "white",
-      "active": "active"
+      "active": "no show"
     },
     {
       "first_name": "Brandon",
@@ -27,7 +27,7 @@
       "campus": "capetown",
       "gender": "male",
       "ethnicity": "white",
-      "active": "active"
+      "active": "selected"
     },
     {
       "first_name": "Jason",
@@ -47,7 +47,7 @@
       "campus": "capetown",
       "gender": "male",
       "ethnicity": "white",
-      "active": "active"
+      "active": "selected"
     },
     {
       "first_name": "Hugo",
@@ -57,7 +57,7 @@
       "campus": "capetown",
       "gender": "male",
       "ethnicity": "white",
-      "active": "active"
+      "active": "selected"
     },
     {
       "first_name": "Alex",

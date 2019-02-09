@@ -31,7 +31,7 @@ render() {
     return (
         // console.log("YAYYY HERE", this.state),
         <div>
-        <div>
+        <div style={{clear: 'both', float: 'left'}}>
             <CampusSelector campus_selection={this.state.campus_selection} />
         </div>
         

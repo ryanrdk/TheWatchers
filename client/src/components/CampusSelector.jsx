@@ -6,25 +6,52 @@ import { Dropdown } from 'semantic-ui-react'
 class CampusSelector extends React.Component {
     constructor(props) {
         super(props)
+        this.demoStatsTableElement = React.createRef();
         this.state = {
             options : props.campus_selection,
             searchQuery: '',
-            selected: 'ALL'
+            selected: 'ALL',
+            demoData: [],
+            filteredData: []
         }
-        // console.log("Proppies", this.state.options)
+    }
+    componentDidMount() {
+        const jay = require('../dummyDemographics.json');
+        console.log(jay);
+        this.setState({ demoData: jay, filteredData: jay });
+        this.demoStatsTableElement.current.updateStats(jay);
     }
     onChange = (e, data) => {
         // console.log(data.value);
         // console.log('data', data);
-        this.setState({ selected: data.value, searchQuery: '' });
+        const filt = this.state.demoData.filter((elem) => { 
+            //  console.log("arr", elem.ethnicity);
+                if (data.value === 'ALL') {
+                    return elem;
+                }
+                else if (data.value === 'CPT') {
+                if (elem.campus === 'capetown') {
+                    return elem;
+                }
+                }
+                else if (data.value === 'JHB') {
+                if (elem.campus === 'johannesburg') {
+                    return elem;
+                }
+                }
+                return null;
+        });
+        // console.log("filtering",filt);
+        this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
+        this.demoStatsTableElement.current.updateStats(filt)
     }
-
     onSearchChange = (e, data) => {
         // console.log(data.searchQuery);
         this.setState({ searchQuery: data.searchQuery });
     }    
     render() {
         const { options, searchQuery, selected } = this.state;
+        // console.log("here", this.state);
         return (
             <div>
                 <div>
@@ -36,7 +63,7 @@ class CampusSelector extends React.Component {
                     options={options} />
                 </div>
                 <div>
-                    <DemoStatsTable filter={this.state} />
+                    <DemoStatsTable ref={this.demoStatsTableElement} />
                 </div>
             </div>
         );
