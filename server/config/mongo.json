@@ -1,0 +1,5 @@
+{
+    "mongo_username" : "admin111",
+    "mongo_password" : "admin111",
+    "mongo_url" : "127.0.0.1:27017/demoDB"
+}
