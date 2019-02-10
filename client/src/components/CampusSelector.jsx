@@ -40,10 +40,42 @@ class CampusSelector extends React.Component {
                 }
                 }
                 return null;
-        });
+            });
         // console.log("filtering",filt);
         this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
-        this.demoStatsTableElement.current.updateStats(filt)
+        this.demoStatsTableElement.current.updateStats(filt);
+        /* Graphql tryout
+        const filt2 = []
+        const GRAPHQL_API = 'http://localhost:4000/graphql';
+        const query = `{
+        getAllBootcampers {
+            _id
+            first_name
+            username
+            campus
+            active
+        }
+        }`
+        fetch(GRAPHQL_API, {
+        method: 'POST',
+        body: JSON.stringify({
+            query
+        }),
+        headers: {
+            'content-type': 'application/json'
+        }
+        }).then(response => response.json())
+        .then(result =>  {
+             filt2.push(result.data.getAllBootcampers.forEach((elem) => {
+                console.log(elem);
+                return elem;
+            }));
+            // console.log("the res",filt2);
+        // filt2.push(result)
+        }, this.setState({ selected: data.value, searchQuery: '', filteredData: filt2[0] }),
+        this.demoStatsTableElement.current.updateStats(filt2[0]),
+        console.log("gingni",filt2)
+        )*/
     }
     onSearchChange = (e, data) => {
         // console.log(data.searchQuery);
