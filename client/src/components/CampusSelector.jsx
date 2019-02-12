@@ -16,10 +16,14 @@ class CampusSelector extends React.Component {
         }
     }
     componentDidMount() {
-        const jay = require('../dummyDemographics.json');
-        console.log(jay);
-        this.setState({ demoData: jay, filteredData: jay });
-        this.demoStatsTableElement.current.updateStats(jay);
+        // const jay = require('../dummyDemographics.json');
+        // console.log(jay);
+        // this.setState({ demoData: jay, filteredData: jay });
+        // this.demoStatsTableElement.current.updateStats(jay);
+    }
+    updateStats(data) {
+        this.setState({ demoData: data, filtered: data})
+        this.demoStatsTableElement.current.updateStats(data)
     }
     onChange = (e, data) => {
         // console.log(data.value);
