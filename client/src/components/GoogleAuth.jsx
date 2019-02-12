@@ -1,17 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { signIn, signOut } from '../actions';
+import React from "react";
+import { connect } from "react-redux";
+import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
-    window.gapi.load('client:auth2', () => {
+    window.gapi.load("client:auth2", () => {
       window.gapi.client
         .init({
           clientId:
-            '575180197639-t4sul1unsb6fuot757sic44qg4odeam6.apps.googleusercontent.com',
-          scope: 'email',
-          prompt: 'select_account',
-          hosted_domain: 'wethinkcode.co.za'
+            "575180197639-t4sul1unsb6fuot757sic44qg4odeam6.apps.googleusercontent.com",
+          scope: "email",
+          prompt: "select_account",
+          hosted_domain: "wethinkcode.co.za"
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
