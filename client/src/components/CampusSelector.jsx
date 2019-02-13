@@ -31,52 +31,51 @@ class CampusSelector extends React.Component {
     }
     updateDemoCount(campus, gender, wht, blk, col, ind, chi) {
         console.log("updaterrrr", this.state.demoCount)
+        console.log("upelem", this.demoStatsTableElement.current.state)
         if (campus === 'capetown') {
             if (gender === 'male') {
                 const { toUpdate } = { ...this.state.demoCount.capetown.male }
                 console.log("updatub", toUpdate)
-                // this.setState({
-                //     // demoCount:
-                //     // {
-                //     //     capetown: {
-                //     //         male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
-                //     //     }
-                //     // }
-                //     // demoCount : 
-
-                // })
-                this.setState(prevState => (console.log("UpPrev", prevState), {
-                    demoCount: [prevState.demoCount.capetown.male, { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }]
-                }));
-                console.log("updataedd", this.state)
-                //     this.demoStatsTableElement.current.setState({ demoCount: 
-                //         { capetown : {male : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
-                // }}})
-                this.demoStatsTableElement.current.setState({
+                this.setState({
                     demoCount:
                     {
+                        ...this.state.demoCount,
                         capetown: {
+                            ...this.state.demoCount.capetown,
                             male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
                 })
+
+                this.demoStatsTableElement.current.setState({
+                    demoCount:
+                    {
+                        ...this.demoStatsTableElement.current.state.demoCount,
+                        capetown: {
+                            ...this.demoStatsTableElement.current.state.demoCount.capetown,
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+
             }
             if (gender === 'female') {
                 this.setState({
                     demoCount:
                     {
+                        ...this.state.demoCount,
                         capetown: {
+                            ...this.state.demoCount.capetown,
                             female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
                 })
-                //     this.demoStatsTableElement.current.setState({ demoCount: 
-                //         { capetown : {female : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
-                // }}})
                 this.demoStatsTableElement.current.setState({
                     demoCount:
                     {
+                        ...this.demoStatsTableElement.current.state.demoCount,
                         capetown: {
+                            ...this.demoStatsTableElement.current.state.demoCount.capetown,
                             female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
@@ -88,18 +87,19 @@ class CampusSelector extends React.Component {
                 this.setState({
                     demoCount:
                     {
+                        ...this.state.demoCount,
                         johannesburg: {
+                            ...this.state.demoCount.johannesburg,
                             male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
                 })
-                //     this.demoStatsTableElement.current.setState({ demoCount: 
-                //         { johannesburg : {male : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
-                // }}})
                 this.demoStatsTableElement.current.setState({
                     demoCount:
                     {
+                        ...this.demoStatsTableElement.current.state.demoCount,
                         johannesburg: {
+                            ...this.demoStatsTableElement.current.state.demoCount.johannesburg,
                             male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
@@ -109,24 +109,26 @@ class CampusSelector extends React.Component {
                 this.setState({
                     demoCount:
                     {
+                        ...this.state.demoCount,
                         johannesburg: {
+                            ...this.state.demoCount.johannesburg,
                             female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
                 })
-                //     this.demoStatsTableElement.current.setState({ demoCount: 
-                //         { johannesburg : {female : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
-                // }}})
                 this.demoStatsTableElement.current.setState({
                     demoCount:
                     {
+                        ...this.demoStatsTableElement.current.state.demoCount,
                         johannesburg: {
+                            ...this.demoStatsTableElement.current.state.demoCount.johannesburg,
                             female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
                         }
                     }
                 })
             }
         }
+        console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current.state)
     }
     onChange = (e, data) => {
         // console.log(data.value);
@@ -151,38 +153,6 @@ class CampusSelector extends React.Component {
         // console.log("filtering",filt);
         this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
         this.demoStatsTableElement.current.updateStats(filt);
-        /* Graphql tryout
-        const filt2 = []
-        const GRAPHQL_API = 'http://localhost:4000/graphql';
-        const query = `{
-        getAllBootcampers {
-            _id
-            first_name
-            username
-            campus
-            active
-        }
-        }`
-        fetch(GRAPHQL_API, {
-        method: 'POST',
-        body: JSON.stringify({
-            query
-        }),
-        headers: {
-            'content-type': 'application/json'
-        }
-        }).then(response => response.json())
-        .then(result =>  {
-             filt2.push(result.data.getAllBootcampers.forEach((elem) => {
-                console.log(elem);
-                return elem;
-            }));
-            // console.log("the res",filt2);
-        // filt2.push(result)
-        }, this.setState({ selected: data.value, searchQuery: '', filteredData: filt2[0] }),
-        this.demoStatsTableElement.current.updateStats(filt2[0]),
-        console.log("gingni",filt2)
-        )*/
     }
     onSearchChange = (e, data) => {
         // console.log(data.searchQuery);
@@ -202,7 +172,7 @@ class CampusSelector extends React.Component {
                         options={options} />
                 </div>
                 <div>
-                    <DemoStatsTable ref={this.demoStatsTableElement} />
+                    <DemoStatsTable ref={this.demoStatsTableElement} demoCount={this.state.demoCount} />
                 </div>
             </div>
         );
