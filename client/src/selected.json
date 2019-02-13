@@ -1,0 +1,443 @@
+[
+  {
+    "Selected": "true",
+    "Username": "aajam",
+    "Gender": "male",
+    "Ethnicity": "other",
+    "Campus": "capetown",
+    "Mark": 23,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "abrits",
+    "Gender": "female",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 55,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "adollie",
+    "Gender": "female",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 71,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "afoster",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 12,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "ahobbs",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 77,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "aisaacs",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 19,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "akhalfal",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 57,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "alanders",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 78,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "amaquena",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 92,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "amasinga",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "johannesburg",
+    "Mark": 23,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "amkhokel",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 62,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "anarun",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 1,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "antseu",
+    "Gender": "female",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 100,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "aroyappe",
+    "Gender": "male",
+    "Ethnicity": "indian",
+    "Campus": "capetown",
+    "Mark": 49,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "astracha",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 41,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "avan-wit",
+    "Gender": "female",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 47,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "avollenh",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 24,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "bgasa",
+    "Gender": "female",
+    "Ethnicity": "black",
+    "Campus": "johannesburg",
+    "Mark": 33,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "bsingama",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 45,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "bswanepo",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 41,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "btshabal",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 84,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "bwhitehe",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 63,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "cafrica",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 59,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "cbeyer",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 61,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "cglanvil",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 47,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "cowens",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 27,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "cvermeul",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 99,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "ematcheb",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 84,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "esmit",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 95,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "fmalila",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 50,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "gmuller",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 27,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "hbarnard",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 39,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "hcharles",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 71,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "hde-vrie",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 83,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "hvan-lil",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 38,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "ibassadi",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 48,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "icarolus",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 5,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "imotau",
+    "Gender": "female",
+    "Ethnicity": "black",
+    "Campus": "johannesburg",
+    "Mark": 7,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "irinques",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 70,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "japillay",
+    "Gender": "male",
+    "Ethnicity": "indian",
+    "Campus": "capetown",
+    "Mark": 73,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "jbarnard",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 94,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "jbenjami",
+    "Gender": "male",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 96,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "jbinya",
+    "Gender": "female",
+    "Ethnicity": "black",
+    "Campus": "capetown",
+    "Mark": 99,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "jduffey",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 64,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "jharri",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 52,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "jkokot",
+    "Gender": "male",
+    "Ethnicity": "white",
+    "Campus": "capetown",
+    "Mark": 16,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "jnieuwou",
+    "Gender": "male",
+    "Ethnicity": "chinese",
+    "Campus": "capetown",
+    "Mark": 96,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "true",
+    "Username": "jpass",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 76,
+    "Cheating": "No"
+  },
+  {
+    "Selected": "false",
+    "Username": "jpeterse",
+    "Gender": "male",
+    "Ethnicity": "coloured",
+    "Campus": "capetown",
+    "Mark": 34,
+    "Cheating": "No"
+  }
+]

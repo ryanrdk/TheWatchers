@@ -1,7 +1,7 @@
-import React from "react";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
-import DownloadCSV from "./DownloadCSV";
+import React from 'react';
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
+import DownloadCSV from './DownloadCSV';
 
 class DemoStatusTable extends React.Component {
   constructor(props) {
@@ -25,36 +25,36 @@ class DemoStatusTable extends React.Component {
   render() {
     const cols = [
       {
-        Header: "First Name",
-        accessor: "first_name"
+        Header: 'First Name',
+        accessor: 'first_name'
       },
       {
-        Header: "Last Name",
-        accessor: "last_name"
+        Header: 'Last Name',
+        accessor: 'last_name'
       },
       {
-        Header: "Username",
-        accessor: "username"
+        Header: 'Username',
+        accessor: 'username'
       },
       {
-        Header: "Email",
-        accessor: "email"
+        Header: 'Email',
+        accessor: 'email'
       },
       {
-        Header: "Campus",
-        accessor: "campus"
+        Header: 'Campus',
+        accessor: 'campus'
       },
       {
-        Header: "Gender",
-        accessor: "gender"
+        Header: 'Gender',
+        accessor: 'gender'
       },
       {
-        Header: "Ethnicity",
-        accessor: "ethnicity"
+        Header: 'Ethnicity',
+        accessor: 'ethnicity'
       },
       {
-        Header: "Active",
-        accessor: "active"
+        Header: 'Active',
+        accessor: 'active'
       }
     ];
     return (
@@ -63,7 +63,7 @@ class DemoStatusTable extends React.Component {
           <ReactTable
             columns={cols}
             data={this.state.filtered}
-            className={"-highlight"}
+            className={'-highlight'}
             expanded={{
               1: true,
               4: true
