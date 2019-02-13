@@ -69,7 +69,7 @@ render() {
         <div id='campus' style={{ clear: "both", float: "left" }}>
             <CampusSelector ref={this.campusSelectorElement} campus_selection={this.state.campus_selection} />
         </div>
-        <div id='status' style={{ clear: "both", float: "left" }}>
+        <div id='status' style={{ clear: 'both', float: 'left' }}>
           <StatusSelector status_selection={this.state.status_selection} />
         </div>
       </div>
