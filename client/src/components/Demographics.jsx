@@ -39,6 +39,9 @@ class Demographics extends React.Component {
         // console.log("demograph HERE", this.state);
         GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, "male", true, "capetown")
+        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, "female", true, "capetown")
+        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, "male", true, "johannesburg")
+        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, "female", true, "johannesburg")
     var campusNode = document.getElementById("campus").lastChild;
     var statusNode = document.getElementById("status").lastChild;
     document.getElementById("curr-view").appendChild(campusNode);

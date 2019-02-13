@@ -8,7 +8,8 @@ class DemoStatsTable extends React.Component {
         super(props);
         this.downloadCSVElement = React.createRef();
         this.state = {
-            filtered: []
+            filtered: [],
+            demoCount: props.demoCount
         };
         // console.log("inherit", this)
     }
@@ -19,45 +20,45 @@ class DemoStatsTable extends React.Component {
         // this.setState({ demoData: jay, filtered:jay });
     }
     updateStats(data) {
-        this.setState({ filtered: data})
+        this.setState({ filtered: data })
         this.downloadCSVElement.current.updateStats(data)
     }
     render() {
         const cols = [
-        {
-            Header: 'First Name',
-            accessor: 'first_name'
-        },
-        {
-            Header: 'Last Name',
-            accessor: 'last_name'
-        },
-        {
-            Header: 'Username',
-            accessor: 'username'
-        },
-        {
-            Header: 'Email',
-            accessor: 'email'
-        },
-        {
-            Header: 'Campus',
-            accessor: 'campus'
-        },
-        {
-            Header: 'Gender',
-            accessor: 'gender'
-        },
-        {
-            Header: 'Ethnicity',
-            accessor: 'ethnicity'
-        },
-        {
-            Header: 'Active',
-            accessor: 'active'
-        }
+            {
+                Header: 'First Name',
+                accessor: 'first_name'
+            },
+            {
+                Header: 'Last Name',
+                accessor: 'last_name'
+            },
+            {
+                Header: 'Username',
+                accessor: 'username'
+            },
+            {
+                Header: 'Email',
+                accessor: 'email'
+            },
+            {
+                Header: 'Campus',
+                accessor: 'campus'
+            },
+            {
+                Header: 'Gender',
+                accessor: 'gender'
+            },
+            {
+                Header: 'Ethnicity',
+                accessor: 'ethnicity'
+            },
+            {
+                Header: 'Active',
+                accessor: 'active'
+            }
         ];
-        console.log("DemStats",this.state)
+        console.log("DemStats", this.state)
         //this.state.filtered = filt;
         console.log("Total", this.state.filtered)
         return (
@@ -68,13 +69,13 @@ class DemoStatsTable extends React.Component {
                         data={this.state.filtered}
                         className={'-highlight'}
                         expanded={{
-                        1: true,
-                        4: true
+                            1: true,
+                            4: true
                         }}
                     />
                 </div>
                 <div>
-                    <DownloadCSV ref={this.downloadCSVElement}/>
+                    <DownloadCSV ref={this.downloadCSVElement} />
                 </div>
             </div>
         );
