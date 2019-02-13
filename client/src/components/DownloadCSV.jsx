@@ -11,6 +11,7 @@ class DownloadCSV extends React.Component {
   }
   updateStats(data) {
     this.setState({ data: data });
+    // if (data.capetown.male && data.capetown.female && data.johannesburg.male && data.johannesburg.female) { console.log("popop", [data.capetown.male, data.capetown.female, data.johannesburg.male, data.johannesburg.female]); }
   }
   objectToCSV(data) {
     const csvRows = [];

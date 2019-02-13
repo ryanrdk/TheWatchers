@@ -34,15 +34,15 @@ class CampusSelector extends React.Component {
         console.log("upelem", this.demoStatsTableElement.current.state)
         if (campus === 'capetown') {
             if (gender === 'male') {
-                const { toUpdate } = { ...this.state.demoCount.capetown.male }
-                console.log("updatub", toUpdate)
+                // const { toUpdate } = { ...this.state.demoCount.capetown.male }
+                // console.log("updatub", toUpdate)
                 this.setState({
                     demoCount:
                     {
                         ...this.state.demoCount,
                         capetown: {
                             ...this.state.demoCount.capetown,
-                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "CPT Male" }
                         }
                     }
                 })
@@ -53,7 +53,7 @@ class CampusSelector extends React.Component {
                         ...this.demoStatsTableElement.current.state.demoCount,
                         capetown: {
                             ...this.demoStatsTableElement.current.state.demoCount.capetown,
-                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "CPT Male" }
                         }
                     }
                 })
@@ -66,7 +66,7 @@ class CampusSelector extends React.Component {
                         ...this.state.demoCount,
                         capetown: {
                             ...this.state.demoCount.capetown,
-                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "CPT Female" }
                         }
                     }
                 })
@@ -76,7 +76,7 @@ class CampusSelector extends React.Component {
                         ...this.demoStatsTableElement.current.state.demoCount,
                         capetown: {
                             ...this.demoStatsTableElement.current.state.demoCount.capetown,
-                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "CPT Female" }
                         }
                     }
                 })
@@ -90,7 +90,7 @@ class CampusSelector extends React.Component {
                         ...this.state.demoCount,
                         johannesburg: {
                             ...this.state.demoCount.johannesburg,
-                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "JHB Male" }
                         }
                     }
                 })
@@ -100,7 +100,7 @@ class CampusSelector extends React.Component {
                         ...this.demoStatsTableElement.current.state.demoCount,
                         johannesburg: {
                             ...this.demoStatsTableElement.current.state.demoCount.johannesburg,
-                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "JHB Male" }
                         }
                     }
                 })
@@ -112,7 +112,7 @@ class CampusSelector extends React.Component {
                         ...this.state.demoCount,
                         johannesburg: {
                             ...this.state.demoCount.johannesburg,
-                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "JHB Female" }
                         }
                     }
                 })
@@ -122,12 +122,13 @@ class CampusSelector extends React.Component {
                         ...this.demoStatsTableElement.current.state.demoCount,
                         johannesburg: {
                             ...this.demoStatsTableElement.current.state.demoCount.johannesburg,
-                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi, dem: "JHB Female" }
                         }
                     }
                 })
             }
         }
+        this.demoStatsTableElement.current.updateStats(this.state.demoCount)
         console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current.state)
     }
     onChange = (e, data) => {
@@ -150,9 +151,9 @@ class CampusSelector extends React.Component {
             }
             return null;
         });
-        // console.log("filtering",filt);
-        this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
-        this.demoStatsTableElement.current.updateStats(filt);
+        console.log("filtering", filt);
+        // this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
+        // this.demoStatsTableElement.current.updateStats([...this.state.demoCount]);
     }
     onSearchChange = (e, data) => {
         // console.log(data.searchQuery);

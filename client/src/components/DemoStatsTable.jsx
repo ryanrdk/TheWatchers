@@ -18,6 +18,12 @@ class DemoStatsTable extends React.Component {
         // const jay = require('../dummyDemographics.json');
         // console.log(jay);
         // this.setState({ demoData: jay, filtered:jay });
+        this.setState({ filtered: this.state.demoCount })
+        const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
+        this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
+        console.log("upTabData", tabData)
+        if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
+
     }
     updateStats(data) {
         this.setState({ filtered: data })
@@ -26,47 +32,44 @@ class DemoStatsTable extends React.Component {
     render() {
         const cols = [
             {
-                Header: 'First Name',
-                accessor: 'first_name'
+                Header: 'Demographs',
+                accessor: 'dem'
             },
             {
-                Header: 'Last Name',
-                accessor: 'last_name'
+                Header: 'Black',
+                accessor: 'black'
             },
             {
-                Header: 'Username',
-                accessor: 'username'
+                Header: 'White',
+                accessor: 'white'
             },
             {
-                Header: 'Email',
-                accessor: 'email'
+                Header: 'Coloured',
+                accessor: 'coloured'
             },
             {
-                Header: 'Campus',
-                accessor: 'campus'
+                Header: 'Indian',
+                accessor: 'indian'
             },
             {
-                Header: 'Gender',
-                accessor: 'gender'
-            },
-            {
-                Header: 'Ethnicity',
-                accessor: 'ethnicity'
-            },
-            {
-                Header: 'Active',
-                accessor: 'active'
+                Header: 'Chinese',
+                accessor: 'chinese'
             }
         ];
         console.log("DemStats", this.state)
         //this.state.filtered = filt;
         console.log("Total", this.state.filtered)
+        console.log("upTabherereerer", this.state.demoCount.capetown)
+        const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
+        this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
+        // console.log("upTabData", tabData)
+        // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
         return (
             <div>
                 <div>
                     <ReactTable
                         columns={cols}
-                        data={this.state.filtered}
+                        data={tabData}
                         className={'-highlight'}
                         expanded={{
                             1: true,
