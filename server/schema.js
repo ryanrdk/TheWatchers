@@ -14,6 +14,7 @@ type Bootcamper {
 
 type Query {
     getAllBootcampers: [Bootcamper]
+    getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
 }
 `;
 
