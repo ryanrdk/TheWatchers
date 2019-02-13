@@ -1,5 +1,6 @@
 {
-    "mongo_username" : "admin111",
-    "mongo_password" : "admin111",
-    "mongo_url" : "127.0.0.1:27017/demoDB"
+    "mongo_username": "admin111",
+    "mongo_password": "admin111",
+    "mongo_url2": "127.0.0.1:27017/demoDB",
+    "mongo_url": "localhost:27017/countries_db"
 }

@@ -8,43 +8,146 @@ class CampusSelector extends React.Component {
         super(props)
         this.demoStatsTableElement = React.createRef();
         this.state = {
-            options : props.campus_selection,
+            options: props.campus_selection,
             searchQuery: '',
             selected: 'ALL',
             demoData: [],
-            filteredData: []
+            filteredData: [],
+            demoCount: props.demoCount
+
         }
+        console.log("mountererererpppppp", props)
     }
     componentDidMount() {
         // const jay = require('../dummyDemographics.json');
         // console.log(jay);
         // this.setState({ demoData: jay, filteredData: jay });
         // this.demoStatsTableElement.current.updateStats(jay);
+        console.log("mounterererer", this.state.demoCount)
     }
     updateStats(data) {
-        this.setState({ demoData: data, filtered: data})
+        this.setState({ demoData: data, filtered: data })
         this.demoStatsTableElement.current.updateStats(data)
+    }
+    updateDemoCount(campus, gender, wht, blk, col, ind, chi) {
+        console.log("updaterrrr", this.state.demoCount)
+        if (campus === 'capetown') {
+            if (gender === 'male') {
+                const { toUpdate } = { ...this.state.demoCount.capetown.male }
+                console.log("updatub", toUpdate)
+                // this.setState({
+                //     // demoCount:
+                //     // {
+                //     //     capetown: {
+                //     //         male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                //     //     }
+                //     // }
+                //     // demoCount : 
+
+                // })
+                this.setState(prevState => (console.log("UpPrev", prevState), {
+                    demoCount: [prevState.demoCount.capetown.male, { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }]
+                }));
+                console.log("updataedd", this.state)
+                //     this.demoStatsTableElement.current.setState({ demoCount: 
+                //         { capetown : {male : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
+                // }}})
+                this.demoStatsTableElement.current.setState({
+                    demoCount:
+                    {
+                        capetown: {
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+            }
+            if (gender === 'female') {
+                this.setState({
+                    demoCount:
+                    {
+                        capetown: {
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+                //     this.demoStatsTableElement.current.setState({ demoCount: 
+                //         { capetown : {female : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
+                // }}})
+                this.demoStatsTableElement.current.setState({
+                    demoCount:
+                    {
+                        capetown: {
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+            }
+        }
+        if (campus === 'johannesburg') {
+            if (gender === 'male') {
+                this.setState({
+                    demoCount:
+                    {
+                        johannesburg: {
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+                //     this.demoStatsTableElement.current.setState({ demoCount: 
+                //         { johannesburg : {male : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
+                // }}})
+                this.demoStatsTableElement.current.setState({
+                    demoCount:
+                    {
+                        johannesburg: {
+                            male: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+            }
+            if (gender === 'female') {
+                this.setState({
+                    demoCount:
+                    {
+                        johannesburg: {
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+                //     this.demoStatsTableElement.current.setState({ demoCount: 
+                //         { johannesburg : {female : [{ white : wht, black : blk, coloured : col, indian : ind, chinese : chi }]
+                // }}})
+                this.demoStatsTableElement.current.setState({
+                    demoCount:
+                    {
+                        johannesburg: {
+                            female: { white: wht, black: blk, coloured: col, indian: ind, chinese: chi }
+                        }
+                    }
+                })
+            }
+        }
     }
     onChange = (e, data) => {
         // console.log(data.value);
         // console.log('data', data);
-        const filt = this.state.demoData.filter((elem) => { 
+        const filt = this.state.demoData.filter((elem) => {
             //  console.log("arr", elem.ethnicity);
-                if (data.value === 'ALL') {
-                    return elem;
-                }
-                else if (data.value === 'CPT') {
+            if (data.value === 'ALL') {
+                return elem;
+            }
+            else if (data.value === 'CPT') {
                 if (elem.campus === 'capetown') {
                     return elem;
                 }
-                }
-                else if (data.value === 'JHB') {
+            }
+            else if (data.value === 'JHB') {
                 if (elem.campus === 'johannesburg') {
                     return elem;
                 }
-                }
-                return null;
-            });
+            }
+            return null;
+        });
         // console.log("filtering",filt);
         this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
         this.demoStatsTableElement.current.updateStats(filt);
@@ -84,7 +187,7 @@ class CampusSelector extends React.Component {
     onSearchChange = (e, data) => {
         // console.log(data.searchQuery);
         this.setState({ searchQuery: data.searchQuery });
-    }    
+    }
     render() {
         const { options, searchQuery, selected } = this.state;
         // console.log("here", this.state);
@@ -92,11 +195,11 @@ class CampusSelector extends React.Component {
             <div>
                 <div>
                     <Dropdown placeholder='Campus' search selection
-                    value={selected}
-                    text={searchQuery}
-                    onChange={this.onChange}
-                    onSearchChange={this.onSearchChange}
-                    options={options} />
+                        value={selected}
+                        text={searchQuery}
+                        onChange={this.onChange}
+                        onSearchChange={this.onSearchChange}
+                        options={options} />
                 </div>
                 <div>
                     <DemoStatsTable ref={this.demoStatsTableElement} />
