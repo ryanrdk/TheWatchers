@@ -38,11 +38,12 @@ class Demographics extends React.Component {
         // const jay = require('../bootcampers.json');
         // this.setState({ users: jay });
         // console.log("demograph HERE", this.state);
-        GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
+        // GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', true, 'capetown');
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'capetown');
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', true, 'johannesburg');
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'johannesburg');
+        this.campusSelectorElement.current.demoStatsTableElement.current.updateStats(this.state.demoCount)
         var campusNode = document.getElementById('campus').lastChild;
         var statusNode = document.getElementById('status').lastChild;
         document.getElementById('curr-view').appendChild(campusNode);

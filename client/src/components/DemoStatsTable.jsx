@@ -8,10 +8,11 @@ class DemoStatsTable extends React.Component {
         super(props);
         this.downloadCSVElement = React.createRef();
         this.state = {
-            filtered: [],
+            thisFilt: [props.demoCount.capetown.male, props.demoCount.capetown.female, props.demoCount.johannesburg.male, props.demoCount.johannesburg.female],
+            filtered: props.demoCount,
             demoCount: props.demoCount
         };
-        // console.log("inherit", this)
+        console.log("inherit", this.state.thisFilt)
     }
 
     componentDidMount() {
@@ -22,11 +23,12 @@ class DemoStatsTable extends React.Component {
         const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
         this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
         console.log("upTabData", tabData)
-        if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
+        // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
 
     }
     updateStats(data) {
         this.setState({ filtered: data })
+        console.log("filterTable", data)
         this.downloadCSVElement.current.updateStats(data)
     }
     render() {
@@ -58,11 +60,13 @@ class DemoStatsTable extends React.Component {
         ];
         console.log("DemStats", this.state)
         //this.state.filtered = filt;
-        console.log("Total", this.state.filtered)
-        console.log("upTabherereerer", this.state.demoCount.capetown)
+        console.log("Total", this.state.thisFilt)
+        // console.log("upTabherereerer", this.state.demoCount.capetown)
         const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
         this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
-        // console.log("upTabData", tabData)
+        const { thisFilt } = this.state.thisFilt
+        console.log("upTabData", tabData, thisFilt)
+        // this.downloadCSVElement.current.setState({ data: tabData })
         // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
         return (
             <div>

@@ -60,7 +60,7 @@ export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, doCount, c
     }).then(response => response.json())
         .then(result => {
             console.log("heeeeeeerrreeee", result)
-            component.current.updateStats(result.data.getBootcampersByGender)
+            // component.current.updateStats(result.data.getBootcampersByGender)
             if (doCount && campus) {
                 var white_count = 0;
                 var black_count = 0;
@@ -76,7 +76,9 @@ export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, doCount, c
                     if (dataQL[elem].ethnicity === 'chinese') chinese_count++;
                 }
                 component.current.updateDemoCount(campus, gender, white_count, black_count, coloured_count, indian_count, chinese_count);
+                // component.current.updateStats()
             }
+            component.current.updateStats(component.current.state.demoCount)
             console.log("jdjdsjsdsjd", component.current.state)
         })
 }

@@ -23,19 +23,18 @@ class CampusSelector extends React.Component {
         // console.log(jay);
         // this.setState({ demoData: jay, filteredData: jay });
         // this.demoStatsTableElement.current.updateStats(jay);
+        // this.setState
         console.log("mounterererer", this.state.demoCount)
     }
     updateStats(data) {
         this.setState({ demoData: data, filtered: data })
-        this.demoStatsTableElement.current.updateStats(data)
+        this.demoStatsTableElement.current.updateStats([data.capetown.male, data.capetown.female, data.johannesburg.male, data.johannesburg.female])
     }
     updateDemoCount(campus, gender, wht, blk, col, ind, chi) {
         console.log("updaterrrr", this.state.demoCount)
         console.log("upelem", this.demoStatsTableElement.current.state)
         if (campus === 'capetown') {
             if (gender === 'male') {
-                // const { toUpdate } = { ...this.state.demoCount.capetown.male }
-                // console.log("updatub", toUpdate)
                 this.setState({
                     demoCount:
                     {
@@ -128,40 +127,34 @@ class CampusSelector extends React.Component {
                 })
             }
         }
-        this.demoStatsTableElement.current.updateStats(this.state.demoCount)
-        console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current.state)
+        // this.demoStatsTableElement.current.updateStats(this.state.demoCount)
+        console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current)
     }
     onChange = (e, data) => {
-        // console.log(data.value);
-        // console.log('data', data);
-        const filt = this.state.demoData.filter((elem) => {
-            //  console.log("arr", elem.ethnicity);
-            if (data.value === 'ALL') {
-                return elem;
-            }
-            else if (data.value === 'CPT') {
-                if (elem.campus === 'capetown') {
-                    return elem;
-                }
-            }
-            else if (data.value === 'JHB') {
-                if (elem.campus === 'johannesburg') {
-                    return elem;
-                }
-            }
-            return null;
-        });
-        console.log("filtering", filt);
-        // this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
-        // this.demoStatsTableElement.current.updateStats([...this.state.demoCount]);
+        console.log('data', data, this.state.demoCount, this.state.demoData);
+        var filt = []
+        var filtTab = []
+        if (data.value === 'ALL') {
+            filt = [data.democount.capetown.male, data.democount.capetown.female, data.democount.johannesburg.male, data.democount.johannesburg.female]
+            // filtTab = [data.demoCount]
+        }
+        if (data.value === 'CPT') {
+            filt = [data.democount.capetown.male, data.democount.capetown.female]
+            // filtTab = [{thisFilt: data.demoCount.capetown}]
+        }
+        if (data.value === 'JHB') {
+            filt = [data.democount.johannesburg.male, data.democount.johannesburg.female]
+            // filtTab = [{thisFilt: data.demoCount.johannesburg}]
+        }
+        console.log("filtering", filt, this.state.demoCount);
+        this.setState({ selected: data.value, searchQuery: '', filteredData: filt });
+        this.demoStatsTableElement.current.updateStats(filt);
     }
     onSearchChange = (e, data) => {
-        // console.log(data.searchQuery);
         this.setState({ searchQuery: data.searchQuery });
     }
     render() {
-        const { options, searchQuery, selected } = this.state;
-        // console.log("here", this.state);
+        const { options, searchQuery, selected, demoCount } = this.state;
         return (
             <div>
                 <div>
@@ -170,7 +163,8 @@ class CampusSelector extends React.Component {
                         text={searchQuery}
                         onChange={this.onChange}
                         onSearchChange={this.onSearchChange}
-                        options={options} />
+                        options={options}
+                        democount={demoCount} />
                 </div>
                 <div>
                     <DemoStatsTable ref={this.demoStatsTableElement} demoCount={this.state.demoCount} />
