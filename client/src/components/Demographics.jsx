@@ -4,6 +4,17 @@ import StatusSelector from './StatusSelector';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS, GET_BOOTCAMPERS_BY_GENDER } from '../queries';
 
+/**
+ * Demographics VIEW ~~~ Overall view of Demographics
+ * State -> campus_selection, status_selection and demoCount
+ * Ref -> campusSelectorElement
+ * Child Components -> CampusSelector ~~ Selects the relevant campus to display
+ *                          - DemoStatsTable ~~ Displays demographics data on a table
+ *                              - DownloadCSV ~~ Download the data
+ *                  -> StatusSelector ~~ Selects the relevant active status
+ *                          - DemoStatusTable ~~ Display active status on a table
+ *                              - DownloadCSV ~~ Download the data
+ */
 class Demographics extends React.Component {
     constructor(props) {
         super(props);
@@ -43,7 +54,6 @@ class Demographics extends React.Component {
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'capetown');
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', true, 'johannesburg');
         GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'johannesburg');
-        this.campusSelectorElement.current.demoStatsTableElement.current.updateStats(this.state.demoCount)
         var campusNode = document.getElementById('campus').lastChild;
         var statusNode = document.getElementById('status').lastChild;
         document.getElementById('curr-view').appendChild(campusNode);

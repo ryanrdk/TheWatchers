@@ -3,6 +3,13 @@ import DemoStatsTable from './DemoStatsTable';
 import { Dropdown } from 'semantic-ui-react';
 // import 'semantic-ui-css/semantic.min.css';
 
+/**
+ * CampusSelector SELECTOR ~~~ Select either JHB or CPT or both
+ * State -> options, selected, demoData, filteredData, demoCount
+ * Ref -> demoStatsTableElement
+ * Child Components -> DemoStatsTable ~~ Displays demographics data on a table
+ *                          - DownloadCSV ~~ Download the data
+ */
 class CampusSelector extends React.Component {
     constructor(props) {
         super(props)
@@ -16,7 +23,7 @@ class CampusSelector extends React.Component {
             demoCount: props.demoCount
 
         }
-        console.log("mountererererpppppp", props)
+        // console.log("mountererererpppppp", props)
     }
     componentDidMount() {
         // const jay = require('../dummyDemographics.json');
@@ -24,15 +31,25 @@ class CampusSelector extends React.Component {
         // this.setState({ demoData: jay, filteredData: jay });
         // this.demoStatsTableElement.current.updateStats(jay);
         // this.setState
-        console.log("mounterererer", this.state.demoCount)
+        // console.log("mounterererer", this.state.demoCount)
     }
     updateStats(data) {
         this.setState({ demoData: data, filtered: data })
         this.demoStatsTableElement.current.updateStats([data.capetown.male, data.capetown.female, data.johannesburg.male, data.johannesburg.female])
     }
+    /**
+     * updateDemoCount updates the demographic stats per campus and gender
+     * @param {*} campus -> Required! String. Specify between "capetown" and "johannesburg"
+     * @param {*} gender -> Required! String. Specify between "male" and "female"
+     * @param {*} wht -> Required! Int. Value for race "white"
+     * @param {*} blk -> Required! Int. Value for race "black"
+     * @param {*} col -> Required! Int. Value for race "coloured"
+     * @param {*} ind -> Required! Int. Value for race "indian"
+     * @param {*} chi -> Required! Int. Value for race "chinese"
+     */
     updateDemoCount(campus, gender, wht, blk, col, ind, chi) {
-        console.log("updaterrrr", this.state.demoCount)
-        console.log("upelem", this.demoStatsTableElement.current.state)
+        // console.log("updaterrrr", this.state.demoCount)
+        // console.log("upelem", this.demoStatsTableElement.current.state)
         if (campus === 'capetown') {
             if (gender === 'male') {
                 this.setState({
@@ -127,24 +144,20 @@ class CampusSelector extends React.Component {
                 })
             }
         }
-        // this.demoStatsTableElement.current.updateStats(this.state.demoCount)
-        console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current)
+        // console.log("uptupt", this.state.demoCount, this.demoStatsTableElement.current)
     }
     onChange = (e, data) => {
-        console.log('data', data, this.state.demoCount, this.state.demoData);
+        // console.log('data', data, this.state.demoCount, this.state.demoData);
         var filt = []
         var filtTab = []
         if (data.value === 'ALL') {
             filt = [data.democount.capetown.male, data.democount.capetown.female, data.democount.johannesburg.male, data.democount.johannesburg.female]
-            // filtTab = [data.demoCount]
         }
         if (data.value === 'CPT') {
             filt = [data.democount.capetown.male, data.democount.capetown.female]
-            // filtTab = [{thisFilt: data.demoCount.capetown}]
         }
         if (data.value === 'JHB') {
             filt = [data.democount.johannesburg.male, data.democount.johannesburg.female]
-            // filtTab = [{thisFilt: data.demoCount.johannesburg}]
         }
         console.log("filtering", filt, this.state.demoCount);
         this.setState({ selected: data.value, searchQuery: '', filteredData: filt });

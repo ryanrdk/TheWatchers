@@ -2,6 +2,10 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 // import 'semantic-ui-css/semantic.min.css';
 
+/**
+ * DownloadCSV BUTTON ~~~ Downloads relevant data
+ * State -> data
+ */
 class DownloadCSV extends React.Component {
   constructor(props) {
     super(props);

@@ -3,16 +3,22 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
+/**
+ * DemostatsTable TABLE ~~~ Displays table of demographics
+ * State -> filtered, demoCount
+ * Ref -> downloadCSVElement
+ * Child components -> DownloadCSV ~~ Download the data
+ */
 class DemoStatsTable extends React.Component {
     constructor(props) {
         super(props);
         this.downloadCSVElement = React.createRef();
         this.state = {
-            thisFilt: [props.demoCount.capetown.male, props.demoCount.capetown.female, props.demoCount.johannesburg.male, props.demoCount.johannesburg.female],
+            // thisFilt: [props.demoCount.capetown.male, props.demoCount.capetown.female, props.demoCount.johannesburg.male, props.demoCount.johannesburg.female],
             filtered: props.demoCount,
             demoCount: props.demoCount
         };
-        console.log("inherit", this.state.thisFilt)
+        // console.log("inherit", this.state.thisFilt)
     }
 
     componentDidMount() {
@@ -22,13 +28,13 @@ class DemoStatsTable extends React.Component {
         this.setState({ filtered: this.state.demoCount })
         const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
         this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
-        console.log("upTabData", tabData)
+        // console.log("upTabData", tabData)
         // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
 
     }
     updateStats(data) {
         this.setState({ filtered: data })
-        console.log("filterTable", data)
+        // console.log("filterTable", data)
         this.downloadCSVElement.current.updateStats(data)
     }
     render() {
@@ -58,14 +64,21 @@ class DemoStatsTable extends React.Component {
                 accessor: 'chinese'
             }
         ];
-        console.log("DemStats", this.state)
+        // console.log("DemStats", this.state)
         //this.state.filtered = filt;
-        console.log("Total", this.state.thisFilt)
+        // console.log("Total", this.state.thisFilt)
         // console.log("upTabherereerer", this.state.demoCount.capetown)
         const tabData = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
         this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
-        const { thisFilt } = this.state.thisFilt
-        console.log("upTabData", tabData, thisFilt)
+        var oh = this.state.filtered
+        if (oh.constructor === Object) {
+            // console.log("oh object")
+            oh = [this.state.demoCount.capetown.male, this.state.demoCount.capetown.female,
+            this.state.demoCount.johannesburg.male, this.state.demoCount.johannesburg.female]
+        }
+        // if (oh.constructor === Array) { console.log("oh array") }
+        // var { demoCount } = this.state.demoCount
+        console.log("upTabData", oh)
         // this.downloadCSVElement.current.setState({ data: tabData })
         // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
         return (
@@ -73,7 +86,7 @@ class DemoStatsTable extends React.Component {
                 <div>
                     <ReactTable
                         columns={cols}
-                        data={tabData}
+                        data={oh}
                         className={'-highlight'}
                         expanded={{
                             1: true,
