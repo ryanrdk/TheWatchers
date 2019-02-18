@@ -1,9 +1,9 @@
-import React from "react";
-import ReactTable from "react-table";
-import DownloadCSV from "./DownloadCSV";
-import Header from "./Header";
+import React from 'react';
+import ReactTable from 'react-table';
+import DownloadCSV from './DownloadCSV';
+import Header from './Header';
 
-class MailingList extends React.Component {
+class TableMailingList extends React.Component {
   constructor(props) {
     super(props);
     this.reactTable = React.createRef();
@@ -15,11 +15,11 @@ class MailingList extends React.Component {
   }
 
   componentDidMount() {
-    var mailingNode = document.getElementById("mail").lastChild;
-    document.getElementById("curr-view").appendChild(mailingNode);
-    console.log("Mail html:", mailingNode.innerHTML);
+    var mailingNode = document.getElementById('mail').lastChild;
+    document.getElementById('curr-view').appendChild(mailingNode);
+    console.log('Mail html:', mailingNode.innerHTML);
 
-    const jay = require("../dummyDemographics.json");
+    const jay = require('../dummyDemographics.json');
     this.setState({ data: jay });
     this.updateStats(jay);
   }
@@ -53,43 +53,43 @@ class MailingList extends React.Component {
   render() {
     const cols = [
       {
-        Header: "First Name",
-        accessor: "first_name"
+        Header: 'First Name',
+        accessor: 'first_name'
       },
       {
-        Header: "Last Name",
-        accessor: "last_name"
+        Header: 'Last Name',
+        accessor: 'last_name'
       },
       {
-        Header: "Username",
-        accessor: "username"
+        Header: 'Username',
+        accessor: 'username'
       },
       {
-        Header: "Email",
-        accessor: "email"
+        Header: 'Email',
+        accessor: 'email'
       },
       {
-        Header: "Campus",
-        accessor: "campus"
+        Header: 'Campus',
+        accessor: 'campus'
       },
       {
-        Header: "Gender",
-        accessor: "gender"
+        Header: 'Gender',
+        accessor: 'gender'
       },
       {
-        Header: "Ethnicity",
-        accessor: "ethnicity"
+        Header: 'Ethnicity',
+        accessor: 'ethnicity'
       },
       {
-        Header: "Active",
-        accessor: "active"
+        Header: 'Active',
+        accessor: 'active'
       }
     ];
 
     return (
       <div>
         <Header />
-        <div id='mail' style={{ clear: "both", float: "left" }}>
+        <div id='mail' style={{ clear: 'both', float: 'left' }}>
           <div>
             <ReactTable
               ref={this.reactTable}
@@ -98,7 +98,7 @@ class MailingList extends React.Component {
               filterable
               defaultFilterMethod={this.filterMethod}
               onChange={this.onChange}
-              className={"-highlight"}
+              className={'-highlight'}
               expanded={{
                 1: true,
                 4: true
@@ -118,4 +118,4 @@ class MailingList extends React.Component {
   }
 }
 
-export default MailingList;
+export default TableMailingList;

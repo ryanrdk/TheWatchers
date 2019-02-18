@@ -3,7 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
-class SelectedStudents extends React.Component {
+class TableSelected extends React.Component {
   constructor(props) {
     super(props);
     this.downloadCSVElement = React.createRef();
@@ -151,4 +151,4 @@ class SelectedStudents extends React.Component {
   }
 }
 
-export default SelectedStudents;
+export default TableSelected;
