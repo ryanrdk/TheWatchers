@@ -28,6 +28,8 @@ class TableSelected extends React.Component {
     for (var i = 0; i < data.length; ++i) {
       if (data[i].Selected === 'true') {
         newCheck[i] = 'checked';
+      } else {
+        newCheck[i] = '';
       }
     }
 
