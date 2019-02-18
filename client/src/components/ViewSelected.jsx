@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectedSelector from './SelectedSelector';
+import SelectorSelected from './SelectorSelected';
 import Header from './Header';
 
 class Selected extends React.Component {
@@ -24,7 +24,7 @@ class Selected extends React.Component {
       <div>
         <Header />
         <div id='student' style={{ clear: 'both', float: 'left' }}>
-          <SelectedSelector active_selection={this.state.active_selection} />
+          <SelectorSelected active_selection={this.state.active_selection} />
         </div>
       </div>
     );

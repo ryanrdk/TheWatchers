@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import LoginView from './components/LoginView';
 import './components/styles.css';
-import MailingList from './components/MailingList';
-import Selected from './components/Selected';
-import Demographics from './components/Demographics';
+import ViewLogin from './components/ViewLogin';
+import ViewDemographics from './components/ViewDemographics';
+import ViewSelected from './components/ViewSelected';
+import TableMailingList from './components/TableMailingList';
 
 const App = () => {
   return (
@@ -18,10 +18,10 @@ const App = () => {
       }}>
       <BrowserRouter>
         <div className='full-screen'>
-          <Route path='/' exact component={LoginView} />
-          <Route path='/demographs' exact component={Demographics} />
-          <Route path='/watcher' exact component={Selected} />
-          <Route path='/mailinglist' exact component={MailingList} />
+          <Route path='/' exact component={ViewLogin} />
+          <Route path='/demographs' exact component={ViewDemographics} />
+          <Route path='/watcher' exact component={ViewSelected} />
+          <Route path='/mailinglist' exact component={TableMailingList} />
         </div>
       </BrowserRouter>
     </div>

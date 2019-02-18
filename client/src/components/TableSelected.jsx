@@ -3,7 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
-class SelectedStudents extends React.Component {
+class TableSelected extends React.Component {
   constructor(props) {
     super(props);
     this.downloadCSVElement = React.createRef();
@@ -88,13 +88,7 @@ class SelectedStudents extends React.Component {
   render() {
     const cols = [
       {
-        Header: state => (
-          <input
-            type='checkbox'
-            onChange={() => this.handleChange(state.sortedData)}
-            checked={this.state.selectAll}
-          />
-        ),
+        Header: 'Selected',
         Cell: row => (
           <input
             type='checkbox'
@@ -103,7 +97,8 @@ class SelectedStudents extends React.Component {
             onChange={() => this.handleSingleCheckboxChange(row.index)}
           />
         ),
-        sortable: false
+        sortable: false,
+        filterable: false
       },
       {
         Header: 'Username',
@@ -151,4 +146,4 @@ class SelectedStudents extends React.Component {
   }
 }
 
-export default SelectedStudents;
+export default TableSelected;
