@@ -103,6 +103,8 @@ class TableStats extends React.Component {
               1: true,
               4: true
             }}
+            showPagination={false}
+            pageSize={this.state.filtered.length + 1}
           />
         </div>
         <div>

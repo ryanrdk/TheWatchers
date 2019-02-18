@@ -88,13 +88,7 @@ class TableSelected extends React.Component {
   render() {
     const cols = [
       {
-        Header: state => (
-          <input
-            type='checkbox'
-            onChange={() => this.handleChange(state.sortedData)}
-            checked={this.state.selectAll}
-          />
-        ),
+        Header: 'Selected',
         Cell: row => (
           <input
             type='checkbox'
@@ -103,7 +97,8 @@ class TableSelected extends React.Component {
             onChange={() => this.handleSingleCheckboxChange(row.index)}
           />
         ),
-        sortable: false
+        sortable: false,
+        filterable: false
       },
       {
         Header: 'Username',
