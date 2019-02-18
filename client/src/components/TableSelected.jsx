@@ -94,7 +94,6 @@ class TableSelected extends React.Component {
         Cell: row => (
           <input
             type='checkbox'
-            //defaultChecked={this.state.checked[row.index]}
             checked={this.state.checked[row.index]}
             onChange={() => this.handleSingleCheckboxChange(row.index)}
           />
