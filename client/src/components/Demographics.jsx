@@ -1,6 +1,6 @@
 import React from 'react';
-import CampusSelector from './CampusSelector';
-import StatusSelector from './StatusSelector';
+import SelectorCampus from './CampusSelector';
+import SelectorStatus from './StatusSelector';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS, GET_BOOTCAMPERS_BY_GENDER } from '../queries';
 
@@ -8,17 +8,19 @@ import { GET_ALL_BOOTCAMPERS, GET_BOOTCAMPERS_BY_GENDER } from '../queries';
  * Demographics VIEW ~~~ Overall view of Demographics
  * State -> campus_selection, status_selection and demoCount
  * Ref -> campusSelectorElement
- * Child Components -> CampusSelector ~~ Selects the relevant campus to display
- *                          - DemoStatsTable ~~ Displays demographics data on a table
- *                              - DownloadCSV ~~ Download the data
- *                  -> StatusSelector ~~ Selects the relevant active status
- *                          - DemoStatusTable ~~ Display active status on a table
- *                              - DownloadCSV ~~ Download the data
+ * Child Components -> SelectorCampus ~~ Selects the relevant campus to display
+ * DemoStatsTable ~~ Displays demographics data on a table
+ * DownloadCSV ~~ Download the data
+ * -> SelectorStatus ~~ Selects the relevant active status
+ * DemoStatusTable ~~ Display active status on a table
+ * DownloadCSV ~~ Download the data
  */
+
 class Demographics extends React.Component {
     constructor(props) {
         super(props);
         this.campusSelectorElement = React.createRef();
+        this.statusSelectorElement = React.createRef();
         this.state = {
             campus_selection: [
                 { key: 'ALL', value: 'ALL', text: 'All Capmuses' },
@@ -34,12 +36,40 @@ class Demographics extends React.Component {
             ],
             demoCount: {
                 capetown: {
-                    male: { white: 0, black: 0, coloured: 0, indian: 0, chinese: 0, dem: "CPT Male" },
-                    female: { white: 0, black: 0, coloured: 0, indian: 0, chinese: 0, dem: "CPT Female" }
+                    male: {
+                        white: 0,
+                        black: 0,
+                        coloured: 0,
+                        indian: 0,
+                        chinese: 0,
+                        dem: 'CPT Male'
+                    },
+                    female: {
+                        white: 0,
+                        black: 0,
+                        coloured: 0,
+                        indian: 0,
+                        chinese: 0,
+                        dem: 'CPT Female'
+                    }
                 },
                 johannesburg: {
-                    male: { white: 0, black: 0, coloured: 0, indian: 0, chinese: 0, dem: "JHB Male" },
-                    female: { white: 0, black: 0, coloured: 0, indian: 0, chinese: 0, dem: "JHB Female" }
+                    male: {
+                        white: 0,
+                        black: 0,
+                        coloured: 0,
+                        indian: 0,
+                        chinese: 0,
+                        dem: 'JHB Male'
+                    },
+                    female: {
+                        white: 0,
+                        black: 0,
+                        coloured: 0,
+                        indian: 0,
+                        chinese: 0,
+                        dem: 'JHB Female'
+                    }
                 }
             }
         };
@@ -49,11 +79,31 @@ class Demographics extends React.Component {
         // const jay = require('../bootcampers.json');
         // this.setState({ users: jay });
         // console.log("demograph HERE", this.state);
-        // GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
-        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', true, 'capetown');
-        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'capetown');
-        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', true, 'johannesburg');
-        GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', true, 'johannesburg');
+        GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
+        GET_BOOTCAMPERS_BY_GENDER(
+            this.campusSelectorElement,
+            'male',
+            true,
+            'capetown'
+        );
+        GET_BOOTCAMPERS_BY_GENDER(
+            this.campusSelectorElement,
+            'female',
+            true,
+            'capetown'
+        );
+        GET_BOOTCAMPERS_BY_GENDER(
+            this.campusSelectorElement,
+            'male',
+            true,
+            'johannesburg'
+        );
+        GET_BOOTCAMPERS_BY_GENDER(
+            this.campusSelectorElement,
+            'female',
+            true,
+            'johannesburg'
+        );
         var campusNode = document.getElementById('campus').lastChild;
         var statusNode = document.getElementById('status').lastChild;
         document.getElementById('curr-view').appendChild(campusNode);
@@ -65,14 +115,16 @@ class Demographics extends React.Component {
             <div>
                 <Header />
                 <div id='campus' style={{ clear: 'both', float: 'left' }}>
-                    <CampusSelector
+                    <SelectorCampus
                         ref={this.campusSelectorElement}
                         campus_selection={this.state.campus_selection}
                         demoCount={this.state.demoCount}
                     />
                 </div>
                 <div id='status' style={{ clear: 'both', float: 'left' }}>
-                    <StatusSelector status_selection={this.state.status_selection} />
+                    <SelectorStatus
+                        ref={this.statusSelectorElement}
+                        status_selection={this.state.status_selection} />
                 </div>
             </div>
         );

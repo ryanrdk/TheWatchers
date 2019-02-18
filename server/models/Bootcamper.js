@@ -35,6 +35,10 @@ const BootcamperSchema = new Schema({
         type: String,
         required: true,
     },
+    selected: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Bootcamper', BootcamperSchema);

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import DemoStatusTable from './DemoStatusTable';
-// import 'semantic-ui-css/semantic.min.css';
+import TableStatus from './DemoStatusTable';
 
 class StatusSelector extends React.Component {
   constructor(props) {
     super(props);
-    this.demoStatusTableElement = React.createRef();
+    this.tableStatusElement = React.createRef();
     this.state = {
       options: props.status_selection,
       searchQuery: '',
@@ -17,10 +16,14 @@ class StatusSelector extends React.Component {
     // console.log("StatProppies", this.state)
   }
   componentDidMount() {
-    const jay = require('../dummyDemographics.json');
-    console.log(jay);
-    this.setState({ demoData: jay, filteredData: jay });
-    this.demoStatusTableElement.current.updateStats(jay);
+    // const jay = require('../dummyDemographics.json');
+    // console.log(jay);
+    // this.setState({ demoData: jay, filteredData: jay });
+    // this.tableStatusElement.current.updateStats(jay);
+  }
+  updateStats(data) {
+    this.setState({ demoData: data, filteredData: data });
+    this.tableStatusElement.current.updateStats(data);
   }
   onChange = (e, data) => {
     // console.log(data.value);
@@ -49,7 +52,7 @@ class StatusSelector extends React.Component {
       return null;
     });
     this.setState({ selected: data.value, searchQuery: '' });
-    this.demoStatusTableElement.current.updateStats(filt);
+    this.tableStatusElement.current.updateStats(filt);
   };
 
   onSearchChange = (e, data) => {
@@ -70,7 +73,7 @@ class StatusSelector extends React.Component {
           onSearchChange={this.onSearchChange}
           options={options}
         />
-        <DemoStatusTable ref={this.demoStatusTableElement} />
+        <TableStatus ref={this.tableStatusElement} />
       </div>
     );
   }

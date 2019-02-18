@@ -9,7 +9,8 @@ type Bootcamper {
     campus: String!,
     gender: String!,
     ethnicity: String!,
-    active: String!
+    active: String!,
+    selected: String!
 }
 
 type Query {

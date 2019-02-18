@@ -40,7 +40,7 @@ class SelectedStudents extends React.Component {
     var selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
     var newCheck = [];
-    this.state.data.forEach(function(e, index) {
+    this.state.data.forEach(function (e, index) {
       newCheck.push(selectAll);
     });
 
@@ -62,19 +62,19 @@ class SelectedStudents extends React.Component {
   };
 
   componentDidMount() {
-    const newData = require('../selected.json');
+    const newData = this.state.filtered;//require('../selected.json');
 
     var newCheck = [];
     var selectAll = this.state.selectAll;
 
-    newData.forEach(function(e, index) {
+    newData.forEach(function (e, index) {
       newCheck.push(selectAll);
     });
 
     for (var i = 0; i < newCheck.length; ++i) {
-      if (newData[i]['Selected'] === 'true') {
+      if (newData[i]['selected'] === 'true') {
         newCheck[i] = 'checked';
-      } else if (newData[i]['Selected'] === 'false') {
+      } else if (newData[i]['selected'] === 'false') {
         newCheck[i] = 'false';
       }
     }
@@ -88,13 +88,7 @@ class SelectedStudents extends React.Component {
   render() {
     const cols = [
       {
-        Header: state => (
-          <input
-            type='checkbox'
-            onChange={() => this.handleChange(state.sortedData)}
-            checked={this.state.selectAll}
-          />
-        ),
+        Header: 'Selected',
         Cell: row => (
           <input
             type='checkbox'
@@ -103,31 +97,24 @@ class SelectedStudents extends React.Component {
             onChange={() => this.handleSingleCheckboxChange(row.index)}
           />
         ),
-        sortable: false
+        sortable: false,
+        filterable: false
       },
       {
         Header: 'Username',
-        accessor: 'Username'
+        accessor: 'username'
       },
       {
         Header: 'Gender',
-        accessor: 'Gender'
+        accessor: 'gender'
       },
       {
         Header: 'Ethnicity',
-        accessor: 'Ethnicity'
+        accessor: 'ethnicity'
       },
       {
         Header: 'Campus',
-        accessor: 'Campus'
-      },
-      {
-        Header: 'Mark',
-        accessor: 'Mark'
-      },
-      {
-        Header: 'Cheating',
-        accessor: 'Cheating'
+        accessor: 'campus'
       }
     ];
 

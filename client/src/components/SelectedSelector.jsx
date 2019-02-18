@@ -1,11 +1,11 @@
 import React from 'react';
-import SelectedStudents from './SelectedStudents';
+import TableSelected from './SelectedStudents';
 import { Dropdown } from 'semantic-ui-react';
 
 class SelectedSelector extends React.Component {
   constructor(props) {
     super(props);
-    this.selectStudentTableElement = React.createRef();
+    this.tableSelectedElement = React.createRef();
     this.state = {
       options: props.active_selection,
       searchQuery: '',
@@ -16,9 +16,16 @@ class SelectedSelector extends React.Component {
   }
 
   componentDidMount() {
-    const jay = require('../selected.json');
-    this.setState({ data: jay, filteredData: jay });
-    this.selectStudentTableElement.current.updateStats(jay);
+    // const jay = require('../selected.json');
+    // this.setState({ data: jay, filteredData: jay });
+    // this.tableSelectedElement.current.updateStats(jay);
+  }
+
+  updateStats(data) {
+    this.setState({ data: data, filteredData: data });
+    this.tableSelectedElement.current.updateStats(data);
+    console.log("ryanloud", data)
+    // this.tableSelectedElement.current.componentDidMount();
   }
 
   onChange = (e, data) => {
@@ -42,7 +49,7 @@ class SelectedSelector extends React.Component {
       searchQuery: '',
       filteredData: filt
     });
-    this.selectStudentTableElement.current.updateStats(filt);
+    this.tableSelectedElement.current.updateStats(filt);
   };
 
   onSearchChange = (e, data) => {
@@ -66,7 +73,7 @@ class SelectedSelector extends React.Component {
           />
         </div>
         <div>
-          <SelectedStudents ref={this.selectStudentTableElement} />
+          <TableSelected ref={this.tableSelectedElement} />
         </div>
       </div>
     );
