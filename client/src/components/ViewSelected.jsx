@@ -1,9 +1,9 @@
 import React from 'react';
-import SelectedSelector from './SelectedSelector';
+import SelectorSelected from './SelectorSelected';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS } from '../queries';
 
-class Selected extends React.Component {
+class ViewSelected extends React.Component {
   constructor(props) {
     super(props);
     this.selectedSelectorElement = React.createRef();
@@ -21,12 +21,13 @@ class Selected extends React.Component {
     document.getElementById('curr-view').appendChild(studentNode);
     GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
   }
+
   render() {
     return (
       <div>
         <Header />
         <div id='student' style={{ clear: 'both', float: 'left' }}>
-          <SelectedSelector
+          <SelectorSelected
             ref={this.selectedSelectorElement}
             active_selection={this.state.active_selection}
           />
@@ -36,4 +37,4 @@ class Selected extends React.Component {
   }
 }
 
-export default Selected;
+export default ViewSelected;

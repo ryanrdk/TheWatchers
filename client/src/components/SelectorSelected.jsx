@@ -1,8 +1,8 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import SelectedStudents from './SelectedStudents';
+import TableSelected from './TableSelected';
 
-class SelectedSelector extends React.Component {
+class SelectorSelected extends React.Component {
   constructor(props) {
     super(props);
     this.tableSelectedElement = React.createRef();
@@ -16,14 +16,13 @@ class SelectedSelector extends React.Component {
   }
 
   componentDidMount() {
-    // const jay = require('../selected.json');
-    // this.setState({ data: jay, filteredData: jay });
-    // this.tableSelectedElement.current.updateStats(jay);
+    //const jay = require('../selected.json');
+    //this.setState({ data: jay, filteredData: jay });
+    //this.tableSelectedElement.current.updateStats(jay);
   }
 
   updateStats(data) {
     this.setState({ data: data, filteredData: data });
-    console.log('Ichi: ', data);
     this.tableSelectedElement.current.updateStats(data);
     this.tableSelectedElement.current.componentDidMount();
   }
@@ -33,7 +32,6 @@ class SelectedSelector extends React.Component {
       if (data.value === 'All') {
         return elem;
       } else if (data.value === 'Selected') {
-        console.log('NINI: ' + elem);
         if (elem.selected === 'true') {
           return elem;
         }
@@ -44,6 +42,7 @@ class SelectedSelector extends React.Component {
       }
       return null;
     });
+
     this.tableSelectedElement.current.updateStats(data);
     this.setState({
       select: data.value,
@@ -74,11 +73,11 @@ class SelectedSelector extends React.Component {
           />
         </div>
         <div>
-          <SelectedStudents ref={this.tableSelectedElement} />
+          <TableSelected ref={this.tableSelectedElement} />
         </div>
       </div>
     );
   }
 }
 
-export default SelectedSelector;
+export default SelectorSelected;

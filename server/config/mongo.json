@@ -1,7 +1,6 @@
 {
-    "mongo_username": "admin111",
-    "mongo_password": "admin111",
-    "mongo_url2": "127.0.0.1:27017/demoDB",
-    "mongo_url3": "localhost:27017/countries_db",
-    "mongo_url": "ds133865.mlab.com:33865/bootcampers"
+  "mongo_username": "admin111",
+  "mongo_password": "admin111",
+  "mongo_url2": "127.0.0.1:27017/demoDB",
+  "mongo_url": "ds133865.mlab.com:33865/bootcampers"
 }

@@ -3,7 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
-class DemoStatusTable extends React.Component {
+class TableStatus extends React.Component {
   constructor(props) {
     super(props);
     this.downloadCSVElement = React.createRef();
@@ -78,4 +78,4 @@ class DemoStatusTable extends React.Component {
   }
 }
 
-export default DemoStatusTable;
+export default TableStatus;

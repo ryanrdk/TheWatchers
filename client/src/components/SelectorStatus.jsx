@@ -1,8 +1,8 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import DemoStatusTable from './DemoStatusTable';
+import TableStatus from './TableStatus';
 
-class StatusSelector extends React.Component {
+class SelectorStatus extends React.Component {
   constructor(props) {
     super(props);
     this.tableStatusElement = React.createRef();
@@ -16,15 +16,17 @@ class StatusSelector extends React.Component {
     // console.log("StatProppies", this.state)
   }
   componentDidMount() {
-    // const jay = require('../dummyDemographics.json');
-    // console.log(jay);
-    // this.setState({ demoData: jay, filteredData: jay });
-    // this.tableStatusElement.current.updateStats(jay);
+    const jay = require('../dummyDemographics.json');
+    console.log(jay);
+    this.setState({ demoData: jay, filteredData: jay });
+    this.tableStatusElement.current.updateStats(jay);
   }
+
   updateStats(data) {
     this.setState({ demoData: data, filteredData: data });
     this.tableStatusElement.current.updateStats(data);
   }
+
   onChange = (e, data) => {
     // console.log(data.value);
     // console.log('data', data);
@@ -73,10 +75,10 @@ class StatusSelector extends React.Component {
           onSearchChange={this.onSearchChange}
           options={options}
         />
-        <DemoStatusTable ref={this.tableStatusElement} />
+        <TableStatus ref={this.tableStatusElement} />
       </div>
     );
   }
 }
 
-export default StatusSelector;
+export default SelectorStatus;

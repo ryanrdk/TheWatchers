@@ -12,8 +12,8 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
             gender
             campus
             ethnicity
-            active
-            selected
+			active
+			selected
         }
         }`;
   fetch(GRAPHQL_API, {
@@ -28,7 +28,6 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
     .then(response => response.json())
     .then(result => {
       component.current.updateStats(result.data.getAllBootcampers);
-      console.log('');
     });
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import CampusSelector from './CampusSelector';
-import StatusSelector from './StatusSelector';
+import SelectorCampus from './SelectorCampus';
+import SelectorStatus from './SelectorStatus';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS, GET_BOOTCAMPERS_BY_GENDER } from '../queries';
 
@@ -79,6 +79,7 @@ class Demographics extends React.Component {
     // const jay = require('../bootcampers.json');
     // this.setState({ users: jay });
     // console.log("demograph HERE", this.state);
+    // GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
     GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
@@ -115,14 +116,14 @@ class Demographics extends React.Component {
       <div>
         <Header />
         <div id='campus' style={{ clear: 'both', float: 'left' }}>
-          <CampusSelector
+          <SelectorCampus
             ref={this.campusSelectorElement}
             campus_selection={this.state.campus_selection}
             demoCount={this.state.demoCount}
           />
         </div>
         <div id='status' style={{ clear: 'both', float: 'left' }}>
-          <StatusSelector
+          <SelectorStatus
             ref={this.statusSelectorElement}
             status_selection={this.state.status_selection}
           />

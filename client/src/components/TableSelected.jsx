@@ -3,14 +3,14 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
-class SelectedStudents extends React.Component {
+class TableSelected extends React.Component {
   constructor(props) {
     super(props);
     this.downloadCSVElement = React.createRef();
     this.state = {
+      filtered: [],
       selectAll: false,
       data: [],
-      filtered: [],
       checked: []
     };
 
@@ -24,10 +24,11 @@ class SelectedStudents extends React.Component {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     var newCheck = [];
+
     for (var i = 0; i < data.length; ++i) {
-      if (data[i].Selected === 'true') {
+      if (data[i].selected === 'true') {
         newCheck[i] = 'checked';
-      } else if (data[i].selected === 'false') {
+      } else {
         newCheck[i] = '';
       }
     }
@@ -70,19 +71,22 @@ class SelectedStudents extends React.Component {
     newData.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
+
     for (var i = 0; i < newCheck.length; ++i) {
-      if (newData[i].selected === 'true') {
+      if (newData[i]['selected'] === 'true') {
         newCheck[i] = 'checked';
-      } else if (newData[i].selected === 'false') {
+      } else if (newData[i]['selected'] === 'false') {
         newCheck[i] = '';
       }
     }
 
     this.setState({
+      data: newData, //maybe not necessary
       checked: newCheck,
       selectAll: selectAll
     });
   }
+
   render() {
     const cols = [
       {
@@ -90,7 +94,6 @@ class SelectedStudents extends React.Component {
         Cell: row => (
           <input
             type='checkbox'
-            //defaultChecked={this.state.checked[row.index]}
             checked={this.state.checked[row.index]}
             onChange={() => this.handleSingleCheckboxChange(row.index)}
           />
@@ -136,4 +139,4 @@ class SelectedStudents extends React.Component {
   }
 }
 
-export default SelectedStudents;
+export default TableSelected;
