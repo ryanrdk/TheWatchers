@@ -21,6 +21,12 @@ class SelectorStatus extends React.Component {
     this.setState({ demoData: jay, filteredData: jay });
     this.tableStatusElement.current.updateStats(jay);
   }
+
+  updateStats(data) {
+    this.setState({ demoData: data, filteredData: data });
+    this.tableStatusElement.current.updateStats(data);
+  }
+
   onChange = (e, data) => {
     // console.log(data.value);
     // console.log('data', data);

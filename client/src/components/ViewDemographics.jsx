@@ -20,6 +20,7 @@ class Demographics extends React.Component {
   constructor(props) {
     super(props);
     this.campusSelectorElement = React.createRef();
+    this.statusSelectorElement = React.createRef();
     this.state = {
       campus_selection: [
         { key: 'ALL', value: 'ALL', text: 'All Capmuses' },
@@ -79,6 +80,7 @@ class Demographics extends React.Component {
     // this.setState({ users: jay });
     // console.log("demograph HERE", this.state);
     // GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
+    GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'male',
@@ -121,7 +123,10 @@ class Demographics extends React.Component {
           />
         </div>
         <div id='status' style={{ clear: 'both', float: 'left' }}>
-          <SelectorStatus status_selection={this.state.status_selection} />
+          <SelectorStatus
+            ref={this.statusSelectorElement}
+            status_selection={this.state.status_selection}
+          />
         </div>
       </div>
     );

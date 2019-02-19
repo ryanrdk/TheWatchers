@@ -26,7 +26,7 @@ class TableSelected extends React.Component {
     var newCheck = [];
 
     for (var i = 0; i < data.length; ++i) {
-      if (data[i].Selected === 'true') {
+      if (data[i].selected === 'true') {
         newCheck[i] = 'checked';
       } else {
         newCheck[i] = '';
@@ -64,8 +64,7 @@ class TableSelected extends React.Component {
   };
 
   componentDidMount() {
-    const newData = require('../selected.json');
-
+    const newData = this.state.filtered;
     var newCheck = [];
     var selectAll = this.state.selectAll;
 
@@ -74,19 +73,20 @@ class TableSelected extends React.Component {
     });
 
     for (var i = 0; i < newCheck.length; ++i) {
-      if (newData[i]['Selected'] === 'true') {
+      if (newData[i]['selected'] === 'true') {
         newCheck[i] = 'checked';
-      } else if (newData[i]['Selected'] === 'false') {
-        newCheck[i] = 'false';
+      } else if (newData[i]['selected'] === 'false') {
+        newCheck[i] = '';
       }
     }
 
     this.setState({
-      data: newData,
+      data: newData, //maybe not necessary
       checked: newCheck,
       selectAll: selectAll
     });
   }
+
   render() {
     const cols = [
       {
@@ -104,27 +104,19 @@ class TableSelected extends React.Component {
       },
       {
         Header: 'Username',
-        accessor: 'Username'
+        accessor: 'username'
       },
       {
         Header: 'Gender',
-        accessor: 'Gender'
+        accessor: 'gender'
       },
       {
         Header: 'Ethnicity',
-        accessor: 'Ethnicity'
+        accessor: 'ethnicity'
       },
       {
         Header: 'Campus',
-        accessor: 'Campus'
-      },
-      {
-        Header: 'Mark',
-        accessor: 'Mark'
-      },
-      {
-        Header: 'Cheating',
-        accessor: 'Cheating'
+        accessor: 'campus'
       }
     ];
 
