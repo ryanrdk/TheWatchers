@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import TableStatus from './DemoStatusTable';
+import DemoStatusTable from './DemoStatusTable';
 
 class StatusSelector extends React.Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class StatusSelector extends React.Component {
           onSearchChange={this.onSearchChange}
           options={options}
         />
-        <TableStatus ref={this.tableStatusElement} />
+        <DemoStatusTable ref={this.tableStatusElement} />
       </div>
     );
   }

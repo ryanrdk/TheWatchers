@@ -1,6 +1,6 @@
 import React from 'react';
-import TableSelected from './SelectedStudents';
 import { Dropdown } from 'semantic-ui-react';
+import SelectedStudents from './SelectedStudents';
 
 class SelectedSelector extends React.Component {
   constructor(props) {
@@ -23,9 +23,9 @@ class SelectedSelector extends React.Component {
 
   updateStats(data) {
     this.setState({ data: data, filteredData: data });
+    console.log('Ichi: ', data);
     this.tableSelectedElement.current.updateStats(data);
-    console.log("ryanloud", data)
-    // this.tableSelectedElement.current.componentDidMount();
+    this.tableSelectedElement.current.componentDidMount();
   }
 
   onChange = (e, data) => {
@@ -33,17 +33,18 @@ class SelectedSelector extends React.Component {
       if (data.value === 'All') {
         return elem;
       } else if (data.value === 'Selected') {
-        if (elem.Selected === 'true') {
+        console.log('NINI: ' + elem);
+        if (elem.selected === 'true') {
           return elem;
         }
       } else if (data.value === 'Not Selected') {
-        if (elem.Selected === 'false') {
+        if (elem.selected === 'false') {
           return elem;
         }
       }
       return null;
     });
-
+    this.tableSelectedElement.current.updateStats(data);
     this.setState({
       select: data.value,
       searchQuery: '',
@@ -73,7 +74,7 @@ class SelectedSelector extends React.Component {
           />
         </div>
         <div>
-          <TableSelected ref={this.tableSelectedElement} />
+          <SelectedStudents ref={this.tableSelectedElement} />
         </div>
       </div>
     );

@@ -8,9 +8,9 @@ class SelectedStudents extends React.Component {
     super(props);
     this.downloadCSVElement = React.createRef();
     this.state = {
-      filtered: [],
       selectAll: false,
       data: [],
+      filtered: [],
       checked: []
     };
 
@@ -24,10 +24,11 @@ class SelectedStudents extends React.Component {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     var newCheck = [];
-
     for (var i = 0; i < data.length; ++i) {
       if (data[i].Selected === 'true') {
         newCheck[i] = 'checked';
+      } else if (data[i].selected === 'false') {
+        newCheck[i] = '';
       }
     }
 
@@ -40,7 +41,7 @@ class SelectedStudents extends React.Component {
     var selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
     var newCheck = [];
-    this.state.data.forEach(function (e, index) {
+    this.state.data.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
 
@@ -62,25 +63,22 @@ class SelectedStudents extends React.Component {
   };
 
   componentDidMount() {
-    const newData = this.state.filtered;//require('../selected.json');
-
+    const newData = this.state.filtered;
     var newCheck = [];
     var selectAll = this.state.selectAll;
 
-    newData.forEach(function (e, index) {
+    newData.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
-
     for (var i = 0; i < newCheck.length; ++i) {
-      if (newData[i]['selected'] === 'true') {
+      if (newData[i].selected === 'true') {
         newCheck[i] = 'checked';
-      } else if (newData[i]['selected'] === 'false') {
-        newCheck[i] = 'false';
+      } else if (newData[i].selected === 'false') {
+        newCheck[i] = '';
       }
     }
 
     this.setState({
-      data: newData,
       checked: newCheck,
       selectAll: selectAll
     });
