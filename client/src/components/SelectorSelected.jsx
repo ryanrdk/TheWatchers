@@ -1,6 +1,6 @@
 import React from 'react';
-import TableSelected from './TableSelected';
 import { Dropdown } from 'semantic-ui-react';
+import TableSelected from './TableSelected';
 
 class SelectorSelected extends React.Component {
   constructor(props) {
@@ -16,9 +16,15 @@ class SelectorSelected extends React.Component {
   }
 
   componentDidMount() {
-    const jay = require('../selected.json');
-    this.setState({ data: jay, filteredData: jay });
-    this.tableSelectedElement.current.updateStats(jay);
+    //const jay = require('../selected.json');
+    //this.setState({ data: jay, filteredData: jay });
+    //this.tableSelectedElement.current.updateStats(jay);
+  }
+
+  updateStats(data) {
+    this.setState({ data: data, filteredData: data });
+    this.tableSelectedElement.current.updateStats(data);
+    this.tableSelectedElement.current.componentDidMount();
   }
 
   onChange = (e, data) => {
@@ -26,17 +32,18 @@ class SelectorSelected extends React.Component {
       if (data.value === 'All') {
         return elem;
       } else if (data.value === 'Selected') {
-        if (elem.Selected === 'true') {
+        if (elem.selected === 'true') {
           return elem;
         }
       } else if (data.value === 'Not Selected') {
-        if (elem.Selected === 'false') {
+        if (elem.selected === 'false') {
           return elem;
         }
       }
       return null;
     });
 
+    this.tableSelectedElement.current.updateStats(data);
     this.setState({
       select: data.value,
       searchQuery: '',

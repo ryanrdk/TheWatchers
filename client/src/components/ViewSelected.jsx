@@ -1,11 +1,12 @@
 import React from 'react';
 import SelectorSelected from './SelectorSelected';
 import Header from './Header';
+import { GET_ALL_BOOTCAMPERS } from '../queries';
 
-class Selected extends React.Component {
+class ViewSelected extends React.Component {
   constructor(props) {
     super(props);
-
+    this.selectedSelectorElement = React.createRef();
     this.state = {
       active_selection: [
         { key: 'All', value: 'All', text: 'All Students' },
@@ -18,17 +19,22 @@ class Selected extends React.Component {
   componentDidMount() {
     var studentNode = document.getElementById('student').lastChild;
     document.getElementById('curr-view').appendChild(studentNode);
+    GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
   }
+
   render() {
     return (
       <div>
         <Header />
         <div id='student' style={{ clear: 'both', float: 'left' }}>
-          <SelectorSelected active_selection={this.state.active_selection} />
+          <SelectorSelected
+            ref={this.selectedSelectorElement}
+            active_selection={this.state.active_selection}
+          />
         </div>
       </div>
     );
   }
 }
 
-export default Selected;
+export default ViewSelected;
