@@ -18,10 +18,12 @@ class TableStatus extends React.Component {
     // console.log(jay);
     // this.setState({ demoData: jay, filtered:jay });
   }
+
   updateStats(data) {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
   }
+
   render() {
     const cols = [
       {
