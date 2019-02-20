@@ -1,25 +1,15 @@
+const fs = require('fs');
 const express = require('express');
+const MongoClient = require('mongodb');
 const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
 const bodyParser = require('body-parser');
 const { makeExecutableSchema } = require('graphql-tools');
 const express_graphql = require('express-graphql');
 const cors = require('cors');
+const csvFolder = './CSVs';
+const parseCSV = require('./functions/csv-import');
 
 const PORT = process.env.PORT || "4000";
-// const userSchema = new Schema({
-//     first_name: String,
-//     last_name: String,
-//     username: String,
-//     email: String,
-//     campus: String,
-//     gender: String,
-//     ethnicity: String,
-//     active: String
-// });
-
-// const User = mongoose.model('User', userSchema);
-// module.exports = User;
 
 const mongoConfig = require('./config/mongo.json');
 const { mongo_username, mongo_password, mongo_url } = mongoConfig;
@@ -39,7 +29,6 @@ const schema = makeExecutableSchema({
 mongoose.connect(mongo_uri, { useNewUrlParser: true, useCreateIndex: true })
         .then(() => console.log('DB connected'))
         .catch(err => console.error(err));
-// console.log("monomn", Bootcamper);
 const app = express();
 
 // const corsOptions = {
@@ -55,5 +44,26 @@ app.use('/graphql', cors(), bodyParser.json(), express_graphql({
     graphiql: true,
     context: { Bootcamper }
 }));
+
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
-// app.listen(3000 =>)
+
+
+//Add bootcamper data to database
+MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("bootcampers");
+    fs.readdir(csvFolder, function (err, files){
+        files.forEach(file => {
+            //Creates a new collection for each day
+            dbo.createCollection(file.slice(0, -4), (err) => {
+                if (err) throw err;
+                db.close();
+            });
+            //Converts CSV data to array
+            parseCSV(csvFolder + '/' + file, (file) => {
+                //add day to appropriate collection
+            });
+            //Delete file
+        });
+    });
+});

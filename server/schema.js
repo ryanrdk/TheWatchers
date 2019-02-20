@@ -9,8 +9,7 @@ type Bootcamper {
     campus: String!,
     gender: String!,
     ethnicity: String!,
-	active: String!,
-	selected: String!
+	active: String!
 }
 
 type Query {
@@ -18,6 +17,7 @@ type Query {
     getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
 }
 `;
+
 
 /*var { buildSchema } = require('graphql');
 // GraphQL schema
