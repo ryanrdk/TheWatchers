@@ -1,6 +1,6 @@
 const GRAPHQL_API = 'http://localhost:4000/graphql';
 
-export const GET_ALL_BOOTCAMPERS = function(component) {
+export const GET_ALL_BOOTCAMPERS = function (component) {
   // var ans = null;
   const query = `{
     getAllBootcampers {
@@ -13,6 +13,7 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
       campus
       ethnicity
       active
+      selected
     }
   }`;
   fetch(GRAPHQL_API, {
@@ -24,11 +25,11 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
       'content-type': 'application/json'
     }
   }).then(response => response.json()).then(result => {
-      component.current.updateStats(result.data.getAllBootcampers);
-    });
+    component.current.updateStats(result.data.getAllBootcampers);
+  });
 };
 
-export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
+export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
   var camp_str;
   if (campus === undefined) {
     campus = null;
@@ -79,5 +80,5 @@ export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
       chinese_count
     );
     component.current.updateStats(component.current.state.demoCount);
-    });
+  });
 };

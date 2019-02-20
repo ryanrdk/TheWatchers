@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTable from 'react-table';
 import DownloadCSV from './DownloadCSV';
 import Header from './Header';
+// import { GET_ALL_BOOTCAMPERS } from '../queries';
 
 class TableMailingList extends React.Component {
   constructor(props) {
@@ -13,23 +14,31 @@ class TableMailingList extends React.Component {
       filtered: []
     };
   }
-
   componentDidMount() {
-    var mailingNode = document.getElementById('mail').lastChild;
-    document.getElementById('curr-view').appendChild(mailingNode);
-    console.log('Mail html:', mailingNode.innerHTML);
-
-    const jay = require('../dummyDemographics.json');
-    this.setState({ data: jay });
-    this.updateStats(jay);
+    // var mailingNode = document.getElementById('mail').lastChild;
+    // document.getElementById('curr-view').appendChild(mailingNode);
+    // console.log('Mail html:', mailingNode.innerHTML);
+    // console.log("compo", this)
+    // GET_ALL_BOOTCAMPERS(new TableMailingList())
+    // const jay = require('../dummyDemographics.json');
+    // this.setState({ data: jay });
+    // this.updateStats(jay);
   }
 
   updateStats(data) {
-    this.setState({ filtered: data });
+    this.setState({ data: data, filtered: data });
     this.downloadCSVElement.current.updateStats(data);
+    console.log("compo", this.state.filtered)
   }
 
-  onTableViewChange = () => {
+  updateChange(data) {
+    this.setState({ filtered: data });
+    this.downloadCSVElement.current.updateStats(data);
+    console.log("compoChange", data)
+  }
+
+  onTableViewChange = async () => {
+    await this.updateChange(this.state.data)
     const current = this.reactTable.current;
     if (current) {
       const page = current.state.page;
@@ -39,7 +48,7 @@ class TableMailingList extends React.Component {
       const currentData = allData
         .slice(startIdx, startIdx + pageSize * current.state.pages)
         .map(item => item._original);
-      this.updateStats(currentData);
+      this.updateChange(currentData);
     }
   };
 
@@ -88,31 +97,31 @@ class TableMailingList extends React.Component {
 
     return (
       <div>
-        <Header />
-        <div id='mail' style={{ clear: 'both', float: 'left' }}>
-          <div>
-            <ReactTable
-              ref={this.reactTable}
-              columns={cols}
-              data={this.state.data}
-              filterable
-              defaultFilterMethod={this.filterMethod}
-              onChange={this.onChange}
-              className={'-highlight'}
-              expanded={{
-                1: true,
-                4: true
-              }}
-              // onPageChange={this.onTableViewChange}
-              // onPageSizeChange={this.onTableViewChange}
-              // onSortedChange={this.onTableViewChange}
-              // onExpandedChange={this.onTableViewChange}
-              onFilteredChange={this.onTableViewChange}
-              // onResizedChange={this.onTableViewChange}
-            />
-            <DownloadCSV ref={this.downloadCSVElement} />
-          </div>
+        {/* <Header /> */}
+        {/* <div id='mail' style={{ clear: 'both', float: 'left' }}> */}
+        <div>
+          <ReactTable
+            ref={this.reactTable}
+            columns={cols}
+            data={this.state.filtered}
+            filterable
+            defaultFilterMethod={this.filterMethod}
+            onChange={this.onChange}
+            className={'-highlight'}
+            expanded={{
+              1: true,
+              4: true
+            }}
+            // onPageChange={this.onTableViewChange}
+            // onPageSizeChange={this.onTableViewChange}
+            // onSortedChange={this.onTableViewChange}
+            // onExpandedChange={this.onTableViewChange}
+            onFilteredChange={this.onTableViewChange}
+          // onResizedChange={this.onTableViewChange}
+          />
+          <DownloadCSV ref={this.downloadCSVElement} />
         </div>
+        {/* </div> */}
       </div>
     );
   }

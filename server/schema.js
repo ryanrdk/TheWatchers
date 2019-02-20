@@ -6,15 +6,16 @@ type Bootcamper {
     last_name: String!
     username: String!
     email: String!
-    campus: String!,
-    gender: String!,
-    ethnicity: String!,
-	active: String!
+    campus: String!
+    gender: String!
+    ethnicity: String!
+    active: String!
+    selected: String!
 }
 
 type Query {
     getAllBootcampers: [Bootcamper]
-    getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
+    getBootcampersByGender(gender: String!, campus: String): [Bootcamper]
 }
 `;
 
