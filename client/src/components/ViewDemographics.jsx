@@ -84,25 +84,21 @@ class Demographics extends React.Component {
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'male',
-      true,
       'capetown'
     );
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'female',
-      true,
       'capetown'
     );
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'male',
-      true,
       'johannesburg'
     );
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'female',
-      true,
       'johannesburg'
     );
     var campusNode = document.getElementById('campus').lastChild;
