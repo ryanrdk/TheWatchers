@@ -32,24 +32,23 @@ class SelectorSelected extends React.Component {
       if (data.value === 'All') {
         return elem;
       } else if (data.value === 'Selected') {
-        if (elem.selected === 'true') {
+        if (elem.active === 'selected') {
           return elem;
         }
       } else if (data.value === 'Not Selected') {
-        if (elem.selected === 'false') {
+        if (elem.active !== 'selected') {
           return elem;
         }
       }
       return null;
     });
 
-    this.tableSelectedElement.current.updateStats(data);
+    this.tableSelectedElement.current.updateStats(filt);
     this.setState({
       select: data.value,
       searchQuery: '',
       filteredData: filt
     });
-    this.tableSelectedElement.current.updateStats(filt);
   };
 
   onSearchChange = (e, data) => {
@@ -62,8 +61,12 @@ class SelectorSelected extends React.Component {
       <div>
         <div>
           <Dropdown
-            placeholder='Selected'
-            search
+            placeholder='All Students'
+            icon='code'
+            floating
+            labeled
+            button
+            className='icon'
             selection
             value={select}
             text={searchQuery}

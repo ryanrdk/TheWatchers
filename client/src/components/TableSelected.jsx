@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
+import { Loader } from 'semantic-ui-react';
 
 class TableSelected extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class TableSelected extends React.Component {
     var newCheck = [];
 
     for (var i = 0; i < data.length; ++i) {
-      if (data[i].selected === 'true') {
+      if (data[i].active === 'selected') {
         newCheck[i] = 'checked';
       } else {
         newCheck[i] = '';
@@ -64,6 +65,7 @@ class TableSelected extends React.Component {
   };
 
   componentDidMount() {
+    //this.setState({ filtered: this.state.data });
     const newData = this.state.filtered;
     var newCheck = [];
     var selectAll = this.state.selectAll;
@@ -73,9 +75,9 @@ class TableSelected extends React.Component {
     });
 
     for (var i = 0; i < newCheck.length; ++i) {
-      if (newData[i]['selected'] === 'true') {
+      if (newData[i]['active'] === 'selected') {
         newCheck[i] = 'checked';
-      } else if (newData[i]['selected'] === 'false') {
+      } else if (newData[i]['active'] !== 'selected') {
         newCheck[i] = '';
       }
     }
@@ -129,6 +131,13 @@ class TableSelected extends React.Component {
             className={'-highlight'}
             showPagination={false}
             pageSize={this.state.filtered.length}
+            noDataText={
+              <div>
+                <br />
+                <br />
+                <Loader active inline='centered' />
+              </div>
+            }
           />
           <div>
             <DownloadCSV ref={this.downloadCSVElement} />

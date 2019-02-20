@@ -17,7 +17,6 @@ class TableMailingList extends React.Component {
   componentDidMount() {
     var mailingNode = document.getElementById('mail').lastChild;
     document.getElementById('curr-view').appendChild(mailingNode);
-    console.log('Mail html:', mailingNode.innerHTML);
 
     const jay = require('../dummyDemographics.json');
     this.setState({ data: jay });
