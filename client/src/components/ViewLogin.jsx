@@ -11,15 +11,6 @@ class LoginView extends React.Component {
     };
   }
 
-  componentDidMount() {
-    var x = null;
-    if ((x = window.gapi.auth2.getAuthInstance().isSignedIn.get())) {
-      if (x === true) {
-        history.push('/');
-      }
-    }
-  }
-
   clickMe() {
     var x = window.gapi.auth2.getAuthInstance().isSignedIn.get();
     console.log('Help Vuruseer: ' + x);
