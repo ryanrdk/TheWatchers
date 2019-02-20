@@ -51,6 +51,9 @@ app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localh
 MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("bootcampers");
+    if (!fs.existsSync(csvFolder)){
+        fs.mkdirSync(csvFolder);
+    }
     fs.readdir(csvFolder, function (err, files){
         files.forEach(file => {
             //Creates a new collection for each day

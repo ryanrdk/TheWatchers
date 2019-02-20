@@ -13,6 +13,7 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
       campus
       ethnicity
       active
+      selected
     }
   }`;
   fetch(GRAPHQL_API, {
