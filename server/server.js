@@ -27,8 +27,8 @@ const schema = makeExecutableSchema({
 });
 
 mongoose.connect(mongo_uri, { useNewUrlParser: true, useCreateIndex: true })
-        .then(() => console.log('DB connected'))
-        .catch(err => console.error(err));
+    .then(() => console.log('DB connected'))
+    .catch(err => console.error(err));
 const app = express();
 
 // const corsOptions = {
@@ -48,16 +48,19 @@ app.use('/graphql', cors(), bodyParser.json(), express_graphql({
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
 
 //Add bootcamper data to database
-MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
+MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     var dbo = db.db("bootcampers");
-    fs.readdir(csvFolder, function (err, files){
+    if (!fs.existsSync(csvFolder)) {
+        fs.mkdirSync(csvFolder);
+    }
+    fs.readdir(csvFolder, function (err, files) {
         files.forEach(file => {
             //Creates a new collection for each day
             dbo.createCollection(file.slice(0, -4), (err) => {
                 if (err) throw err;
                 //Converts CSV data to JSON array
-                csv().fromFile(csvFolder + '/' + file).then((jsonObj)=>{
+                csv().fromFile(csvFolder + '/' + file).then((jsonObj) => {
                     //Adds Data to database
                     dbo.collection(file.slice(0, -4)).insertMany(jsonObj, (err) => {
                         if (err) throw err;
