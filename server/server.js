@@ -7,7 +7,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 const express_graphql = require('express-graphql');
 const cors = require('cors');
 const csvFolder = './CSVs';
-const parseCSV = require('./functions/csv-import');
+const csv = require('csvtojson');
 
 const PORT = process.env.PORT || "4000";
 
@@ -47,7 +47,6 @@ app.use('/graphql', cors(), bodyParser.json(), express_graphql({
 
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
 
-
 //Add bootcamper data to database
 MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
@@ -57,13 +56,17 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
             //Creates a new collection for each day
             dbo.createCollection(file.slice(0, -4), (err) => {
                 if (err) throw err;
-                db.close();
+                //Converts CSV data to JSON array
+                csv().fromFile(csvFolder + '/' + file).then((jsonObj)=>{
+                    //Adds Data to database
+                    dbo.collection(file.slice(0, -4)).insertMany(jsonObj, (err) => {
+                        if (err) throw err;
+                        db.close();
+                        //Deletes CSV file
+                        fs.unlink(csvFolder + '/' + file);
+                    })
+                });
             });
-            //Converts CSV data to array
-            parseCSV(csvFolder + '/' + file, (file) => {
-                //add day to appropriate collection
-            });
-            //Delete file
         });
     });
 });
