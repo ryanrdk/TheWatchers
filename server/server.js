@@ -50,24 +50,29 @@ app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localh
 //Add bootcamper data to database
 MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("bootcampers");
+    const dbo = db.db("bootcampers");
     if (!fs.existsSync(csvFolder)){
         fs.mkdirSync(csvFolder);
     }
     fs.readdir(csvFolder, function (err, files){
         files.forEach(file => {
-            //Creates a new collection for each day
-            dbo.createCollection(file.slice(0, -4), (err) => {
-                if (err) throw err;
-                //Converts CSV data to JSON array
-                csv().fromFile(csvFolder + '/' + file).then((jsonObj)=>{
-                    //Adds Data to database
-                    dbo.collection(file.slice(0, -4)).insertMany(jsonObj, (err) => {
-                        if (err) throw err;
-                        db.close();
-                        //Deletes CSV file
-                        fs.unlink(csvFolder + '/' + file);
-                    })
+            // if (file.includes('exam')){
+
+            // } else if (file.includes('colle')){
+
+            // } else
+            //Converts CSV data to JSON array
+            csv().fromFile(csvFolder + '/' + file).then((jsonObj)=>{
+                //Adds Day field to each object
+                jsonObj.map((element) => { 
+                    return element.Day = file.slice(0, -4);
+                });
+                //Adds Data to database
+                dbo.collection('days').insertMany(jsonObj, (err) => {
+                    if (err) throw err;
+                    db.close();
+                    //Deletes CSV file
+                    fs.unlink(csvFolder + '/' + file);
                 });
             });
         });
