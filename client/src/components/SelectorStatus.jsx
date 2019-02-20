@@ -15,12 +15,6 @@ class SelectorStatus extends React.Component {
     };
     // console.log("StatProppies", this.state)
   }
-  componentDidMount() {
-    // const jay = require('../dummyDemographics.json');
-    // console.log(jay);
-    // this.setState({ demoData: jay, filteredData: jay });
-    // this.tableStatusElement.current.updateStats(jay);
-  }
 
   updateStats(data) {
     this.setState({ demoData: data, filteredData: data });
@@ -67,7 +61,11 @@ class SelectorStatus extends React.Component {
       <div>
         <Dropdown
           placeholder='Status'
-          search
+          icon='lightning'
+          floating
+          labeled
+          button
+          className='icon'
           selection
           value={selected}
           text={searchQuery}

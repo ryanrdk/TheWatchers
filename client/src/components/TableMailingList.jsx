@@ -15,14 +15,6 @@ class TableMailingList extends React.Component {
     };
   }
   componentDidMount() {
-    // var mailingNode = document.getElementById('mail').lastChild;
-    // document.getElementById('curr-view').appendChild(mailingNode);
-    // console.log('Mail html:', mailingNode.innerHTML);
-    // console.log("compo", this)
-    // GET_ALL_BOOTCAMPERS(new TableMailingList())
-    // const jay = require('../dummyDemographics.json');
-    // this.setState({ data: jay });
-    // this.updateStats(jay);
   }
 
   updateStats(data) {

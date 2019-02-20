@@ -89,7 +89,6 @@ class TableStats extends React.Component {
     }
     // if (oh.constructor === Array) { console.log("oh array") }
     // var { demoCount } = this.state.demoCount
-    console.log('upTabData', oh);
     // this.downloadCSVElement.current.setState({ data: tabData })
     // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
     return (

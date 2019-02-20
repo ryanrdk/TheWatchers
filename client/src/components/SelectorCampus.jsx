@@ -235,7 +235,11 @@ class SelectorCampus extends React.Component {
         <div>
           <Dropdown
             placeholder='Campus'
-            search
+            icon='university'
+            floating
+            labeled
+            button
+            className='icon'
             selection
             value={selected}
             text={searchQuery}
