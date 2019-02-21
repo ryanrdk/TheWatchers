@@ -31,6 +31,7 @@ type Day {
 type Query {
     getAllBootcampers: [Bootcamper]
     getBootcampersByGender(gender: String!, campus: String): [Bootcamper]
+    getDay(day: String!): [Day]
 }
 `;
 

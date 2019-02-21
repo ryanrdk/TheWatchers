@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const DaySchema = new Schema({
   Username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   User_id: {
     type: String,
@@ -36,6 +37,9 @@ const DaySchema = new Schema({
     type: String
   },
   Cheating: {
+    type: String
+  },
+  Day: {
     type: String
   }
 });
