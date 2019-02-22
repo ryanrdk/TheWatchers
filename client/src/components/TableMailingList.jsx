@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import DownloadCSV from './DownloadCSV';
-import Header from './Header';
+// import Header from './Header';
 // import { GET_ALL_BOOTCAMPERS } from '../queries';
 
 class TableMailingList extends React.Component {
