@@ -26,11 +26,38 @@ type Day {
     Mark3: Int
     Comment3: String
     Cheating: String
+    bootcamper: [Bootcamper]
+}
+
+type Colle {
+    _id: ID
+    Colle: String!
+    Username: String!
+    User_id: String!
+    Campus: String!
+    Final_mark: Int
+    Mark1: Int
+    Comment1: String
+    Cheating: String
+    bootcamper: [Bootcamper]
+}
+
+type Exam {
+    _id: ID
+    Exam: String!
+    Username: String!
+    User_id: String!
+    Campus: String!
+    Final_mark: Int
+    bootcamper: [Bootcamper]
 }
 
 type Query {
     getAllBootcampers: [Bootcamper]
-    getBootcampersByGender(gender: String!, campus: String): [Bootcamper]
+    getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
+    getDay(day: String!): [Day]
+    getColle(colle: String!): [Colle]
+    getExam(exam: String!): [Exam]
 }
 `;
 

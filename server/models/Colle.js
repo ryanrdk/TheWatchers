@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const DaySchema = new Schema({
+const ColleSchema = new Schema({
   Username: {
     type: String,
     required: true
@@ -23,22 +23,10 @@ const DaySchema = new Schema({
   Comment1: {
     type: String
   },
-  Mark2: {
-    type: Number
-  },
-  Comment2: {
-    type: String
-  },
-  Mark3: {
-    type: Number
-  },
-  Comment3: {
-    type: String
-  },
   Cheating: {
     type: String
   },
-  Day: {
+  Colle: {
     type: String
   },
   bootcamper: {
@@ -47,4 +35,4 @@ const DaySchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Day', DaySchema);
+module.exports = mongoose.model('Colle', ColleSchema);
