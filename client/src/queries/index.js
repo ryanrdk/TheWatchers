@@ -94,6 +94,47 @@ export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
     });
 };
 
+export const GET_BOOTCAMPER_DAY = function (component, username){
+  const query = `
+    query ($username: String!){
+      getBootcamperDay(username: $username){
+        _id
+        Day
+        Username
+        User_id
+        Campus
+        Final_mark
+        Mark1
+        Comment1
+        Mark2
+        Comment2
+        Mark3
+        Comment3
+        Cheating
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(result => {
+    if (result.data !== null && result.data !== undefined) {
+      if (component.current !== null && component.current !== undefined) {
+        component.current.updateStats(result.data.getBootcamperDays);
+      }
+    }
+  });
+};
+
 export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
   const query = `
   query ($day: String!) {
