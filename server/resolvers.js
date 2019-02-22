@@ -13,10 +13,6 @@ exports.resolvers = {
             const results = await Bootcamper.find(obj).sort({ first_name: "asc" });
             return results;
         },
-        // getDay: async (root, { day }, { Day }) => {
-        //     let allDay = await Day.find({ Day: day }).sort({ Username: "asc" });
-        //     return await allDay;
-        // },
         getDay: async (root, { day }, { Day, Bootcamper }) => {
             const allDay = await Day.find({ Day: day }).sort({ Username: "asc" });
             const up2u = Promise.all(allDay.map(async (elem) => {

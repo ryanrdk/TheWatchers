@@ -54,10 +54,9 @@ type Exam {
 
 type Query {
     getAllBootcampers: [Bootcamper]
-    getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
+    getBootcampersByGender(gender: String!, campus: String): [Bootcamper]
     getDay(day: String!): [Day]
     getColle(colle: String!): [Colle]
     getExam(exam: String!): [Exam]
 }
 `;
-

@@ -57,7 +57,7 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
     if (!fs.existsSync(csvFolder)) {
         fs.mkdirSync(csvFolder);
     }
-    fs.readdir(csvFolder, function (err, files){
+    fs.readdir(csvFolder, function (err, files) {
         files.forEach(file => {
             let type = 'Day';
             if (file.includes('exam')){

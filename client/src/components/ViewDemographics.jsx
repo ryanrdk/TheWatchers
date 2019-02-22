@@ -76,21 +76,9 @@ class Demographics extends React.Component {
   }
 
   componentDidMount() {
-    // const jay = require('../bootcampers.json');
-    // this.setState({ users: jay });
-    // console.log("demograph HERE", this.state);
-    // GET_ALL_BOOTCAMPERS(this.campusSelectorElement);
     GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
-    GET_BOOTCAMPERS_BY_GENDER(
-      this.campusSelectorElement,
-      'male',
-      'capetown'
-    );
-    GET_BOOTCAMPERS_BY_GENDER(
-      this.campusSelectorElement,
-      'female',
-      'capetown'
-    );
+    GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', 'capetown');
+    GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', 'capetown');
     GET_BOOTCAMPERS_BY_GENDER(
       this.campusSelectorElement,
       'male',
@@ -101,8 +89,8 @@ class Demographics extends React.Component {
       'female',
       'johannesburg'
     );
-    var campusNode = document.getElementById('campus').lastChild;
-    var statusNode = document.getElementById('status').lastChild;
+    let campusNode = document.getElementById('campus').lastChild;
+    let statusNode = document.getElementById('status').lastChild;
     document.getElementById('curr-view').appendChild(campusNode);
     document.getElementById('curr-view').appendChild(statusNode);
   }
