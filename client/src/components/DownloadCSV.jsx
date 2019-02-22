@@ -20,15 +20,15 @@ class DownloadCSV extends React.Component {
   objectToCSV(data) {
     const csvRows = [];
     const headers = [];
-    for (var headElem in data[0]) {
+    for (let headElem in data[0]) {
       const escapedHead = ('' + headElem).replace(/"/g, '\\"');
       headers.push(`"${escapedHead}"`);
     }
     csvRows.push(headers.join(','));
-    for (var elem in data) {
+    for (let elem in data) {
       if (elem !== 0) {
         const toAdd = [];
-        for (var val in data[elem]) {
+        for (let val in data[elem]) {
           const escaped = ('' + data[elem][val]).replace(/"/g, '\\"');
           toAdd.push(`"${escaped}"`);
         }

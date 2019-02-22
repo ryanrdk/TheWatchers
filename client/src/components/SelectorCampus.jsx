@@ -198,8 +198,7 @@ class SelectorCampus extends React.Component {
   }
   onChange = (e, data) => {
     // console.log('data', data, this.state.demoCount, this.state.demoData);
-    var filt = [];
-    // var filtTab = [];
+    let filt = [];
     if (data.value === 'ALL') {
       filt = [
         data.democount.capetown.male,
