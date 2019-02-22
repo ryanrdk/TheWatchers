@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Header, Image, Segment } from 'semantic-ui-react';
-import GoogleAuth from '../containers/GoogleAuth';
+import { Grid, Header, Image } from 'semantic-ui-react';
 import Autherise from '../containers/Autherise';
 import history from '../history';
 
@@ -16,12 +15,12 @@ class LoginView extends React.Component {
   updateState(bool) {
     this.setState({ isSignedIn: bool });
     console.log('LOOK: ' + this.state.isSignedIn);
+    if (this.state.isSignedIn === true) {
+      history.push('/demographs');
+    }
   }
 
   render() {
-    if (document.getElementById('auth')) {
-      <Autherise updateState={this.updateState} />;
-    }
     return (
       <Grid
         textAlign='center'
@@ -33,16 +32,7 @@ class LoginView extends React.Component {
             <Image src='https://www.wethinkcode.co.za/assets/images/wethinkcode-logo-blue.png' />{' '}
             Log-in to your account
           </Header>
-
-          <Segment raised>
-            <img
-              height='192'
-              width='192'
-              src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'
-            />
-            <GoogleAuth />
-            <Autherise updateState={this.updateState} />
-          </Segment>
+          <Autherise updateState={this.updateState} />
         </Grid.Column>
       </Grid>
     );

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Segment } from 'semantic-ui-react';
+import GoogleAuth from '../containers/GoogleAuth';
 
 const Autherise = props => {
   let authState = false;
@@ -9,9 +11,18 @@ const Autherise = props => {
     authState = false;
   }
   return (
-    <p id='auth' onLoad={() => props.updateState(authState)}>
-      Is: {authState}
-    </p>
+    <div
+      style={{ height: '500px', width: '100%', zIndex: '-1' }}
+      onMouseOver={() => props.updateState(authState)}>
+      <Segment raised>
+        <img
+          height='192'
+          width='192'
+          src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'
+        />
+        <GoogleAuth />
+      </Segment>
+    </div>
   );
 };
 
