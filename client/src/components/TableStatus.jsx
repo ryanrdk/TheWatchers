@@ -10,13 +10,6 @@ class TableStatus extends React.Component {
     this.state = {
       filtered: []
     };
-    // console.log("inherit", this)
-  }
-
-  componentDidMount() {
-    // const jay = require('../dummyDemographics.json');
-    // console.log(jay);
-    // this.setState({ demoData: jay, filtered:jay });
   }
 
   updateStats(data) {

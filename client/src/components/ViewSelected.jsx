@@ -17,7 +17,7 @@ class ViewSelected extends React.Component {
   }
 
   componentDidMount() {
-    var studentNode = document.getElementById('student').lastChild;
+    let studentNode = document.getElementById('student').lastChild;
     document.getElementById('curr-view').appendChild(studentNode);
     GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
   }

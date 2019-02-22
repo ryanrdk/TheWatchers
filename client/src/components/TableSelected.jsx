@@ -24,9 +24,9 @@ class TableSelected extends React.Component {
   updateStats(data) {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
-    var newCheck = [];
+    let newCheck = [];
 
-    for (var i = 0; i < data.length; ++i) {
+    for (let i = 0; i < data.length; ++i) {
       if (data[i].active === 'selected') {
         newCheck[i] = 'checked';
       } else {
@@ -40,9 +40,9 @@ class TableSelected extends React.Component {
   }
 
   handleChange = () => {
-    var selectAll = !this.state.selectAll;
+    let selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
-    var newCheck = [];
+    let newCheck = [];
     this.state.data.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
@@ -53,7 +53,7 @@ class TableSelected extends React.Component {
   };
 
   handleSingleCheckboxChange = index => {
-    var newCheck = this.state.checked;
+    let newCheck = this.state.checked;
     newCheck[index] = !this.state.checked[index];
     if (newCheck[index] === false) {
       this.setState({ selectAll: false });
@@ -67,14 +67,14 @@ class TableSelected extends React.Component {
   componentDidMount() {
     //this.setState({ filtered: this.state.data });
     const newData = this.state.filtered;
-    var newCheck = [];
-    var selectAll = this.state.selectAll;
+    let newCheck = [];
+    let selectAll = this.state.selectAll;
 
     newData.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
 
-    for (var i = 0; i < newCheck.length; ++i) {
+    for (let i = 0; i < newCheck.length; ++i) {
       if (newData[i]['active'] === 'selected') {
         newCheck[i] = 'checked';
       } else if (newData[i]['active'] !== 'selected') {

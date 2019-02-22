@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import DownloadCSV from './DownloadCSV';
-import Header from './Header';
-// import { GET_ALL_BOOTCAMPERS } from '../queries';
 
 class TableMailingList extends React.Component {
   constructor(props) {
@@ -14,23 +12,21 @@ class TableMailingList extends React.Component {
       filtered: []
     };
   }
-  componentDidMount() {
-  }
 
   updateStats(data) {
     this.setState({ data: data, filtered: data });
     this.downloadCSVElement.current.updateStats(data);
-    console.log("compo", this.state.filtered)
+    console.log('compo', this.state.filtered);
   }
 
   updateChange(data) {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
-    console.log("compoChange", data)
+    console.log('compoChange', data);
   }
 
   onTableViewChange = async () => {
-    await this.updateChange(this.state.data)
+    await this.updateChange(this.state.data);
     const current = this.reactTable.current;
     if (current) {
       const page = current.state.page;
@@ -89,8 +85,6 @@ class TableMailingList extends React.Component {
 
     return (
       <div>
-        {/* <Header /> */}
-        {/* <div id='mail' style={{ clear: 'both', float: 'left' }}> */}
         <div>
           <ReactTable
             ref={this.reactTable}
@@ -104,16 +98,10 @@ class TableMailingList extends React.Component {
               1: true,
               4: true
             }}
-            // onPageChange={this.onTableViewChange}
-            // onPageSizeChange={this.onTableViewChange}
-            // onSortedChange={this.onTableViewChange}
-            // onExpandedChange={this.onTableViewChange}
             onFilteredChange={this.onTableViewChange}
-          // onResizedChange={this.onTableViewChange}
           />
           <DownloadCSV ref={this.downloadCSVElement} />
         </div>
-        {/* </div> */}
       </div>
     );
   }
