@@ -26,12 +26,12 @@ class TableStats extends React.Component {
     // console.log(jay);
     // this.setState({ demoData: jay, filtered:jay });
     this.setState({ filtered: this.state.demoCount });
-    const tabData = [
-      this.state.demoCount.capetown.male,
-      this.state.demoCount.capetown.female,
-      this.state.demoCount.johannesburg.male,
-      this.state.demoCount.johannesburg.female
-    ];
+    // const tabData = [
+    //   this.state.demoCount.capetown.male,
+    //   this.state.demoCount.capetown.female,
+    //   this.state.demoCount.johannesburg.male,
+    //   this.state.demoCount.johannesburg.female
+    // ];
     // console.log("upTabData", tabData)
     // if (tabData) { this.downloadCSVElement.current.updateStats({ data: tabData }) }
   }

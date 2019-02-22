@@ -93,3 +93,55 @@ export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
       }
     });
 };
+
+export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
+  const query = `
+  query ($day: String!) {
+    getDay(day:$day) {
+      _id
+      Day
+      Username
+      User_id
+      Campus
+      Final_mark
+      Mark1
+      Comment1
+      Mark2
+      Comment2
+      Mark3
+      Comment3
+      Cheating
+      bootcamper {
+        _id
+        first_name
+        last_name
+        username
+        email
+        campus
+        gender
+        ethnicity
+        active
+      }
+    }
+  }
+  `;
+  const variables = `{  "day": "${day}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (result.data !== null && result.data !== undefined) {
+        if (component.current !== null && component.current !== undefined) {
+          component.current.updateStats(result.data.getDay);
+        }
+      }
+    });
+};
