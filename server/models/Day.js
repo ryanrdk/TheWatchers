@@ -41,6 +41,10 @@ const DaySchema = new Schema({
   },
   Day: {
     type: String
+  },
+  bootcamper: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Bootcamper'
   }
 });
 

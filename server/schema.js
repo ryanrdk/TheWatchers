@@ -26,6 +26,7 @@ type Day {
     Mark3: Int
     Comment3: String
     Cheating: String
+    bootcamper: [Bootcamper]
 }
 
 type Query {
@@ -34,4 +35,3 @@ type Query {
     getDay(day: String!): [Day]
 }
 `;
-
