@@ -18,6 +18,8 @@ console.log(mongo_uri);
 
 const Bootcamper = require('./models/Bootcamper');
 const Day = require('./models/Day');
+const Colle = require('./models/Colle');
+const Exam = require('./models/Exam');
 
 const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
@@ -43,7 +45,7 @@ const app = express();
 app.use('/graphql', cors(), bodyParser.json(), express_graphql({
     schema: schema,
     graphiql: true,
-    context: { Bootcamper, Day }
+    context: { Bootcamper, Day, Colle, Exam }
 }));
 
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
@@ -57,19 +59,20 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
     }
     fs.readdir(csvFolder, function (err, files) {
         files.forEach(file => {
-            // if (file.includes('exam')){
-
-            // } else if (file.includes('colle')){
-
-            // } else
+            let type = 'Day';
+            if (file.includes('exam')){
+                type = 'Exam';
+            } else if (file.includes('colle')){
+                type = 'Colle'
+            }
             //Converts CSV data to JSON array
             csv().fromFile(csvFolder + '/' + file).then((jsonObj) => {
                 //Adds Day field to each object
-                jsonObj.map((element) => {
-                    return element.Day = file.slice(0, -4);
+                jsonObj.map((element) => { 
+                    return element[type] = file.slice(0, -4);
                 });
                 //Adds Data to database
-                dbo.collection('days').insertMany(jsonObj, (err) => {
+                dbo.collection(type.toLowerCase() + 's').insertMany(jsonObj, (err) => {
                     if (err) throw err;
                     db.close();
                     //Deletes CSV file

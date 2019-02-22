@@ -1,7 +1,7 @@
 const GRAPHQL_API = 'http://localhost:4000/graphql';
 
-export const GET_ALL_BOOTCAMPERS = function (component) {
-  // var ans = null;
+export const GET_ALL_BOOTCAMPERS = function(component) {
+  // let ans = null;
   const query = `{
     getAllBootcampers {
       _id
@@ -34,8 +34,8 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
     });
 };
 
-export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
-  var camp_str;
+export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
+  let camp_str;
   if (campus === undefined) {
     campus = null;
     camp_str = null;
@@ -64,13 +64,13 @@ export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
   })
     .then(response => response.json())
     .then(result => {
-      var white_count = 0;
-      var black_count = 0;
-      var coloured_count = 0;
-      var indian_count = 0;
-      var chinese_count = 0;
-      var dataQL = result.data.getBootcampersByGender;
-      for (var elem in dataQL) {
+      let white_count = 0;
+      let black_count = 0;
+      let coloured_count = 0;
+      let indian_count = 0;
+      let chinese_count = 0;
+      let dataQL = result.data.getBootcampersByGender;
+      for (let elem in dataQL) {
         if (dataQL[elem].ethnicity === 'white') white_count++;
         if (dataQL[elem].ethnicity === 'black') black_count++;
         if (dataQL[elem].ethnicity === 'coloured') coloured_count++;
