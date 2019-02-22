@@ -27,11 +27,13 @@ type Day {
     Mark3: Int
     Comment3: String
     Cheating: String
+    bootcamper: [Bootcamper]
 }
 
 type Query {
     getAllBootcampers: [Bootcamper]
     getBootcampersByGender(gender: String!, campus: String, ethnicity: String): [Bootcamper]
+    getDay(day: String!): [Day]
 }
 `;
 

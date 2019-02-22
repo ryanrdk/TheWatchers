@@ -37,6 +37,13 @@ const DaySchema = new Schema({
   },
   Cheating: {
     type: String
+  },
+  Day: {
+    type: String
+  },
+  bootcamper: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Bootcamper'
   }
 });
 

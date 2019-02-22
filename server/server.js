@@ -17,6 +17,7 @@ const mongo_uri = `mongodb://${mongo_username}:${mongo_password}@${mongo_url}`;
 console.log(mongo_uri);
 
 const Bootcamper = require('./models/Bootcamper');
+const Day = require('./models/Day');
 
 const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
@@ -42,7 +43,7 @@ const app = express();
 app.use('/graphql', cors(), bodyParser.json(), express_graphql({
     schema: schema,
     graphiql: true,
-    context: { Bootcamper }
+    context: { Bootcamper, Day }
 }));
 
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
@@ -51,7 +52,7 @@ app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localh
 MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     const dbo = db.db("bootcampers");
-    if (!fs.existsSync(csvFolder)){
+    if (!fs.existsSync(csvFolder)) {
         fs.mkdirSync(csvFolder);
     }
     fs.readdir(csvFolder, function (err, files){
@@ -62,7 +63,7 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
 
             // } else
             //Converts CSV data to JSON array
-            csv().fromFile(csvFolder + '/' + file).then((jsonObj)=>{
+            csv().fromFile(csvFolder + '/' + file).then((jsonObj) => {
                 //Adds Day field to each object
                 jsonObj.map((element) => { 
                     return element.Day = file.slice(0, -4);
@@ -72,7 +73,7 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function(err, db) {
                     if (err) throw err;
                     db.close();
                     //Deletes CSV file
-                    fs.unlink(csvFolder + '/' + file);
+                    fs.unlinkSync(csvFolder + '/' + file);
                 });
             });
         });
