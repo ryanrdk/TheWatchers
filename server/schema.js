@@ -60,5 +60,6 @@ type Query {
     getExam(exam: String!): [Exam]
     getBootcamperDays(username: String!): [Day]
     getBootcamperColles(username: String!): [Colle]
+    getBootcamperExams(username: String!): [Exam]
 }
 `;

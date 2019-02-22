@@ -41,9 +41,13 @@ exports.resolvers = {
             const BootcamperDays = await Day.find({ Username: username })
             return await BootcamperDays;
         },
-        getBootcamperColles: async(root, { username }, { Day, Colle, Exam }) => {
+        getBootcamperColles: async(root, { username }, { Colle }) => {
             const BootcamperColles = await Colle.find({ Username: username })
             return await BootcamperColles;
+        },
+        getBootcamperExams: async(root, { username }, { Exam }) => {
+            const BootcamperExams = await Exam.find({ Username: username })
+            return await BootcamperExams;
         }
     }
 };

@@ -94,10 +94,10 @@ export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
     });
 };
 
-export const GET_BOOTCAMPER_DAY = function (component, username){
+export const GET_BOOTCAMPER_DAYS = function (component, username){
   const query = `
     query ($username: String!){
-      getBootcamperDay(username: $username){
+      getBootcamperDays(username: $username){
         _id
         Day
         Username
@@ -130,6 +130,76 @@ export const GET_BOOTCAMPER_DAY = function (component, username){
     if (result.data !== null && result.data !== undefined) {
       if (component.current !== null && component.current !== undefined) {
         component.current.updateStats(result.data.getBootcamperDays);
+      }
+    }
+  });
+};
+export const GET_BOOTCAMPER_COLLES = function (component, username){
+  const query = `
+    query ($username: String!){
+      getBootcamperColles(username: $username){
+        _id
+        Colle
+        Username
+        User_id
+        Campus
+        Final_mark
+        Mark1
+        Comment1
+        Cheating
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(result => {
+    if (result.data !== null && result.data !== undefined) {
+      if (component.current !== null && component.current !== undefined) {
+        component.current.updateStats(result.data.getBootcamperColles);
+      }
+    }
+  });
+};
+
+export const GET_BOOTCAMPER_EXAMS = function (component, username){
+  const query = `
+    query ($username: String!){
+      getBootcamperExams(username: $username){
+        _id
+        Exam
+        Username
+        User_id
+        Campus
+        Final_mark
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(result => {
+    if (result.data !== null && result.data !== undefined) {
+      if (component.current !== null && component.current !== undefined) {
+        component.current.updateStats(result.data.getBootcamperExams);
       }
     }
   });
