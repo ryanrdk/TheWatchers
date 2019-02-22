@@ -73,7 +73,7 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
                     if (err) throw err;
                     db.close();
                     //Deletes CSV file
-                    fs.unlink(csvFolder + '/' + file);
+                    fs.unlinkSync(csvFolder + '/' + file);
                 });
             });
         });

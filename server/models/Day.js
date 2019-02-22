@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const DaySchema = new Schema({
   Username: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   User_id: {
     type: String,
