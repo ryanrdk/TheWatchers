@@ -1,6 +1,6 @@
 const GRAPHQL_API = 'http://localhost:4000/graphql';
 
-export const GET_ALL_BOOTCAMPERS = function(component) {
+export const GET_ALL_BOOTCAMPERS = function (component) {
   // let ans = null;
   const query = `{
     getAllBootcampers {
@@ -34,7 +34,7 @@ export const GET_ALL_BOOTCAMPERS = function(component) {
     });
 };
 
-export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
+export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
   let camp_str;
   if (campus === undefined) {
     campus = null;
@@ -89,6 +89,119 @@ export const GET_BOOTCAMPERS_BY_GENDER = function(component, gender, campus) {
             chinese_count
           );
           component.current.updateStats(component.current.state.demoCount);
+        }
+      }
+    });
+};
+
+export const GET_BOOTCAMPER_DAYS = function (component, username) {
+  const query = `
+    query ($username: String!){
+      getBootcamperDays(username: $username){
+        _id
+        Day
+        Username
+        User_id
+        Campus
+        Final_mark
+        Mark1
+        Comment1
+        Mark2
+        Comment2
+        Mark3
+        Comment3
+        Cheating
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (result.data !== null && result.data !== undefined) {
+        if (component !== null && component !== undefined) {
+          component.updateStats2(result.data.getBootcamperDays);
+          // console.log("expanderrrrr", result.data.getBootcamperDays)
+        }
+      }
+    });
+};
+
+export const GET_BOOTCAMPER_COLLES = function (component, username) {
+  const query = `
+    query ($username: String!){
+      getBootcamperColles(username: $username){
+        _id
+        Colle
+        Username
+        User_id
+        Campus
+        Final_mark
+        Mark1
+        Comment1
+        Cheating
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (result.data !== null && result.data !== undefined) {
+        if (component.current !== null && component.current !== undefined) {
+          component.current.updateStats(result.data.getBootcamperColles);
+        }
+      }
+    });
+};
+
+export const GET_BOOTCAMPER_EXAMS = function (component, username) {
+  const query = `
+    query ($username: String!){
+      getBootcamperExams(username: $username){
+        _id
+        Exam
+        Username
+        User_id
+        Campus
+        Final_mark
+      }
+    }
+  `;
+  const variables = `{  "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (result.data !== null && result.data !== undefined) {
+        if (component.current !== null && component.current !== undefined) {
+          component.current.updateStats(result.data.getBootcamperExams);
         }
       }
     });
