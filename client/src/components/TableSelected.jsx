@@ -16,7 +16,9 @@ class TableSelected extends React.Component {
       data: [],
       checked: [],
       expanded: {},
-      prevRow: null
+      prevRow: null,
+      csvStuff: null,
+      isSearch: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,27 +43,7 @@ class TableSelected extends React.Component {
     this.setState({
       checked: newCheck
     });
-  }
-
-  expand_row(row) {
-    let prevR = this.state.prevRow;
-    let expanded = {};// = { ...this.state.expanded };
-    if (prevR) {
-      if (row.original._id === prevR.original._id) {
-        expanded = { ...this.state.expanded };
-      }
-      else expanded = {}
-    }
-    if (expanded[row.index]) {
-      expanded[row.index] = !expanded[row.index];
-      this.setState({ prevRow: null })
-    } else {
-      expanded[row.index] = true;
-      this.setState({ prevRow: row })
-    }
-    this.setState({
-      expanded: expanded
-    });
+    // this.downloadCSVElement.current.updateStats(data);
   }
 
   updateStats2(data) {
@@ -116,6 +98,41 @@ class TableSelected extends React.Component {
       selectAll: selectAll
     });
   }
+
+  handleFilterChange = (column, value, search) => {
+    const currentRecords = this.selectTable.getResolvedState().sortedData;
+    this.setState({
+      expanded: {},
+      filtered: currentRecords,
+      isSearch: true
+    })
+    // console.log("curry", this.state.filtered, currentRecords, this.selectTable, this.state.data)
+    const oi = currentRecords.filter(async (uyu) => {
+      await this.state.filtered.map(async (elem) => {
+        if (elem.username === uyu.username) {
+          return await elem;
+        }
+      })
+      if (this.state.csvStuff !== oi || this.state.csvStuff === null) {
+        // console.log("sana", oi)
+        this.setState({ csvStuff: oi })
+        // console.log("momo", this.state.csvStuff)
+        const tocsv = this.state.csvStuff.map((elem) => {
+          const uu = { username: elem.username, gender: elem.gender, ethnicity: elem.ethnicity, campus: elem.campus }
+          return uu;
+        })
+        // console.log("cccc", tocsv)
+        this.downloadCSVElement.current.updateStats(tocsv);
+      }
+    })
+  }
+
+  filterMethod = (filter, row, column) => {
+    const id = filter.pivotId || filter.id;
+    return row[id] !== undefined
+      ? String(row[id].toLowerCase()).startsWith(filter.value.toLowerCase())
+      : true;
+  };
 
   render() {
     const cols = [
@@ -172,10 +189,10 @@ class TableSelected extends React.Component {
         Header: 'Username',
         accessor: 'Username'
       },
-      {
-        Header: 'Campus',
-        accessor: 'Campus'
-      },
+      // {
+      //   Header: 'Campus',
+      //   accessor: 'Campus'
+      // },
       {
         Header: 'Day',
         accessor: 'Day'
@@ -190,7 +207,9 @@ class TableSelected extends React.Component {
       },
       {
         Header: 'Comment 1',
-        accessor: 'Comment1'
+        accessor: 'Comment1',
+        style: { whiteSpace: 'unset' },
+        width: 120
       },
       {
         Header: 'Mark 2',
@@ -198,7 +217,9 @@ class TableSelected extends React.Component {
       },
       {
         Header: 'Comment 2',
-        accessor: 'Comment2'
+        accessor: 'Comment2',
+        style: { whiteSpace: 'unset' },
+        width: 120
       },
       {
         Header: 'Mark 3',
@@ -206,7 +227,9 @@ class TableSelected extends React.Component {
       },
       {
         Header: 'Comment 3',
-        accessor: 'Comment3'
+        accessor: 'Comment3',
+        style: { whiteSpace: 'unset' },
+        width: 120
       },
       {
         Header: 'Cheating',
@@ -214,47 +237,26 @@ class TableSelected extends React.Component {
       }
     ];
 
-    // SubComponent={row => {
-    //   return (
-    //     <div style={{ padding: "20px" }}>
-    //       <em>
-    //         You can put any component you want here, even another React
-    //         Table!
-    //       </em>
-    //       <br />
-    //       <br />
-    //       <ReactTable
-    //         data={data}
-    //         columns={columns}
-    //         defaultPageSize={3}
-    //         showPagination={false}
-    //         SubComponent={row => {
-    //           return (
-    //             <div style={{ padding: "20px" }}>
-    //               Another Sub Component!
-    //             </div>
-    //           );
-    //         }}
-    //       />
-    //     </div>
-    //   );
-    // }
-
     return (
       <div>
         <div>
           <ReactTable
+            ref={(r) => {
+              this.selectTable = r;
+            }}
             columns={cols}
-            data={this.state.filtered}
+            data={this.state.data}
             filterable
+            defaultFilterMethod={this.filterMethod}
+            onFilteredChange={this.handleFilterChange}
             className={'-highlight'}
             showPagination={false}
             pageSize={this.state.filtered.length}
             noDataText={
               <div>
-                <br />
-                <br />
-                <Loader active inline='centered' />
+                {(this.state.filtered.length === 0 && this.state.isSearch)
+                  ? <div>No results found</div>
+                  : (<div><br /> <br /> <Loader active inline='centered' /></div>)}
               </div>
             }
             expanded={this.state.expanded}
@@ -263,16 +265,31 @@ class TableSelected extends React.Component {
                 onClick: (e, handleOriginal) => {
                   if (column.Expander) {
                     GET_BOOTCAMPER_DAYS(this, rowInfo.original.username)
-                    this.expand_row(rowInfo);
+                    // this.expand_row(rowInfo);
                     handleOriginal()
                   }
                 }
               };
             }}
+            onExpandedChange={(newExpanded, index, event) => {
+              console.log("popo", newExpanded, index)
+              if (newExpanded[index[0]] === false) {
+                newExpanded = {}
+              } else {
+                Object.keys(newExpanded).map(k => {
+                  return newExpanded[k] = parseInt(k) === index[0] ? {} : false
+                })
+              }
+              this.setState({
+                ...this.state,
+                expanded: newExpanded
+              })
+            }}
             SubComponent={row => {
               return (
                 <div style={{ padding: "20px" }}>
-                  <ReactTable columns={colsSub} data={this.state.filteredSub} />
+                  <ReactTable columns={colsSub} data={this.state.filteredSub} pageSize={this.state.filteredSub.length}
+                    showPagination={false} />
                 </div>
               )
             }}
