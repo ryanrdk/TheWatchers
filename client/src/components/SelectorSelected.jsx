@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import TableSelected from './TableSelected';
-import { GET_BOOTCAMPER_DAYS } from '../queries';
 
 class SelectorSelected extends React.Component {
   constructor(props) {

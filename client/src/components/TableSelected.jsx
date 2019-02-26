@@ -17,7 +17,8 @@ class TableSelected extends React.Component {
       checked: [],
       expanded: {},
       prevRow: null,
-      csvStuff: null
+      csvStuff: null,
+      isSearch: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,29 +44,6 @@ class TableSelected extends React.Component {
       checked: newCheck
     });
     // this.downloadCSVElement.current.updateStats(data);
-  }
-
-  expand_row(row) {
-    // let prevR = this.state.prevRow;
-    // let expanded = {};// = { ...this.state.expanded };
-    // if (prevR) {
-    //   if (row.original._id === prevR.original._id) {
-    //     expanded = { ...this.state.expanded };
-    //   }
-    //   else expanded = {}
-    // }
-    // if (expanded[row.index]) {
-    //   expanded[row.index] = !expanded[row.index];
-    //   this.setState({ prevRow: null })
-    // } else {
-    //   expanded[row.index] = true;
-    //   this.setState({ prevRow: row })
-    // }
-    // this.setState({
-    //   // ...this.state,
-    //   expanded: expanded
-    // });
-    // console.log("iiii", this.state.expanded)
   }
 
   updateStats2(data) {
@@ -122,30 +100,39 @@ class TableSelected extends React.Component {
   }
 
   handleFilterChange = (column, value, search) => {
-    this.setState({
-      expanded: {}
-    })
     const currentRecords = this.selectTable.getResolvedState().sortedData;
-    console.log("curry", this.state.filtered, currentRecords)
+    this.setState({
+      expanded: {},
+      filtered: currentRecords,
+      isSearch: true
+    })
+    // console.log("curry", this.state.filtered, currentRecords, this.selectTable, this.state.data)
     const oi = currentRecords.filter(async (uyu) => {
-      const yoyo = await this.state.filtered.map(async (elem) => {
+      await this.state.filtered.map(async (elem) => {
         if (elem.username === uyu.username) {
           return await elem;
         }
       })
       if (this.state.csvStuff !== oi || this.state.csvStuff === null) {
-        console.log("sana", oi)
+        // console.log("sana", oi)
         this.setState({ csvStuff: oi })
-        console.log("momo", this.state.csvStuff)
+        // console.log("momo", this.state.csvStuff)
         const tocsv = this.state.csvStuff.map((elem) => {
           const uu = { username: elem.username, gender: elem.gender, ethnicity: elem.ethnicity, campus: elem.campus }
           return uu;
         })
-        console.log("cccc", tocsv)
+        // console.log("cccc", tocsv)
         this.downloadCSVElement.current.updateStats(tocsv);
       }
     })
   }
+
+  filterMethod = (filter, row, column) => {
+    const id = filter.pivotId || filter.id;
+    return row[id] !== undefined
+      ? String(row[id].toLowerCase()).startsWith(filter.value.toLowerCase())
+      : true;
+  };
 
   render() {
     const cols = [
@@ -250,34 +237,6 @@ class TableSelected extends React.Component {
       }
     ];
 
-    // SubComponent={row => {
-    //   return (
-    //     <div style={{ padding: "20px" }}>
-    //       <em>
-    //         You can put any component you want here, even another React
-    //         Table!
-    //       </em>
-    //       <br />
-    //       <br />
-    //       <ReactTable
-    //         data={data}
-    //         columns={columns}
-    //         defaultPageSize={3}
-    //         showPagination={false}
-    //         SubComponent={row => {
-    //           return (
-    //             <div style={{ padding: "20px" }}>
-    //               Another Sub Component!
-    //             </div>
-    //           );
-    //         }}
-    //       />
-    //     </div>
-    //   );
-    // }
-
-
-
     return (
       <div>
         <div>
@@ -286,17 +245,18 @@ class TableSelected extends React.Component {
               this.selectTable = r;
             }}
             columns={cols}
-            data={this.state.filtered}
+            data={this.state.data}
             filterable
+            defaultFilterMethod={this.filterMethod}
             onFilteredChange={this.handleFilterChange}
             className={'-highlight'}
             showPagination={false}
             pageSize={this.state.filtered.length}
             noDataText={
               <div>
-                <br />
-                <br />
-                <Loader active inline='centered' />
+                {(this.state.filtered.length === 0 && this.state.isSearch)
+                  ? <div>No results found</div>
+                  : (<div><br /> <br /> <Loader active inline='centered' /></div>)}
               </div>
             }
             expanded={this.state.expanded}
@@ -317,7 +277,7 @@ class TableSelected extends React.Component {
                 newExpanded = {}
               } else {
                 Object.keys(newExpanded).map(k => {
-                  newExpanded[k] = parseInt(k) === index[0] ? {} : false
+                  return newExpanded[k] = parseInt(k) === index[0] ? {} : false
                 })
               }
               this.setState({

@@ -71,12 +71,12 @@ class TableStats extends React.Component {
     //this.state.filtered = filt;
     // console.log("Total", this.state.thisFilt)
     // console.log("upTabherereerer", this.state.demoCount.capetown)
-    const tabData = [
-      this.state.demoCount.capetown.male,
-      this.state.demoCount.capetown.female,
-      this.state.demoCount.johannesburg.male,
-      this.state.demoCount.johannesburg.female
-    ];
+    // const tabData = [
+    //   this.state.demoCount.capetown.male,
+    //   this.state.demoCount.capetown.female,
+    //   this.state.demoCount.johannesburg.male,
+    //   this.state.demoCount.johannesburg.female
+    // ];
     let oh = this.state.filtered;
     if (oh.constructor === Object) {
       // console.log("oh object")
