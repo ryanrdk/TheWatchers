@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import GoogleAuth from '../containers/GoogleAuth';
 
 class Header extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Header extends React.Component {
             <i className='block layout icon' />
             Mailing List
           </Link>
+          <GoogleAuth />
         </div>
         <div id='curr-view' className='pusher' />
       </div>
