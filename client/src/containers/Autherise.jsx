@@ -7,6 +7,9 @@ const Autherise = props => {
 
   if (window.gapi.auth2 != null) {
     authState = window.gapi.auth2.getAuthInstance().isSignedIn.get();
+    if (this.state.isSignedIn === false) {
+      setTimeout(props.updateState(authState), 2000);
+    }
   } else {
     authState = false;
   }
