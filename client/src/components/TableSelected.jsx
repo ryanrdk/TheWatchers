@@ -3,6 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 import { Loader } from 'semantic-ui-react';
+import { GET_BOOTCAMPER_DAYS } from '../queries';
 
 class TableSelected extends React.Component {
   constructor(props) {
@@ -10,9 +11,14 @@ class TableSelected extends React.Component {
     this.downloadCSVElement = React.createRef();
     this.state = {
       filtered: [],
+      filteredSub: [],
       selectAll: false,
       data: [],
-      checked: []
+      checked: [],
+      expanded: {},
+      prevRow: null,
+      csvStuff: null,
+      isSearch: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
+    // console.log("upu", data)
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -37,6 +44,15 @@ class TableSelected extends React.Component {
     this.setState({
       checked: newCheck
     });
+    // this.downloadCSVElement.current.updateStats(data);
+  }
+
+  updateStats2(data) {
+    this.setState({
+      filteredSub: data
+    });
+    // this.downloadCSVElement.current.updateStats(data);
+    // console.log("compo", this.state.filteredSub)
   }
 
   handleChange = () => {
@@ -65,14 +81,9 @@ class TableSelected extends React.Component {
   };
 
   componentDidMount() {
-    //this.setState({ filtered: this.state.data });
     const newData = this.state.filtered;
     let newCheck = [];
     let selectAll = this.state.selectAll;
-
-    newData.forEach(function(e, index) {
-      newCheck.push(selectAll);
-    });
 
     for (let i = 0; i < newCheck.length; ++i) {
       if (newData[i]['active'] === 'selected') {
@@ -89,8 +100,60 @@ class TableSelected extends React.Component {
     });
   }
 
+  handleFilterChange = (column, value, search) => {
+    const currentRecords = this.selectTable.getResolvedState().sortedData;
+    this.setState({
+      expanded: {},
+      filtered: currentRecords,
+      isSearch: true
+    });
+    // console.log("curry", this.state.filtered, currentRecords, this.selectTable, this.state.data)
+    const oi = currentRecords.filter(async uyu => {
+      await this.state.filtered.map(async elem => {
+        if (elem.username === uyu.username) {
+          return await elem;
+        }
+      });
+      if (this.state.csvStuff !== oi || this.state.csvStuff === null) {
+        // console.log("sana", oi)
+        this.setState({ csvStuff: oi });
+        // console.log("momo", this.state.csvStuff)
+        const tocsv = this.state.csvStuff.map(elem => {
+          const uu = {
+            username: elem.username,
+            gender: elem.gender,
+            ethnicity: elem.ethnicity,
+            campus: elem.campus
+          };
+          return uu;
+        });
+        // console.log("cccc", tocsv)
+        this.downloadCSVElement.current.updateStats(tocsv);
+      }
+    });
+  };
+
+  filterMethod = (filter, row, column) => {
+    const id = filter.pivotId || filter.id;
+    return row[id] !== undefined
+      ? String(row[id].toLowerCase()).startsWith(filter.value.toLowerCase())
+      : true;
+  };
+
   render() {
     const cols = [
+      {
+        expander: true,
+        Header: () => <strong>More</strong>,
+        width: 65,
+        Expander: ({ isExpanded, ...rest }) => {
+          if (rest.original.subTableData) {
+            return <div>{isExpanded ? <div>Nope</div> : <div>Yep</div>}</div>;
+          } else {
+            return null;
+          }
+        }
+      },
       {
         Header: 'Selected',
         Cell: row => (
@@ -120,24 +183,124 @@ class TableSelected extends React.Component {
         accessor: 'campus'
       }
     ];
+    const colsSub = [
+      {
+        Header: 'Username',
+        accessor: 'Username'
+      },
+      // {
+      //   Header: 'Campus',
+      //   accessor: 'Campus'
+      // },
+      {
+        Header: 'Day',
+        accessor: 'Day'
+      },
+      {
+        Header: 'Final Mark',
+        accessor: 'Final_mark'
+      },
+      {
+        Header: 'Mark 1',
+        accessor: 'Mark1'
+      },
+      {
+        Header: 'Comment 1',
+        accessor: 'Comment1',
+        style: { whiteSpace: 'unset' },
+        width: 120
+      },
+      {
+        Header: 'Mark 2',
+        accessor: 'Mark2'
+      },
+      {
+        Header: 'Comment 2',
+        accessor: 'Comment2',
+        style: { whiteSpace: 'unset' },
+        width: 120
+      },
+      {
+        Header: 'Mark 3',
+        accessor: 'Mark3'
+      },
+      {
+        Header: 'Comment 3',
+        accessor: 'Comment3',
+        style: { whiteSpace: 'unset' },
+        width: 120
+      },
+      {
+        Header: 'Cheating',
+        accessor: 'Cheating'
+      }
+    ];
 
     return (
       <div>
         <div>
           <ReactTable
+            ref={r => {
+              this.selectTable = r;
+            }}
             columns={cols}
-            data={this.state.filtered}
+            data={this.state.data}
             filterable
+            defaultFilterMethod={this.filterMethod}
+            onFilteredChange={this.handleFilterChange}
             className={'-highlight'}
             showPagination={false}
             pageSize={this.state.filtered.length}
             noDataText={
               <div>
-                <br />
-                <br />
-                <Loader active inline='centered' />
+                {this.state.filtered.length === 0 && this.state.isSearch ? (
+                  <div>No results found</div>
+                ) : (
+                  <div>
+                    <br /> <br /> <Loader active inline='centered' />
+                  </div>
+                )}
               </div>
             }
+            expanded={this.state.expanded}
+            getTdProps={(state, rowInfo, column, instance) => {
+              return {
+                onClick: (e, handleOriginal) => {
+                  if (column.Expander) {
+                    GET_BOOTCAMPER_DAYS(this, rowInfo.original.username);
+                    // this.expand_row(rowInfo);
+                    handleOriginal();
+                  }
+                }
+              };
+            }}
+            onExpandedChange={(newExpanded, index, event) => {
+              // console.log("popo", newExpanded, index)
+              if (newExpanded[index[0]] === false) {
+                newExpanded = {};
+              } else {
+                Object.keys(newExpanded).map(k => {
+                  return (newExpanded[k] =
+                    parseInt(k) === index[0] ? {} : false);
+                });
+              }
+              this.setState({
+                ...this.state,
+                expanded: newExpanded
+              });
+            }}
+            SubComponent={row => {
+              return (
+                <div style={{ padding: '20px' }}>
+                  <ReactTable
+                    columns={colsSub}
+                    data={this.state.filteredSub}
+                    pageSize={this.state.filteredSub.length}
+                    showPagination={false}
+                  />
+                </div>
+              );
+            }}
           />
           <div>
             <DownloadCSV ref={this.downloadCSVElement} />

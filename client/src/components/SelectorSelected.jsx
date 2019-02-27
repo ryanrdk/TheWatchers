@@ -25,7 +25,19 @@ class SelectorSelected extends React.Component {
     this.setState({ data: data, filteredData: data });
     this.tableSelectedElement.current.updateStats(data);
     this.tableSelectedElement.current.componentDidMount();
+    // const days_tab = data.map(async (elem) => {
+    //   // console.log("logger", elem);
+    //   await GET_BOOTCAMPER_DAYS(this.tableSelectedElement, elem.username);
+    // })
   }
+
+  // <ReactTable columns={columns} 
+  //data={newsData} minRows={10} loading={loading} 
+  //className="-striped -highlight" collapseOnDataChange={false} 
+  //expanded={this.state.expanded} SubComponent={row => 
+  //{ return <NewsOptions newsItem={row.original} />; }} 
+  //onExpandedChange={(newExpanded, index, event) => 
+  //this.handleRowExpanded(newExpanded, index, event)} />
 
   onChange = (e, data) => {
     const filt = this.state.data.filter(elem => {

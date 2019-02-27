@@ -2,7 +2,8 @@ import React from 'react';
 import SelectorSelected from './SelectorSelected';
 import SelectorDays from './SelectorDays';
 import Header from './Header';
-import { GET_ALL_BOOTCAMPERS } from '../queries';
+import ActiveStudent from '../containers/activeStudent'
+// import { GET_ALL_BOOTCAMPERS } from '../queries';
 
 class ViewSelected extends React.Component {
   constructor(props) {
@@ -27,12 +28,13 @@ class ViewSelected extends React.Component {
   componentDidMount() {
     let studentNode = document.getElementById('student').lastChild;
     document.getElementById('curr-view').appendChild(studentNode);
-    GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
+    // GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
   }
 
   render() {
     return (
       <div>
+        <ActiveStudent compRef={this.selectedSelectorElement} />
         <Header />
         <div id='student' style={{ clear: 'both', float: 'left' }}>
           <div>

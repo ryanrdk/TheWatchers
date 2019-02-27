@@ -21,7 +21,7 @@ exports.resolvers = {
             }))
             return await up2u;
         },
-        getColle: async(root, { colle }, { Colle, Bootcamper }) => {
+        getColle: async (root, { colle }, { Colle, Bootcamper }) => {
             const allColle = await Colle.find({ Colle: colle }).sort({ Username: "asc" });
             const flub = Promise.all(allColle.map(async (elem) => {
                 elem.bootcamper = await Bootcamper.findOne({ username: elem.Username });
@@ -29,13 +29,25 @@ exports.resolvers = {
             }))
             return await flub;
         },
-        getExam: async(root, { exam }, { Exam, Bootcamper }) => {
+        getExam: async (root, { exam }, { Exam, Bootcamper }) => {
             const allExam = await Exam.find({ Exam: exam }).sort({ Username: "asc" });
             const wub = Promise.all(allExam.map(async (elem) => {
                 elem.bootcamper = await Bootcamper.findOne({ username: elem.Username });
                 return elem;
             }))
             return await wub;
+        },
+        getBootcamperDays: async (root, { username }, { Day }) => {
+            const BootcamperDays = await Day.find({ Username: username })
+            return await BootcamperDays;
+        },
+        getBootcamperColles: async (root, { username }, { Colle }) => {
+            const BootcamperColles = await Colle.find({ Username: username })
+            return await BootcamperColles;
+        },
+        getBootcamperExams: async (root, { username }, { Exam }) => {
+            const BootcamperExams = await Exam.find({ Username: username })
+            return await BootcamperExams;
         }
     }
 };
