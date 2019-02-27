@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
-import history from '../history';
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
@@ -60,6 +59,7 @@ class GoogleAuth extends React.Component {
       return (
         <div>
           <button
+            id='auth'
             onClick={this.onSignInClick}
             className='ui blue google button'>
             <i className='google icon' />

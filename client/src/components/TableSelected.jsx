@@ -59,7 +59,7 @@ class TableSelected extends React.Component {
     let selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
     let newCheck = [];
-    this.state.data.forEach(function (e, index) {
+    this.state.data.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
 
@@ -106,27 +106,32 @@ class TableSelected extends React.Component {
       expanded: {},
       filtered: currentRecords,
       isSearch: true
-    })
+    });
     // console.log("curry", this.state.filtered, currentRecords, this.selectTable, this.state.data)
-    const oi = currentRecords.filter(async (uyu) => {
-      await this.state.filtered.map(async (elem) => {
+    const oi = currentRecords.filter(async uyu => {
+      await this.state.filtered.map(async elem => {
         if (elem.username === uyu.username) {
           return await elem;
         }
-      })
+      });
       if (this.state.csvStuff !== oi || this.state.csvStuff === null) {
         // console.log("sana", oi)
-        this.setState({ csvStuff: oi })
+        this.setState({ csvStuff: oi });
         // console.log("momo", this.state.csvStuff)
-        const tocsv = this.state.csvStuff.map((elem) => {
-          const uu = { username: elem.username, gender: elem.gender, ethnicity: elem.ethnicity, campus: elem.campus }
+        const tocsv = this.state.csvStuff.map(elem => {
+          const uu = {
+            username: elem.username,
+            gender: elem.gender,
+            ethnicity: elem.ethnicity,
+            campus: elem.campus
+          };
           return uu;
-        })
+        });
         // console.log("cccc", tocsv)
         this.downloadCSVElement.current.updateStats(tocsv);
       }
-    })
-  }
+    });
+  };
 
   filterMethod = (filter, row, column) => {
     const id = filter.pivotId || filter.id;
@@ -143,18 +148,11 @@ class TableSelected extends React.Component {
         width: 65,
         Expander: ({ isExpanded, ...rest }) => {
           if (rest.original.subTableData) {
-            return (
-              <div>
-                {isExpanded
-                  ? <div>Nope</div>
-                  : <div>Yep</div>
-                }
-              </div>
-            )
+            return <div>{isExpanded ? <div>Nope</div> : <div>Yep</div>}</div>;
           } else {
-            return null
+            return null;
           }
-        },
+        }
       },
       {
         Header: 'Selected',
@@ -242,7 +240,7 @@ class TableSelected extends React.Component {
       <div>
         <div>
           <ReactTable
-            ref={(r) => {
+            ref={r => {
               this.selectTable = r;
             }}
             columns={cols}
@@ -255,9 +253,13 @@ class TableSelected extends React.Component {
             pageSize={this.state.filtered.length}
             noDataText={
               <div>
-                {(this.state.filtered.length === 0 && this.state.isSearch)
-                  ? <div>No results found</div>
-                  : (<div><br /> <br /> <Loader active inline='centered' /></div>)}
+                {this.state.filtered.length === 0 && this.state.isSearch ? (
+                  <div>No results found</div>
+                ) : (
+                  <div>
+                    <br /> <br /> <Loader active inline='centered' />
+                  </div>
+                )}
               </div>
             }
             expanded={this.state.expanded}
@@ -265,9 +267,9 @@ class TableSelected extends React.Component {
               return {
                 onClick: (e, handleOriginal) => {
                   if (column.Expander) {
-                    GET_BOOTCAMPER_DAYS(this, rowInfo.original.username)
+                    GET_BOOTCAMPER_DAYS(this, rowInfo.original.username);
                     // this.expand_row(rowInfo);
-                    handleOriginal()
+                    handleOriginal();
                   }
                 }
               };
@@ -275,24 +277,29 @@ class TableSelected extends React.Component {
             onExpandedChange={(newExpanded, index, event) => {
               // console.log("popo", newExpanded, index)
               if (newExpanded[index[0]] === false) {
-                newExpanded = {}
+                newExpanded = {};
               } else {
                 Object.keys(newExpanded).map(k => {
-                  return newExpanded[k] = parseInt(k) === index[0] ? {} : false
-                })
+                  return (newExpanded[k] =
+                    parseInt(k) === index[0] ? {} : false);
+                });
               }
               this.setState({
                 ...this.state,
                 expanded: newExpanded
-              })
+              });
             }}
             SubComponent={row => {
               return (
-                <div style={{ padding: "20px" }}>
-                  <ReactTable columns={colsSub} data={this.state.filteredSub} pageSize={this.state.filteredSub.length}
-                    showPagination={false} />
+                <div style={{ padding: '20px' }}>
+                  <ReactTable
+                    columns={colsSub}
+                    data={this.state.filteredSub}
+                    pageSize={this.state.filteredSub.length}
+                    showPagination={false}
+                  />
                 </div>
-              )
+              );
             }}
           />
           <div>
