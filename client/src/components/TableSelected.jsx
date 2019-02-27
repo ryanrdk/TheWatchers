@@ -28,6 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
+    // console.log("upu", data)
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -272,7 +273,7 @@ class TableSelected extends React.Component {
               };
             }}
             onExpandedChange={(newExpanded, index, event) => {
-              console.log("popo", newExpanded, index)
+              // console.log("popo", newExpanded, index)
               if (newExpanded[index[0]] === false) {
                 newExpanded = {}
               } else {

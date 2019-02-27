@@ -15,7 +15,7 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
       active
     }
   }`;
-  fetch(GRAPHQL_API, {
+  return (fetch(GRAPHQL_API, {
     method: 'POST',
     body: JSON.stringify({
       query
@@ -24,14 +24,14 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
       'content-type': 'application/json'
     }
   })
-    .then(response => response.json())
-    .then(result => {
-      if (result.data !== null && result.data !== undefined) {
-        if (component.current !== null && component.current !== undefined) {
-          component.current.updateStats(result.data.getAllBootcampers);
-        }
-      }
-    });
+    .then(response => response.json()))
+  // .then(result => {
+  //   if (result.data !== null && result.data !== undefined) {
+  //     if (component.current !== null && component.current !== undefined) {
+  //       component.current.updateStats(result.data.getAllBootcampers);
+  //     }
+  //   }
+  // });
 };
 
 export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
