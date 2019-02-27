@@ -2,6 +2,7 @@ import React from 'react';
 import TableMailingList from './TableMailingList';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS } from '../queries';
+import ActiveStudent from '../containers/activeStudent'
 
 class ViewMailingList extends React.Component {
   constructor(props) {
@@ -18,12 +19,13 @@ class ViewMailingList extends React.Component {
     let mailingNode = document.getElementById('mail').lastChild;
     document.getElementById('curr-view').appendChild(mailingNode);
     console.log('Mail html:', mailingNode.innerHTML);
-    GET_ALL_BOOTCAMPERS(this.mailingListTableElement);
+    // GET_ALL_BOOTCAMPERS(this.mailingListTableElement);
   }
 
   render() {
     return (
       <div>
+        <ActiveStudent compRef={this.mailingListTableElement} />
         <Header />
         <div id='mail' style={{ clear: 'both', float: 'left' }}>
           <TableMailingList
