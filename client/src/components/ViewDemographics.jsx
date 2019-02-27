@@ -2,7 +2,8 @@ import React from 'react';
 import SelectorCampus from './SelectorCampus';
 import SelectorStatus from './SelectorStatus';
 import Header from './Header';
-import { GET_ALL_BOOTCAMPERS, GET_BOOTCAMPERS_BY_GENDER } from '../queries';
+import { GET_BOOTCAMPERS_BY_GENDER } from '../queries';
+import ActiveStudent from '../containers/activeStudent'
 
 /**
  * Demographics VIEW ~~~ Overall view of Demographics
@@ -76,7 +77,7 @@ class Demographics extends React.Component {
   }
 
   componentDidMount() {
-    GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
+    // GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
     GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', 'capetown');
     GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', 'capetown');
     GET_BOOTCAMPERS_BY_GENDER(
@@ -98,6 +99,7 @@ class Demographics extends React.Component {
   render() {
     return (
       <div>
+        <ActiveStudent compRef={this.statusSelectorElement} />
         <Header />
         <div id='campus' style={{ clear: 'both', float: 'left' }}>
           <SelectorCampus
