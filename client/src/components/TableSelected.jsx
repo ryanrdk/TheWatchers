@@ -28,7 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
-    // console.log("upu", data)
+    console.log('Update Stats returns: ' + data[12].active);
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -44,15 +44,12 @@ class TableSelected extends React.Component {
     this.setState({
       checked: newCheck
     });
-    // this.downloadCSVElement.current.updateStats(data);
   }
 
   updateStats2(data) {
     this.setState({
       filteredSub: data
     });
-    // this.downloadCSVElement.current.updateStats(data);
-    // console.log("compo", this.state.filteredSub)
   }
 
   handleChange = () => {
@@ -302,6 +299,7 @@ class TableSelected extends React.Component {
               );
             }}
           />
+          <div style={{ margin: '8px' }} />
           <div>
             <DownloadCSV ref={this.downloadCSVElement} />
           </div>

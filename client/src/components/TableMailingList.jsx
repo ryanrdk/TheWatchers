@@ -100,6 +100,7 @@ class TableMailingList extends React.Component {
             }}
             onFilteredChange={this.onTableViewChange}
           />
+          <div style={{ margin: '8px' }} />
           <DownloadCSV ref={this.downloadCSVElement} />
         </div>
       </div>

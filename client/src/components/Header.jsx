@@ -12,14 +12,22 @@ class Header extends React.Component {
             Home
           </Link>
           <Link to='/watcher' className='item'>
-            <i className='block layout icon' />
+            <i className='tasks icon' />
             Active Students
           </Link>
           <Link to='/mailinglist' className='item'>
-            <i className='block layout icon' />
+            <i className='paper plane icon' />
             Mailing List
           </Link>
-          <GoogleAuth />
+          <div className='ui inverted bottom fixed menu'>
+            <div
+              style={{
+                width: '100%',
+                margin: '6px'
+              }}>
+              <GoogleAuth />
+            </div>
+          </div>
         </div>
         <div id='curr-view' className='pusher' />
       </div>
