@@ -18,7 +18,6 @@ class ViewMailingList extends React.Component {
   componentDidMount() {
     let mailingNode = document.getElementById('mail').lastChild;
     document.getElementById('curr-view').appendChild(mailingNode);
-    console.log('Mail html:', mailingNode.innerHTML);
     // GET_ALL_BOOTCAMPERS(this.mailingListTableElement);
   }
 

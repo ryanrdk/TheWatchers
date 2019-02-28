@@ -73,7 +73,10 @@ class SelectorStatus extends React.Component {
           onSearchChange={this.onSearchChange}
           options={options}
         />
-        <TableStatus ref={this.tableStatusElement} />
+        <div style={{ margin: '8px' }} />
+        <div>
+          <TableStatus ref={this.tableStatusElement} />
+        </div>
       </div>
     );
   }

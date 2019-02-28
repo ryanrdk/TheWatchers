@@ -2,7 +2,7 @@ import React from 'react';
 import SelectorSelected from './SelectorSelected';
 import SelectorDays from './SelectorDays';
 import Header from './Header';
-import ActiveStudent from '../containers/activeStudent'
+import ActiveStudent from '../containers/activeStudent';
 // import { GET_ALL_BOOTCAMPERS } from '../queries';
 
 class ViewSelected extends React.Component {
@@ -33,7 +33,7 @@ class ViewSelected extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: '8px' }}>
         <ActiveStudent compRef={this.selectedSelectorElement} />
         <Header />
         <div id='student' style={{ clear: 'both', float: 'left' }}>

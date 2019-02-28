@@ -31,12 +31,12 @@ class SelectorSelected extends React.Component {
     // })
   }
 
-  // <ReactTable columns={columns} 
-  //data={newsData} minRows={10} loading={loading} 
-  //className="-striped -highlight" collapseOnDataChange={false} 
-  //expanded={this.state.expanded} SubComponent={row => 
-  //{ return <NewsOptions newsItem={row.original} />; }} 
-  //onExpandedChange={(newExpanded, index, event) => 
+  // <ReactTable columns={columns}
+  //data={newsData} minRows={10} loading={loading}
+  //className="-striped -highlight" collapseOnDataChange={false}
+  //expanded={this.state.expanded} SubComponent={row =>
+  //{ return <NewsOptions newsItem={row.original} />; }}
+  //onExpandedChange={(newExpanded, index, event) =>
   //this.handleRowExpanded(newExpanded, index, event)} />
 
   onChange = (e, data) => {
@@ -88,6 +88,7 @@ class SelectorSelected extends React.Component {
             options={options}
           />
         </div>
+        <div style={{ margin: '8px' }} />
         <div>
           <TableSelected ref={this.tableSelectedElement} selData={this.state.filteredData} />
         </div>
