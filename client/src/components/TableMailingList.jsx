@@ -85,6 +85,7 @@ class TableMailingList extends React.Component {
 
     return (
       <div>
+        <div style={{ margin: '8px' }} />
         <div>
           <ReactTable
             ref={this.reactTable}

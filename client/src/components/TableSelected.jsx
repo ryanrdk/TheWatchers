@@ -82,7 +82,7 @@ class TableSelected extends React.Component {
     let newCheck = [];
     let selectAll = this.state.selectAll;
 
-    for (let i = 0; i < newCheck.length; ++i) {
+    for (let i = 0; i < newData.length; ++i) {
       if (newData[i]['active'] === 'selected') {
         newCheck[i] = 'checked';
       } else if (newData[i]['active'] !== 'selected') {
@@ -99,12 +99,12 @@ class TableSelected extends React.Component {
 
   handleFilterChange = (column, value, search) => {
     const currentRecords = this.selectTable.getResolvedState().sortedData;
+    console.log('ello');
     this.setState({
       expanded: {},
       filtered: currentRecords,
       isSearch: true
     });
-    // console.log("curry", this.state.filtered, currentRecords, this.selectTable, this.state.data)
     const oi = currentRecords.filter(async uyu => {
       await this.state.filtered.map(async elem => {
         if (elem.username === uyu.username) {
@@ -112,9 +112,7 @@ class TableSelected extends React.Component {
         }
       });
       if (this.state.csvStuff !== oi || this.state.csvStuff === null) {
-        // console.log("sana", oi)
         this.setState({ csvStuff: oi });
-        // console.log("momo", this.state.csvStuff)
         const tocsv = this.state.csvStuff.map(elem => {
           const uu = {
             username: elem.username,
@@ -124,7 +122,6 @@ class TableSelected extends React.Component {
           };
           return uu;
         });
-        // console.log("cccc", tocsv)
         this.downloadCSVElement.current.updateStats(tocsv);
       }
     });
@@ -154,6 +151,7 @@ class TableSelected extends React.Component {
       {
         Header: 'Selected',
         Cell: row => (
+          // console.log("checkingOut", this.state.checked, row.index),
           <input
             type='checkbox'
             checked={this.state.checked[row.index]}
@@ -241,7 +239,7 @@ class TableSelected extends React.Component {
               this.selectTable = r;
             }}
             columns={cols}
-            data={this.state.data}
+            data={this.props.selData}
             filterable
             defaultFilterMethod={this.filterMethod}
             onFilteredChange={this.handleFilterChange}

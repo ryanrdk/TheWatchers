@@ -43,10 +43,10 @@ class ViewSelected extends React.Component {
               active_selection={this.state.active_selection}
             />
             {/* <div style={{ float: 'right' }}> */}
-            <SelectorDays
+            {/* <SelectorDays
               ref={this.daysSelectorElement}
               days_selection={this.state.days_selection}
-            />
+            /> */}
             {/* </div> */}
           </div>
         </div>
