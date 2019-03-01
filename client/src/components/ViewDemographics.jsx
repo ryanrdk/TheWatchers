@@ -3,7 +3,8 @@ import SelectorCampus from './SelectorCampus';
 import SelectorStatus from './SelectorStatus';
 import Header from './Header';
 import { GET_BOOTCAMPERS_BY_GENDER } from '../queries';
-import ActiveStudent from '../containers/activeStudent'
+import ActiveStudent from '../containers/activeStudent';
+import GoogleAuth from '../containers/GoogleAuth';
 
 /**
  * Demographics VIEW ~~~ Overall view of Demographics
@@ -98,7 +99,7 @@ class Demographics extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: '8px' }}>
         <ActiveStudent compRef={this.statusSelectorElement} />
         <Header />
         <div id='campus' style={{ clear: 'both', float: 'left' }}>

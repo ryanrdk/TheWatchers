@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Header, Image } from 'semantic-ui-react';
-import { Segment } from 'semantic-ui-react';
+import { Grid, Header, Image, Segment, Loader } from 'semantic-ui-react';
 import GoogleAuth from '../containers/GoogleAuth';
 
 class LoginView extends React.Component {
@@ -9,6 +8,11 @@ class LoginView extends React.Component {
     this.state = {
       isSignedIn: false
     };
+    /* if (window.performance) {
+      performance.navigation.type === 1
+        ? alert('is reloading ' + this.state.isSignedIn)
+        : alert('has not rlodid');
+    } */
   }
 
   render() {
@@ -29,6 +33,7 @@ class LoginView extends React.Component {
               width='192'
               src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'
             />
+            <div style={{ margin: '12px' }} />
             <GoogleAuth />
           </Segment>
         </Grid.Column>

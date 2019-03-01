@@ -248,6 +248,7 @@ class SelectorCampus extends React.Component {
             democount={demoCount}
           />
         </div>
+        <div style={{ margin: '8px' }} />
         <div>
           <TableStats
             ref={this.tableStatsElement}
