@@ -2,7 +2,7 @@ import React from 'react';
 import TableMailingList from './TableMailingList';
 import Header from './Header';
 import { GET_ALL_BOOTCAMPERS } from '../queries';
-import ActiveStudent from '../containers/activeStudent'
+import ActiveStudent from '../containers/activeStudent';
 
 class ViewMailingList extends React.Component {
   constructor(props) {

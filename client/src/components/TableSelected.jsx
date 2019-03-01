@@ -56,7 +56,7 @@ class TableSelected extends React.Component {
     let selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
     let newCheck = [];
-    this.state.data.forEach(function (e, index) {
+    this.state.data.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
 
@@ -99,7 +99,7 @@ class TableSelected extends React.Component {
 
   handleFilterChange = (column, value, search) => {
     const currentRecords = this.selectTable.getResolvedState().sortedData;
-    console.log("ello")
+    console.log('ello');
     this.setState({
       expanded: {},
       filtered: currentRecords,
@@ -251,10 +251,10 @@ class TableSelected extends React.Component {
                 {this.state.filtered.length === 0 && this.state.isSearch ? (
                   <div>No results found</div>
                 ) : (
-                    <div>
-                      <br /> <br /> <Loader active inline='centered' />
-                    </div>
-                  )}
+                  <div>
+                    <br /> <br /> <Loader active inline='centered' />
+                  </div>
+                )}
               </div>
             }
             expanded={this.state.expanded}
