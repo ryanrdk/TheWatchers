@@ -106,9 +106,13 @@ class TableStats extends React.Component {
             pageSize={this.state.filtered.length + 1}
           />
         </div>
+        <div style={{ margin: '8px' }} />
         <div>
           <DownloadCSV ref={this.downloadCSVElement} />
         </div>
+        <br />
+        <br />
+        <div id='divider' className='ui inverted divider' />
       </div>
     );
   }

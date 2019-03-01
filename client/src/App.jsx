@@ -8,16 +8,23 @@ import ViewLogin from './components/ViewLogin';
 import ViewDemographics from './components/ViewDemographics';
 import ViewSelected from './components/ViewSelected';
 import ViewMailingList from './components/ViewMailingList';
+import Authorise from './containers/Authorise';
 
-let loggedIn = false;
+let loggedIn;
 
 class App extends Component {
-  autherise() {
-    if (this.props.auth.isSignedIn && this.props.auth.userId != null) {
+  authorise() {
+    //if (this.props.auth.isSignedIn !== null) {
+    console.log('isSignedIn: ' + this.props.auth.isSignedIn);
+    if (this.props.auth.isSignedIn) {
       loggedIn = true;
-    } else {
+    } else if (!this.props.auth.isSignedIn) {
       loggedIn = false;
+    } else if (this.props.auth.isSignedIn === null) {
+      loggedIn = this.props.auth.isSignedIn;
     }
+    console.log('loggedIn: ' + loggedIn);
+    // }
     return loggedIn;
   }
 
@@ -37,30 +44,35 @@ class App extends Component {
               exact
               path='/'
               render={() =>
-                this.autherise() ? <Redirect to='/demographs' /> : <ViewLogin />
+                this.authorise() ? (
+                  <Redirect to='/demographs' />
+                ) : (
+                  <ViewLogin signedIn={this.authorise()} />
+                )
               }
             />
             <Route
               exact
               path='/demographs'
               render={() =>
-                this.autherise() ? <ViewDemographics /> : <Redirect to='/' />
+                this.authorise() ? <ViewDemographics /> : <Redirect to='/' />
               }
             />
             <Route
               exact
               path='/watcher'
               render={() =>
-                this.autherise() ? <ViewSelected /> : <Redirect to='/' />
+                this.authorise() ? <ViewSelected /> : <Redirect to='/' />
               }
             />
             <Route
               exact
               path='/mailinglist'
               render={() =>
-                this.autherise() ? <ViewMailingList /> : <Redirect to='/' />
+                this.authorise() ? <ViewMailingList /> : <Redirect to='/' />
               }
             />
+            <Route path='/authorise' exact component={Authorise} />
           </div>
         </Router>
       </div>

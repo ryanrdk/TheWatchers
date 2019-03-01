@@ -28,7 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
-    // console.log("upu", data)
+    console.log('Update Stats returns: ' + data[12].active);
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -44,22 +44,19 @@ class TableSelected extends React.Component {
     this.setState({
       checked: newCheck
     });
-    // this.downloadCSVElement.current.updateStats(data);
   }
 
   updateStats2(data) {
     this.setState({
       filteredSub: data
     });
-    // this.downloadCSVElement.current.updateStats(data);
-    // console.log("compo", this.state.filteredSub)
   }
 
   handleChange = () => {
     let selectAll = !this.state.selectAll;
     this.setState({ selectAll: selectAll });
     let newCheck = [];
-    this.state.data.forEach(function (e, index) {
+    this.state.data.forEach(function(e, index) {
       newCheck.push(selectAll);
     });
 
@@ -102,7 +99,7 @@ class TableSelected extends React.Component {
 
   handleFilterChange = (column, value, search) => {
     const currentRecords = this.selectTable.getResolvedState().sortedData;
-    console.log("ello")
+    console.log('ello');
     this.setState({
       expanded: {},
       filtered: currentRecords,
@@ -254,10 +251,10 @@ class TableSelected extends React.Component {
                 {this.state.filtered.length === 0 && this.state.isSearch ? (
                   <div>No results found</div>
                 ) : (
-                    <div>
-                      <br /> <br /> <Loader active inline='centered' />
-                    </div>
-                  )}
+                  <div>
+                    <br /> <br /> <Loader active inline='centered' />
+                  </div>
+                )}
               </div>
             }
             expanded={this.state.expanded}
@@ -300,6 +297,7 @@ class TableSelected extends React.Component {
               );
             }}
           />
+          <div style={{ margin: '8px' }} />
           <div>
             <DownloadCSV ref={this.downloadCSVElement} />
           </div>

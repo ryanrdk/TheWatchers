@@ -65,6 +65,7 @@ class TableStatus extends React.Component {
             }}
           />
         </div>
+        <div style={{ margin: '8px' }} />
         <div>
           <DownloadCSV ref={this.downloadCSVElement} />
         </div>
