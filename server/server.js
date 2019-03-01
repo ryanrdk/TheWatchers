@@ -51,7 +51,7 @@ app.use('/graphql', cors(), bodyParser.json(), express_graphql({
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
 
 //Add bootcamper data to database
-MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
+MongoClient.connect(mongo_uri, { useNewUrlParser: true, useFindAndModify: false }, function (err, db) {
     if (err) throw err;
     const dbo = db.db("bootcampers");
     if (!fs.existsSync(csvFolder)) {
@@ -60,15 +60,15 @@ MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
     fs.readdir(csvFolder, function (err, files) {
         files.forEach(file => {
             let type = 'Day';
-            if (file.includes('exam')){
+            if (file.includes('exam')) {
                 type = 'Exam';
-            } else if (file.includes('colle')){
+            } else if (file.includes('colle')) {
                 type = 'Colle'
             }
             //Converts CSV data to JSON array
             csv().fromFile(csvFolder + '/' + file).then((jsonObj) => {
                 //Adds Day field to each object
-                jsonObj.map((element) => { 
+                jsonObj.map((element) => {
                     return element[type] = file.slice(0, -4);
                 });
                 //Adds Data to database

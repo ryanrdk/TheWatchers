@@ -62,4 +62,8 @@ type Query {
     getBootcamperColles(username: String!): [Colle]
     getBootcamperExams(username: String!): [Exam]
 }
+
+type Mutation {
+    updateStatus(username: String!, status: String!): Bootcamper
+}
 `;

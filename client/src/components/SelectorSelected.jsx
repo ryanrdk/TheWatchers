@@ -57,6 +57,7 @@ class SelectorSelected extends React.Component {
 
     console.log("selel", data, filt)
     this.tableSelectedElement.current.updateStats(filt);
+    this.tableSelectedElement.current.setState({ expanded: {} });
     this.setState({
       select: data.value,
       searchQuery: '',
