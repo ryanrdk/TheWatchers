@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectorSelected from './SelectorSelected';
-import SelectorDays from './SelectorDays';
+//import SelectorDays from './SelectorDays';
 import Header from './Header';
 import ActiveStudent from '../containers/activeStudent';
 // import { GET_ALL_BOOTCAMPERS } from '../queries';

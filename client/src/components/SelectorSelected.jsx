@@ -55,8 +55,9 @@ class SelectorSelected extends React.Component {
       return null;
     });
 
-    console.log("selel", data, filt)
+    console.log('selel', data, filt);
     this.tableSelectedElement.current.updateStats(filt);
+    this.tableSelectedElement.current.setState({ expanded: {} });
     this.setState({
       select: data.value,
       searchQuery: '',
@@ -90,7 +91,10 @@ class SelectorSelected extends React.Component {
         </div>
         <div style={{ margin: '8px' }} />
         <div>
-          <TableSelected ref={this.tableSelectedElement} selData={this.state.filteredData} />
+          <TableSelected
+            ref={this.tableSelectedElement}
+            selData={this.state.filteredData}
+          />
         </div>
       </div>
     );

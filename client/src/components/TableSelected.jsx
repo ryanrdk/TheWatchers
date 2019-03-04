@@ -21,7 +21,7 @@ class TableSelected extends React.Component {
       isSearch: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     this.handleSingleCheckboxChange = this.handleSingleCheckboxChange.bind(
       this
     );
@@ -52,18 +52,18 @@ class TableSelected extends React.Component {
     });
   }
 
-  handleChange = () => {
-    let selectAll = !this.state.selectAll;
-    this.setState({ selectAll: selectAll });
-    let newCheck = [];
-    this.state.data.forEach(function(e, index) {
-      newCheck.push(selectAll);
-    });
+  //   handleChange = () => {
+  //     let selectAll = !this.state.selectAll;
+  //     this.setState({ selectAll: selectAll });
+  //     let newCheck = [];
+  //     this.state.data.forEach(function(e, index) {
+  //       newCheck.push(selectAll);
+  //     });
 
-    this.setState({
-      checked: newCheck
-    });
-  };
+  //     this.setState({
+  //       checked: newCheck
+  //     });
+  //   };
 
   handleSingleCheckboxChange = index => {
     let newCheck = this.state.checked;
@@ -99,7 +99,6 @@ class TableSelected extends React.Component {
 
   handleFilterChange = (column, value, search) => {
     const currentRecords = this.selectTable.getResolvedState().sortedData;
-    console.log('ello');
     this.setState({
       expanded: {},
       filtered: currentRecords,

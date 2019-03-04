@@ -44,7 +44,7 @@ class GoogleAuth extends React.Component {
       return (
         <button
           onClick={this.onSignOutClick}
-          className='fluid ui blue google button'>
+          className='fluid ui red google button'>
           <i className='google icon' />
           Sign Out
         </button>
