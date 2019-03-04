@@ -49,5 +49,11 @@ exports.resolvers = {
             const BootcamperExams = await Exam.find({ Username: username })
             return await BootcamperExams;
         }
+    },
+    Mutation: {
+        updateStatus: async (root, { username, status }, { Bootcamper }) => {
+            const bootcamper = await Bootcamper.findOneAndUpdate({ username }, { $set: { active: status } }, { new: true });
+            return bootcamper;
+        }
     }
 };
