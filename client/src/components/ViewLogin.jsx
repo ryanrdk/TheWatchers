@@ -1,20 +1,8 @@
 import React from 'react';
-import { Grid, Header, Image, Segment, Loader } from 'semantic-ui-react';
+import { Grid, Header, Image, Segment } from 'semantic-ui-react';
 import GoogleAuth from '../containers/GoogleAuth';
 
 class LoginView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isSignedIn: false
-    };
-    /* if (window.performance) {
-      performance.navigation.type === 1
-        ? alert('is reloading ' + this.state.isSignedIn)
-        : alert('has not rlodid');
-    } */
-  }
-
   render() {
     return (
       <Grid
@@ -24,7 +12,10 @@ class LoginView extends React.Component {
         textAlign='center'>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='teal' textAlign='center'>
-            <Image src='https://www.wethinkcode.co.za/assets/images/wethinkcode-logo-blue.png' />{' '}
+            <Image
+              alt='wtc_'
+              src='https://www.wethinkcode.co.za/assets/images/wethinkcode-logo-blue.png'
+            />{' '}
             Log-in to your account
           </Header>
           <Segment raised>

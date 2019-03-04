@@ -15,16 +15,13 @@ let loggedIn;
 class App extends Component {
   authorise() {
     //if (this.props.auth.isSignedIn !== null) {
-    console.log('isSignedIn: ' + this.props.auth.isSignedIn);
     if (this.props.auth.isSignedIn) {
       loggedIn = true;
     } else if (!this.props.auth.isSignedIn) {
       loggedIn = false;
     } else if (this.props.auth.isSignedIn === null) {
-      loggedIn = this.props.auth.isSignedIn;
+      loggedIn = false;
     }
-    console.log('loggedIn: ' + loggedIn);
-    // }
     return loggedIn;
   }
 
