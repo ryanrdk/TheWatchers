@@ -6,7 +6,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <div className='ui vertical inverted left visible sidebar menu'>
+        <div className='ui vertical inverted left visible blue sidebar menu'>
           <Link to='/demographs' className='item'>
             <i className='home icon' />
             Home
@@ -19,7 +19,7 @@ class Header extends React.Component {
             <i className='paper plane icon' />
             Mailing List
           </Link>
-          <div className='ui inverted bottom fixed menu'>
+          <div className='ui inverted blue bottom fixed menu'>
             <div
               style={{
                 width: '100%',

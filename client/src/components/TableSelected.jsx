@@ -103,7 +103,6 @@ class TableSelected extends React.Component {
 
   handleFilterChange = (column, value, search) => {
     const currentRecords = this.selectTable.getResolvedState().sortedData;
-    console.log('ello');
     this.setState({
       expanded: {},
       filtered: currentRecords,
