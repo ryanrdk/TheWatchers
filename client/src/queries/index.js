@@ -258,3 +258,42 @@ export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
       }
     });
 };
+
+export const UPDATE_STATUS = function (username, status) {
+  const query = `
+  mutation ($username: String!, $status: String!) {
+    updateStatus(username:$username, status:$status) {
+      _id
+      first_name
+      last_name
+      username
+      email
+      campus
+      gender
+      ethnicity
+      active
+    }
+  }
+  `;
+  const variables = `{  "username": "${username}", "status": "${status}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      //   if (result.data !== null && result.data !== undefined) {
+      //     if (component !== null && component !== undefined) {
+      //       component.updateStats2(result.data.getBootcamperDays);
+      //       // console.log("expanderrrrr", result.data.getBootcamperDays)
+      //     }
+      // }
+      console.log("result", result)
+    });
+};

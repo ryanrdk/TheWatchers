@@ -3,7 +3,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 import { Loader } from 'semantic-ui-react';
-import { GET_BOOTCAMPER_DAYS } from '../queries';
+import { GET_BOOTCAMPER_DAYS, UPDATE_STATUS } from '../queries';
 
 class TableSelected extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class TableSelected extends React.Component {
       isSearch: false
     };
 
-    //this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.handleSingleCheckboxChange = this.handleSingleCheckboxChange.bind(
       this
     );
@@ -52,25 +52,29 @@ class TableSelected extends React.Component {
     });
   }
 
-  //   handleChange = () => {
-  //     let selectAll = !this.state.selectAll;
-  //     this.setState({ selectAll: selectAll });
-  //     let newCheck = [];
-  //     this.state.data.forEach(function(e, index) {
-  //       newCheck.push(selectAll);
-  //     });
+  // handleChange = () => {
+  //   let selectAll = !this.state.selectAll;
+  //   this.setState({ selectAll: selectAll });
+  //   let newCheck = [];
+  //   this.state.data.forEach(function (e, index) {
+  //     newCheck.push(selectAll);
+  //   });
 
-  //     this.setState({
-  //       checked: newCheck
-  //     });
-  //   };
+  //   this.setState({
+  //     checked: newCheck
+  //   });
+  // };
 
   handleSingleCheckboxChange = index => {
     let newCheck = this.state.checked;
     newCheck[index] = !this.state.checked[index];
     if (newCheck[index] === false) {
       this.setState({ selectAll: false });
+      UPDATE_STATUS(this.selectTable.resolvedData[index].username, "active");
     }
+    else
+      UPDATE_STATUS(this.selectTable.resolvedData[index].username, "selected");
+    console.log("docahn", index, newCheck[index], this.selectTable.resolvedData[index].username, this.props);
 
     this.setState({
       checked: newCheck
@@ -250,10 +254,10 @@ class TableSelected extends React.Component {
                 {this.state.filtered.length === 0 && this.state.isSearch ? (
                   <div>No results found</div>
                 ) : (
-                  <div>
-                    <br /> <br /> <Loader active inline='centered' />
-                  </div>
-                )}
+                    <div>
+                      <br /> <br /> <Loader active inline='centered' />
+                    </div>
+                  )}
               </div>
             }
             expanded={this.state.expanded}
