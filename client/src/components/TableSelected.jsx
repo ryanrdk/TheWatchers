@@ -70,11 +70,16 @@ class TableSelected extends React.Component {
     newCheck[index] = !this.state.checked[index];
     if (newCheck[index] === false) {
       this.setState({ selectAll: false });
-      UPDATE_STATUS(this.selectTable.resolvedData[index].username, "active");
-    }
-    else
-      UPDATE_STATUS(this.selectTable.resolvedData[index].username, "selected");
-    console.log("docahn", index, newCheck[index], this.selectTable.resolvedData[index].username, this.props);
+      UPDATE_STATUS(this.selectTable.resolvedData[index].username, 'active');
+    } else
+      UPDATE_STATUS(this.selectTable.resolvedData[index].username, 'selected');
+    console.log(
+      'docahn',
+      index,
+      newCheck[index],
+      this.selectTable.resolvedData[index].username,
+      this.props
+    );
 
     this.setState({
       checked: newCheck
@@ -142,17 +147,21 @@ class TableSelected extends React.Component {
       {
         expander: true,
         Header: () => <strong>More</strong>,
+        // Cell: () => <i class='plus icon' />,
         width: 65,
-        Expander: ({ isExpanded, ...rest }) => {
-          if (rest.original.subTableData) {
-            return <div>{isExpanded ? <div>Nope</div> : <div>Yep</div>}</div>;
-          } else {
-            return null;
-          }
-        }
+        Expander: ({ isExpanded, ...rest }) => (
+          <div>
+            {isExpanded ? (
+              <i className='minus icon' />
+            ) : (
+              <i className='plus icon' />
+            )}
+          </div>
+        )
       },
       {
         Header: 'Selected',
+        width: 65,
         Cell: row => (
           // console.log("checkingOut", this.state.checked, row.index),
           <input
@@ -254,10 +263,10 @@ class TableSelected extends React.Component {
                 {this.state.filtered.length === 0 && this.state.isSearch ? (
                   <div>No results found</div>
                 ) : (
-                    <div>
-                      <br /> <br /> <Loader active inline='centered' />
-                    </div>
-                  )}
+                  <div>
+                    <br /> <br /> <Loader active inline='centered' />
+                  </div>
+                )}
               </div>
             }
             expanded={this.state.expanded}
