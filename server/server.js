@@ -51,7 +51,7 @@ app.use('/graphql', cors(), bodyParser.json(), express_graphql({
 app.listen(PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${PORT}/graphql`));
 
 //Add bootcamper data to database
-MongoClient.connect(mongo_uri, { useNewUrlParser: true, useFindAndModify: false }, function (err, db) {
+MongoClient.connect(mongo_uri, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     const dbo = db.db("bootcampers");
     if (!fs.existsSync(csvFolder)) {
