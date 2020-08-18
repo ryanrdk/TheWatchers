@@ -3,6 +3,10 @@ import { Grid, Header, Image, Segment } from 'semantic-ui-react';
 import GoogleAuth from '../containers/GoogleAuth';
 
 class LoginView extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("PRPS3",this.props);
+  }
   render() {
     return (
       <Grid
@@ -10,7 +14,7 @@ class LoginView extends React.Component {
         style={{ height: '100%', width: '100%' }}
         verticalAlign='middle'
         textAlign='center'>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 450, padding: '50px' }}>
           <Header as='h2' color='teal' textAlign='center'>
             <Image
               alt='wtc_'
@@ -28,7 +32,14 @@ class LoginView extends React.Component {
               // src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'
             />
             <div style={{ margin: '12px' }} />
-            <GoogleAuth />
+            {/* <GoogleAuth /> */}
+            <button
+              id='auth'
+              onClick={this.props.onSignInClick}
+              className='fluid ui blue button'>
+              <i className='google icon' />
+              Sign In with Google
+            </button>
           </Segment>
         </Grid.Column>
       </Grid>

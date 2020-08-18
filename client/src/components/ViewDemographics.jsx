@@ -94,15 +94,17 @@ class Demographics extends React.Component {
     let statusNode = document.getElementById('status').lastChild;
     document.getElementById('curr-view').appendChild(campusNode);
     document.getElementById('curr-view').appendChild(statusNode);
+    console.log("PRPS", this.props)
   }
 
   render() {
     return (
       <div style={{ margin: '8px' }}>
         <ActiveStudent compRef={this.statusSelectorElement} />
-        <Header />
+        <Header logout={this.props.logout} />
         <div id='campus' style={{ clear: 'both', float: 'left' }}>
           <SelectorCampus
+            {...this.props}
             ref={this.campusSelectorElement}
             campus_selection={this.state.campus_selection}
             demoCount={this.state.demoCount}

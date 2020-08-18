@@ -63,6 +63,9 @@ class TableStatus extends React.Component {
               1: true,
               4: true
             }}
+            pageSize={this.state.filtered.length ? this.state.filtered.length : 10 }
+            showPagination={this.state.filtered.length > 10 ? true: false }
+            // pageSize={this.state.filtered.length}
           />
         </div>
         <div style={{ margin: '8px' }} />

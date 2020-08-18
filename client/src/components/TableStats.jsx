@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import InsertEntry from './InsertEntry';
 import DownloadCSV from './DownloadCSV';
 
 /**
@@ -103,11 +104,13 @@ class TableStats extends React.Component {
               4: true
             }}
             showPagination={false}
-            pageSize={this.state.filtered.length + 1}
+            pageSize={this.state.filtered.length}
+            // style={{ width: '100%' }}
           />
         </div>
         <div style={{ margin: '8px' }} />
         <div>
+          <InsertEntry {...this.props}/>
           <DownloadCSV ref={this.downloadCSVElement} />
         </div>
         <br />

@@ -35,7 +35,7 @@ class ViewSelected extends React.Component {
     return (
       <div style={{ margin: '8px' }}>
         <ActiveStudent compRef={this.selectedSelectorElement} />
-        <Header />
+        <Header logout={this.props.logout}/>
         <div id='student' style={{ clear: 'both', float: 'left' }}>
           <div>
             <SelectorSelected

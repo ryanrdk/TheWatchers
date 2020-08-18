@@ -99,6 +99,9 @@ class TableMailingList extends React.Component {
               1: true,
               4: true
             }}
+            // width={100}
+            pageSize={this.state.filtered.length ? this.state.filtered.length : 10 }
+            showPagination={this.state.filtered.length > 10 ? true: false }
             onFilteredChange={this.onTableViewChange}
           />
           <div style={{ margin: '8px' }} />

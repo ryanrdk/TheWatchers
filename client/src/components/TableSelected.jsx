@@ -28,7 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
-    console.log('Update Stats returns: ' + data[12].active);
+    // console.log('Update Stats returns: ' + data[12].active);
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -248,18 +248,20 @@ class TableSelected extends React.Component {
             onFilteredChange={this.handleFilterChange}
             className={'-highlight'}
             showPagination={false}
-            pageSize={this.state.filtered.length}
-            noDataText={
-              <div>
-                {this.state.filtered.length === 0 && this.state.isSearch ? (
-                  <div>No results found</div>
-                ) : (
-                    <div>
-                      <br /> <br /> <Loader active inline='centered' />
-                    </div>
-                  )}
-              </div>
-            }
+            // pageSize={this.state.filtered.length}
+            pageSize={this.state.filtered.length ? this.state.filtered.length : 10 }
+            showPagination={this.state.filtered.length > 10 ? true: false }
+            // noDataText={
+            //   <div>
+            //     {this.state.filtered.length === 0 && this.state.isSearch ? (
+            //       <div>No results found</div>
+            //     ) : (
+            //         <div>
+            //           <br /> <br /> <Loader active inline='centered' />
+            //         </div>
+            //       )}
+            //   </div>
+            // }
             expanded={this.state.expanded}
             getTdProps={(state, rowInfo, column, instance) => {
               return {

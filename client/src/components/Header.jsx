@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GoogleAuth from '../containers/GoogleAuth';
+// import GoogleAuth from '../containers/GoogleAuth';
 
 class Header extends React.Component {
+  componentDidMount() {
+    console.log("PRPS2", this.props)
+  }
+
   render() {
     return (
       <div>
@@ -25,11 +29,20 @@ class Header extends React.Component {
                 width: '100%',
                 margin: '6px'
               }}>
-              <GoogleAuth />
+              <button
+                onClick={this.props.logout}
+                className='fluid ui red google button'>
+                <i className='google icon' />
+                Sign Out
+              </button>
+              {/* <Button onClick={logout}>Logout</Button> */}
+              {/* <GoogleAuth /> */}
             </div>
           </div>
         </div>
         <div id='curr-view' className='pusher' />
+        {/* <div id='curr-view' className='pusher' style={{minWidth:"950px"}} /> */}
+        {/* <div id='curr-view' className='pusher' /> */}
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
+import { Redirect } from 'react-router';
+import { Router, Route } from 'react-router-dom';
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ class GoogleAuth extends React.Component {
             '575180197639-t4sul1unsb6fuot757sic44qg4odeam6.apps.googleusercontent.com',
           scope: 'email',
           prompt: 'select_account',
-          hosted_domain: 'wethinkcode.co.za'
+          hosted_domain: 'student.wethinkcode.co.za'
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
@@ -24,6 +26,9 @@ class GoogleAuth extends React.Component {
   onAuthChange = isSignedIn => {
     if (isSignedIn) {
       this.props.signIn(this.auth.currentUser.get().getId());
+      window.location.href='/demographs'
+      // render={() => <Redirect to='/demographs' />}
+      
     } else {
       this.props.signOut();
     }
@@ -31,6 +36,7 @@ class GoogleAuth extends React.Component {
 
   onSignInClick = () => {
     this.auth.signIn();
+    
   };
 
   onSignOutClick = () => {

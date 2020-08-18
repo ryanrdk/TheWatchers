@@ -22,9 +22,9 @@ class ViewMailingList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ margin: '8px' }}>
         <ActiveStudent compRef={this.mailingListTableElement} />
-        <Header />
+        <Header logout={this.props.logout}/>
         <div id='mail' style={{ clear: 'both', float: 'left' }}>
           <TableMailingList
             ref={this.mailingListTableElement}
