@@ -14,7 +14,7 @@ class LoginView extends React.Component {
           <Header as='h2' color='teal' textAlign='center'>
             <Image
               alt='wtc_'
-              src='https://www.wethinkcode.co.za/assets/images/wethinkcode-logo-blue.png'
+              src='https://images.squarespace-cdn.com/content/5de86a02319db87bbb0a1449/1575940079269-11C8RJ3FNW1M1IRWG7GF/wethinkcode-logo-blue.png?content-type=image%2Fpng'
             />{' '}
             Log-in to your account
           </Header>
