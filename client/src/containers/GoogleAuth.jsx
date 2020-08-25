@@ -11,7 +11,7 @@ class GoogleAuth extends React.Component {
             '575180197639-t4sul1unsb6fuot757sic44qg4odeam6.apps.googleusercontent.com',
           scope: 'email',
           prompt: 'select_account',
-          hosted_domain: 'wethinkcode.co.za'
+          hosted_domain: 'student.wethinkcode.co.za'
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
