@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import Popup from "reactjs-popup";
+import { ADD_BOOTCAMPER } from '../queries';
 // import 'semantic-ui-css/semantic.min.css';
 
 /**
@@ -14,68 +15,73 @@ class InsertEntry extends React.Component {
       data: []
     };
   }
-  updateStats(data) {
-    this.setState({ data: data });
-    // if (data.capetown.male && data.capetown.female && data.johannesburg.male && data.johannesburg.female) { console.log("popop", [data.capetown.male, data.capetown.female, data.johannesburg.male, data.johannesburg.female]); }
+  
+  handleFirstnameChange = e => {
+    this.setState({ add_firstname: e.target.value });
   }
-//   objectToCSV(data) {
-//     const csvRows = [];
-//     const headers = [];
-//     for (let headElem in data[0]) {
-//       const escapedHead = ('' + headElem).replace(/"/g, '\\"');
-//       headers.push(`"${escapedHead}"`);
-//     }
-//     csvRows.push(headers.join(','));
-//     for (let elem in data) {
-//       if (elem !== 0) {
-//         const toAdd = [];
-//         for (let val in data[elem]) {
-//           const escaped = ('' + data[elem][val]).replace(/"/g, '\\"');
-//           toAdd.push(`"${escaped}"`);
-//         }
-//         csvRows.push(toAdd.join(','));
-//       }
-//     }
-//     return csvRows.join('\n');
-//   }
-//   download(data) {
-//     const blob = new Blob([data], { type: 'text/csv' });
-//     const url = window.URL.createObjectURL(blob);
-//     const a = document.createElement('a');
-//     a.setAttribute('hidden', '');
-//     a.setAttribute('href', url);
-//     a.setAttribute('download', 'download.csv');
-//     document.body.appendChild(a);
-//     a.click();
-//     document.body.removeChild(a);
-//   }
+  handleLastnameChange = e => {
+    this.setState({ add_lastname: e.target.value });
+  }
+  handleUsernameChange = e => {
+    this.setState({ add_username: e.target.value });
+  }
+  handleEmailChange = e => {
+    this.setState({ add_email: e.target.value });
+  }
+  handleGenderChange = e => {
+    this.setState({ add_gender: e.target.value });
+  }
+  handleCampusChange = e => {
+    this.setState({ add_campus: e.target.value });
+  }
+  handleEthnicityChange = e => {
+    this.setState({ add_ethnicity: e.target.value });
+  }
   onClick = e => {
     console.log("To add entry");
-    // const cd = this.objectToCSV(this.state.data);
-    // this.download(cd);
   };
   onSubmit = e => {
-      console.log(this.props.auth);
+      console.log(this.props.auth, this.state.add_firstname);
+      ADD_BOOTCAMPER(this.state.add_firstname, this.state.add_lastname, this.state.add_username, this.state.add_email, this.state.add_campus, this.state.add_gender, this.state.add_ethnicity, "active")
   }
   render() {
     return (
       <div>
         <div>
-          <Popup trigger={<button style={{ float: 'left', backgroundColor: 'transparent', border: 'none' }}><Button floated='left' onClick={this.onClick}>
+          <Popup trigger={<div style={{ float: 'left', backgroundColor: 'transparent', border: 'none' }}><Button floated='left' onClick={this.onClick}>
             Add entry
-          </Button></button>} position="right center">
+          </Button></div>} position="right center">
               <div>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input className="form-control" id="name" />
+                        <label htmlFor="firstname">First Name</label>
+                        <input className="form-control" id="firstname" onChange={this.handleFirstnameChange} />
                     </div> 
-                    
                     <div className="form-group">
-                        <label htmlFor="email">Email address</label>
+                        <label htmlFor="lastname">Last Name</label>
+                        <input className="form-control" id="lastname" onChange={this.handleLastnameChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
+                        <input className="form-control" id="username" onChange={this.handleUsernameChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
                         <input type="email" className="form-control" id="email"
-                        placeholder="name@example.com" 
+                        placeholder="name@example.com" onChange={this.handleEmailChange}
                         />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="campus">Campus</label>
+                        <input className="form-control" id="campus" onChange={this.handleCampusChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="gender">Gender</label>
+                        <input className="form-control" id="gender" onChange={this.handleGenderChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="ehtnicity">Ethnicity</label>
+                        <input className="form-control" id="ethnicity" onChange={this.handleEthnicityChange} />
                     </div>
                     <div className="form-group">
                         <button className="form-control btn btn-primary" type="submit">

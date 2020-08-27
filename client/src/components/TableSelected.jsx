@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
-import { Loader } from 'semantic-ui-react';
+// import { Loader } from 'semantic-ui-react';
 import { GET_BOOTCAMPER_DAYS, UPDATE_STATUS } from '../queries';
 
 class TableSelected extends React.Component {
@@ -247,7 +247,7 @@ class TableSelected extends React.Component {
             defaultFilterMethod={this.filterMethod}
             onFilteredChange={this.handleFilterChange}
             className={'-highlight'}
-            showPagination={false}
+            // showPagination={false}
             // pageSize={this.state.filtered.length}
             pageSize={this.state.filtered.length ? this.state.filtered.length : 10 }
             showPagination={this.state.filtered.length > 10 ? true: false }

@@ -4,7 +4,6 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
   // let ans = null;
   const query = `{
     getAllBootcampers {
-      _id
       first_name
       last_name
       username
@@ -98,7 +97,6 @@ export const GET_BOOTCAMPER_DAYS = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperDays(username: $username){
-        _id
         Day
         Username
         User_id
@@ -140,7 +138,6 @@ export const GET_BOOTCAMPER_COLLES = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperColles(username: $username){
-        _id
         Colle
         Username
         User_id
@@ -177,7 +174,6 @@ export const GET_BOOTCAMPER_EXAMS = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperExams(username: $username){
-        _id
         Exam
         Username
         User_id
@@ -211,7 +207,6 @@ export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
   const query = `
   query ($day: String!) {
     getDay(day:$day) {
-      _id
       Day
       Username
       User_id
@@ -225,7 +220,6 @@ export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
       Comment3
       Cheating
       bootcamper {
-        _id
         first_name
         last_name
         username
@@ -263,7 +257,6 @@ export const UPDATE_STATUS = function (username, status) {
   const query = `
   mutation ($username: String!, $status: String!) {
     updateStatus(username:$username, status:$status) {
-      _id
       first_name
       last_name
       username
@@ -294,6 +287,70 @@ export const UPDATE_STATUS = function (username, status) {
       //       // console.log("expanderrrrr", result.data.getBootcamperDays)
       //     }
       // }
+      console.log("result", result)
+    });
+};
+
+export const ADD_BOOTCAMPER = function (first_name, last_name, username, email, campus, gender, ethnicity, active) {
+  const query = `
+  mutation($first_name: String!, $last_name: String!, $username: String!, $email: String!, $campus: String!, $gender: String!, $ethnicity: String!, $active: String!) {
+    addBootcamper(first_name: $first_name, last_name: $last_name, username: $username, email: $email, campus: $campus, gender: $gender, ethnicity: $ethnicity, active: $active) {
+      first_name
+      last_name
+      username
+      email
+      campus
+      gender
+      ethnicity
+      active
+    }
+  }
+  `;
+  const variables = `{ "first_name": "${first_name}", "last_name": "${last_name}", "username": "${username}", "email": "${email}", "campus": "${campus}", "gender": "${gender}", "ethnicity": "${ethnicity}", "active": "${active}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("result", result)
+    });
+};
+
+export const DELETE_BOOTCAMPER = function (username) {
+  const query = `
+  mutation($username: String!) {
+    deleteBootcamper(username: $username) {
+      first_name
+      last_name
+      username
+      email
+      campus
+      gender
+      ethnicity
+      active
+    }
+  }
+  `;
+  const variables = `{ "username": "${username}" }`;
+  fetch(GRAPHQL_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      query,
+      variables
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
       console.log("result", result)
     });
 };

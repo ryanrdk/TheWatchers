@@ -73,6 +73,16 @@ exports.resolvers = {
             });
             // const bootcamper = await Bootcamper.update({ active: status }, { where : { username : username }});
             return bootcamper;
+        },
+        addBootcamper: async(root, { first_name, last_name, username, email, campus, gender, ethnicity, active }, { Bootcamper }) => {
+            const bootcamper = await Bootcamper.create({ first_name, last_name, username, email, campus, gender, ethnicity, active })
+            return await bootcamper;
+        },
+        deleteBootcamper: async(root, { username }, { Bootcamper }) => {
+            const bootcamper = await Bootcamper.findOne({ where : { username } })
+            console.log(bootcamper)
+            await Bootcamper.destroy({ where : { username } })
+            return await bootcamper;
         }
     }
 };

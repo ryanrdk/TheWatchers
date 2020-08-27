@@ -1,7 +1,7 @@
 exports.typeDefs = `
 
 type Bootcamper {
-    _id: ID
+    id: ID
     first_name: String!
     last_name: String!
     username: String!
@@ -13,7 +13,7 @@ type Bootcamper {
 }
 
 type Day {
-    _id: ID
+    id: ID
     Day: String!
     Username: String!
     User_id: String!
@@ -30,7 +30,7 @@ type Day {
 }
 
 type Colle {
-    _id: ID
+    id: ID
     Colle: String!
     Username: String!
     User_id: String!
@@ -43,7 +43,7 @@ type Colle {
 }
 
 type Exam {
-    _id: ID
+    id: ID
     Exam: String!
     Username: String!
     User_id: String!
@@ -65,5 +65,7 @@ type Query {
 
 type Mutation {
     updateStatus(username: String!, status: String!): Bootcamper
+    addBootcamper(first_name: String!, last_name: String!, username: String!, email: String!, campus: String!, gender: String!, ethnicity: String!, active: String!) : Bootcamper
+    deleteBootcamper(username: String!) : Bootcamper
 }
 `;
