@@ -99,6 +99,23 @@ exports.resolvers = {
                 RETURNING *
             `).then(res => { return res.rows[0] })
             return bootcamper;
+        },
+        addBootcamper: async(root, { first_name, last_name, username, email, campus, gender, ethnicity, active }, { pgPool }) => {
+            // const bootcamper = await Bootcamper.create({ first_name, last_name, username, email, campus, gender, ethnicity, active })
+            const bootcamper = await pgPool.query(`
+                INSERT INTO "Bootcampers" ("first_name", "last_name", "username", "email", "campus", "gender", "ethnicity", "active")
+                VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
+            `, [ first_name, last_name, username, email, campus, gender, ethnicity, active ]).then(res => { return res.rows[0] })
+            return await bootcamper;
+        },
+        deleteBootcamper: async(root, { username }, { pgPool }) => {
+            // const bootcamper = await Bootcamper.findOne({ where : { username } })
+            const bootcamper = await pgPool.query(`
+                DELETE FROM "Bootcampers" WHERE "username" = $1
+                RETURNING *;
+            `, [ username ]).then(res => { return res.rows[0] })
+            console.log(bootcamper)
+            return await bootcamper;
         }
     }
 };

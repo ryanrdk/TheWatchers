@@ -65,5 +65,7 @@ type Query {
 
 type Mutation {
     updateStatus(username: String!, status: String!): Bootcamper
+    addBootcamper(first_name: String!, last_name: String!, username: String!, email: String!, campus: String!, gender: String!, ethnicity: String!, active: String!) : Bootcamper
+    deleteBootcamper(username: String!) : Bootcamper
 }
 `;

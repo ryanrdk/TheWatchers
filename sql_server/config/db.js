@@ -16,8 +16,7 @@ db.query(`
     "email" VARCHAR(255), "campus" VARCHAR(255), 
     "gender" VARCHAR(255), "ethnicity" VARCHAR(255), 
     "active" VARCHAR(255), "selected" VARCHAR(255), 
-    "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, 
-    "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+    PRIMARY KEY ("id"));
 
     CREATE TABLE IF NOT EXISTS "Days" 
     ("id"   SERIAL , "Username" VARCHAR(255), 
@@ -26,24 +25,21 @@ db.query(`
     "Comment1" VARCHAR(255), "Mark2" INTEGER, 
     "Comment2" VARCHAR(255), "Mark3" INTEGER, 
     "Comment3" VARCHAR(255), "Cheating" VARCHAR(255), 
-    "Day" VARCHAR(255), "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, 
-    "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+    "Day" VARCHAR(255), PRIMARY KEY ("id"));
 
     CREATE TABLE IF NOT EXISTS "Colles" 
     ("id"   SERIAL , "Username" VARCHAR(255), 
     "User_id" VARCHAR(255), "Campus" VARCHAR(255), 
     "Final_mark" INTEGER, "Mark1" INTEGER, 
     "Comment1" VARCHAR(255), "Cheating" VARCHAR(255), 
-    "Colle" VARCHAR(255), "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, 
-    "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+    "Colle" VARCHAR(255), PRIMARY KEY ("id"));
 
     CREATE TABLE IF NOT EXISTS "Exams" 
     ("id"   SERIAL , "Username" VARCHAR(255), 
     "User_id" VARCHAR(255), 
     "Campus" VARCHAR(255), 
     "Final_mark" INTEGER, "Exam" VARCHAR(255), 
-    "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, 
-    "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("id"));
+    PRIMARY KEY ("id"));
 `)
 
 const { typeDefs } = require('../schema_sql');
