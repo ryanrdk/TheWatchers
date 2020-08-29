@@ -97,7 +97,7 @@ exports.resolvers = {
             const bootcamper = await pgPool.query(`
                 UPDATE "Bootcampers" SET "active" = $1 WHERE "username" = $2 
                 RETURNING *
-            `).then(res => { return res.rows[0] })
+            `, [ status, username ]).then(res => { return res.rows[0] })
             return bootcamper;
         },
         addBootcamper: async(root, { first_name, last_name, username, email, campus, gender, ethnicity, active }, { pgPool }) => {
