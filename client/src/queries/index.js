@@ -4,7 +4,6 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
   // let ans = null;
   const query = `{
     getAllBootcampers {
-      _id
       first_name
       last_name
       username
@@ -98,7 +97,6 @@ export const GET_BOOTCAMPER_DAYS = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperDays(username: $username){
-        _id
         Day
         Username
         User_id
@@ -140,7 +138,6 @@ export const GET_BOOTCAMPER_COLLES = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperColles(username: $username){
-        _id
         Colle
         Username
         User_id
@@ -177,7 +174,6 @@ export const GET_BOOTCAMPER_EXAMS = function (component, username) {
   const query = `
     query ($username: String!){
       getBootcamperExams(username: $username){
-        _id
         Exam
         Username
         User_id
@@ -210,8 +206,7 @@ export const GET_BOOTCAMPER_EXAMS = function (component, username) {
 export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
   const query = `
   query ($day: String!) {
-    getDay(day:$day) {
-      _id
+    getDay(day:$day) 
       Day
       Username
       User_id
@@ -225,7 +220,6 @@ export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
       Comment3
       Cheating
       bootcamper {
-        _id
         first_name
         last_name
         username
@@ -262,8 +256,7 @@ export const GET_ALL_MARKS_FOR_DAY = function (component, day) {
 export const UPDATE_STATUS = function (username, status) {
   const query = `
   mutation ($username: String!, $status: String!) {
-    updateStatus(username:$username, status:$status) {
-      _id
+    updateStatus(username:$username, status:$status) 
       first_name
       last_name
       username

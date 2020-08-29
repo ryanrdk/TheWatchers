@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "Server side of app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "jde-agr",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.8",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "fast-csv": "^2.4.1",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4",
+    "pg-promise": "^10.6.1"
+  }
+}

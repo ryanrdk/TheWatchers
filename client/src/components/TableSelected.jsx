@@ -28,7 +28,7 @@ class TableSelected extends React.Component {
   }
 
   updateStats(data) {
-    console.log('Update Stats returns: ' + data[12].active);
+    // console.log('Update Stats returns: ' + data[12].active);
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
