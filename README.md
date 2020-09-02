@@ -91,7 +91,7 @@ We need to install all the dependencies by using the command
 $ npm install
 ```
 
-Once all the denpendencies have been installed, we can proceed to running the actual server by using the command
+Once all the dependencies have been installed, we can proceed to running the actual server by using the command
 ```sh
 $ npm start
 ```
@@ -108,7 +108,7 @@ We need to install all the dependencies by using the command
 $ npm install
 ```
 
-Once all the denpendencies have been installed, we can proceed to running the actual server by using the command
+Once all the dependencies have been installed, we can proceed to running the actual server by using the command
 ```sh
 $ npm start
 ```
