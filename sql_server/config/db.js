@@ -1,14 +1,21 @@
 const pg = require('pg');
 const { makeExecutableSchema } = require('graphql-tools');
 
-const db = new pg.Pool({ 
-    host : 'localhost',
-    user : 'the_watchers_user',
-    database : 'the_watchers',
-    password : 'p@ssword1',
-    port : 5432
+/*
+Creating a Pool to enable the quering of the database
+*/
+const db = new pg.Pool({
+    host: 'localhost',
+    user: 'the_watchers_user',
+    database: 'the_watchers',
+    password: 'p@ssword1',
+    port: 5432
 })
 
+/*
+Creates all the necessary tables in our PostgreSQL database
+if they do not yet exist
+*/
 db.query(`
     CREATE TABLE IF NOT EXISTS "Bootcampers" 
     ("id"   SERIAL , "first_name" VARCHAR(255), 
@@ -42,6 +49,11 @@ db.query(`
     PRIMARY KEY ("id"));
 `)
 
+/*
+Fetching the schema (type definitions for the different tables)
+and resolvers (functionality behind each query and mutation)
+to be used by GraphQL
+*/
 const { typeDefs } = require('../schema_sql');
 const { resolvers } = require('../resolvers_sql');
 
@@ -51,5 +63,6 @@ const schema = makeExecutableSchema({
 });
 
 module.exports = {
-    db, schema
+    db,
+    schema
 }

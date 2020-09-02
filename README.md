@@ -1,5 +1,15 @@
 # TheWatchers
 
+## Project Objectives
+
+* Create in-house tooling for WTC (WeThinkCode_) whereby all student information gathered during WTC's bootcamp selection process is tracked and centralized (**database management**)
+
+* This information should be displayed in a logical way that makes it easy to understand how to use the tooling within a short while of interacting with it (**intuitive**, **UX/UI**) 
+
+* Only WTC staff members should have access to this tooling (**access control**)
+
+* Ultimately this tooling should make it easy to select bootcampers and display the overall demographics of those selected from the bootcamp (**main objective**)
+
 ## Prerequisites
 You will need the following in order to help install and configure all the necessary packages and database setup.
 
@@ -85,6 +95,7 @@ Once all the denpendencies have been installed, we can proceed to running the ac
 ```sh
 $ npm start
 ```
+The server will run on port **4000** when run on **localhost**
 
 ### Client Side
 Navigate to the **client** folder (Note: We assume you are at the root of the project folder)
@@ -102,12 +113,16 @@ Once all the denpendencies have been installed, we can proceed to running the ac
 $ npm start
 ```
 
+The client will run on port **3000** when run on **localhost**
+
 ### Testing
 We made use of GraphQL's popular GUI called **GraphiQL** in order to test our queries and mutations that would occur (CRUD).
 
-You can view this GUI on the /graphql endpoint in your browser (Note: We assume that you are running the server on your localhost on port 4000)
+You can view this GUI on the **/graphql** endpoint in your browser (Note: We assume that you are running the server on your localhost on port 4000)
 
 See below the url we insert in the browser (i.e. Chrome)
 ```
 http://localhost:4000/graphql
 ```
+Below is an image of what the GraphiQL GUI looks like
+![Screenshot](./resources/graphiql.png)
