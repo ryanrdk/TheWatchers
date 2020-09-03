@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 
+/**
+ *  Taking a look at our Google Authentication class.
+ *  We make use of the most used lifecycle method here: componentDidMount()
+ *  Think of it as when the component is ready, do this.
+ *  'This' being: initialising the G API client with our client secret and specified domain.
+ */
 class GoogleAuth extends React.Component {
-  /**
-   *  Taking a look at our Google Authentication class.
-   *  We make use of the most used lifecycle method here: componentDidMount()
-   *  Think of it as when the component is ready, do this.
-   *  'This' being: initialising the G API client with our client secret and specified domain.
-   */
   componentDidMount() {
     window.gapi.load('client:auth2', () => {
       window.gapi.client
