@@ -3,6 +3,12 @@ import { Button } from 'semantic-ui-react';
 import Popup from "reactjs-popup";
 import { ADD_BOOTCAMPER } from '../queries';
 
+/**
+ *  Quite the opposite of our DELETE Component, we have a INSERT Component
+ *  Working similarly but not at all, we have a popup that allows you to enter the required fields 
+ *  On submit we call an add bootcamper query that will INSERT the user into the db.
+ */
+
 class InsertEntry extends React.Component {
   constructor(props) {
     super(props);

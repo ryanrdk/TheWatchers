@@ -1,6 +1,12 @@
 import { SIGN_IN, SIGN_OUT, POPULATE_BOOTCAMPERS } from './types';
 import { GET_ALL_BOOTCAMPERS } from '../queries'
 
+/**
+ *  Actions are objects that contain two important fields, 
+ *  usually type (required) and payload (optional) 
+ *  that send data from your application to your store.
+ */
+
 export const signIn = userId => {
   return {
     type: SIGN_IN,

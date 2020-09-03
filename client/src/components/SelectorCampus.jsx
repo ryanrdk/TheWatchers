@@ -9,6 +9,11 @@ import { Dropdown } from 'semantic-ui-react';
  * Child Components -> TableStats ~~ Displays demographics data on a table
  *                          - DownloadCSV ~~ Download the data
  */
+
+ /**
+  * Here is our component that contains most of our logic for our filters that
+  * we can apply to our tables, it counts the campuses by demographic to display.
+  */
 class SelectorCampus extends React.Component {
   constructor(props) {
     super(props);
@@ -21,16 +26,11 @@ class SelectorCampus extends React.Component {
       filteredData: [],
       demoCount: props.demoCount
     };
-    // console.log("mountererererpppppp", props)
   }
+
   componentDidMount() {
-    // const jay = require('../dummyDemographics.json');
-    // console.log(jay);
-    // this.setState({ demoData: jay, filteredData: jay });
-    // this.tableStatsElement.current.updateStats(jay);
-    // this.setState
-    // console.log("mounterererer", this.state.demoCount)
   }
+
   updateStats(data) {
     this.setState({ demoData: data, filtered: data });
     this.tableStatsElement.current.updateStats([
@@ -40,6 +40,7 @@ class SelectorCampus extends React.Component {
       data.johannesburg.female
     ]);
   }
+
   /**
    * updateDemoCount updates the demographic stats per campus and gender
    * @param {*} campus -> Required! String. Specify between "capetown" and "johannesburg"
@@ -51,8 +52,6 @@ class SelectorCampus extends React.Component {
    * @param {*} chi -> Required! Int. Value for race "chinese"
    */
   updateDemoCount(campus, gender, wht, blk, col, ind, chi) {
-    // console.log("updaterrrr", this.state.demoCount)
-    // console.log("upelem", this.tableStatsElement.current.state)
     if (campus === 'capetown') {
       if (gender === 'male') {
         this.setState({
@@ -194,10 +193,8 @@ class SelectorCampus extends React.Component {
         });
       }
     }
-    // console.log("uptupt", this.state.demoCount, this.tableStatsElement.current)
   }
   onChange = (e, data) => {
-    // console.log('data', data, this.state.demoCount, this.state.demoData);
     let filt = [];
     if (data.value === 'ALL') {
       filt = [

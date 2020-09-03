@@ -1,7 +1,12 @@
 const GRAPHQL_API = 'http://localhost:4000/graphql';
 
+/**
+ *  We're using graphql as a query language and sending it through as a request to the server,
+ *  the server is then able to intepret the queries due to the schema and resolvers 
+ *  defining the execution of the query on the server side (as demonstrated by Jasmine earlier)
+ */
+
 export const GET_ALL_BOOTCAMPERS = function (component) {
-  // let ans = null;
   const query = `{
     getAllBootcampers {
       first_name
@@ -24,13 +29,6 @@ export const GET_ALL_BOOTCAMPERS = function (component) {
     }
   })
     .then(response => response.json()))
-  // .then(result => {
-  //   if (result.data !== null && result.data !== undefined) {
-  //     if (component.current !== null && component.current !== undefined) {
-  //       component.current.updateStats(result.data.getAllBootcampers);
-  //     }
-  //   }
-  // });
 };
 
 export const GET_BOOTCAMPERS_BY_GENDER = function (component, gender, campus) {
@@ -128,7 +126,6 @@ export const GET_BOOTCAMPER_DAYS = function (component, username) {
       if (result.data !== null && result.data !== undefined) {
         if (component !== null && component !== undefined) {
           component.updateStats2(result.data.getBootcamperDays);
-          // console.log("expanderrrrr", result.data.getBootcamperDays)
         }
       }
     });
@@ -281,12 +278,6 @@ export const UPDATE_STATUS = function (username, status) {
   })
     .then(response => response.json())
     .then(result => {
-      //   if (result.data !== null && result.data !== undefined) {
-      //     if (component !== null && component !== undefined) {
-      //       component.updateStats2(result.data.getBootcamperDays);
-      //       // console.log("expanderrrrr", result.data.getBootcamperDays)
-      //     }
-      // }
       console.log("result", result)
     });
 };

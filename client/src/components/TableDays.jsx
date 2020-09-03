@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactTable from 'react-table';
-// import DownloadCSV from './DownloadCSV';
-// import Header from './Header';
-// import { GET_ALL_BOOTCAMPERS } from '../queries';
+
+/**
+ * This component is our table for displaying the student course work gradings.
+ */
 
 class TableDays extends React.Component {
     constructor(props) {
         super(props);
         this.reactTable = React.createRef();
-        // this.downloadCSVElement = React.createRef();
         this.state = {
             data: [],
             filtered: []
@@ -19,14 +19,10 @@ class TableDays extends React.Component {
 
     updateStats(data) {
         this.setState({ data: data, filtered: data });
-        // this.downloadCSVElement.current.updateStats(data);
-        console.log("compo", this.state.filtered)
     }
 
     updateChange(data) {
         this.setState({ filtered: data });
-        // this.downloadCSVElement.current.updateStats(data);
-        console.log("compoChange", data)
     }
 
     onTableViewChange = async () => {
@@ -101,8 +97,6 @@ class TableDays extends React.Component {
 
         return (
             <div>
-                {/* <Header /> */}
-                {/* <div id='mail' style={{ clear: 'both', float: 'left' }}> */}
                 <div>
                     <ReactTable
                         ref={this.reactTable}
@@ -116,16 +110,9 @@ class TableDays extends React.Component {
                             1: true,
                             4: true
                         }}
-                        // onPageChange={this.onTableViewChange}
-                        // onPageSizeChange={this.onTableViewChange}
-                        // onSortedChange={this.onTableViewChange}
-                        // onExpandedChange={this.onTableViewChange}
                         onFilteredChange={this.onTableViewChange}
-                    // onResizedChange={this.onTableViewChange}
                     />
-                    {/* <DownloadCSV ref={this.downloadCSVElement} /> */}
                 </div>
-                {/* </div> */}
             </div>
         );
     }

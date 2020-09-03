@@ -4,17 +4,10 @@ import { Grid, Segment, Loader } from 'semantic-ui-react';
 import GoogleAuth from '../containers/GoogleAuth';
 
 class Autherise extends React.Component {
-  /* constructor(props) {
-    super(props);
-    this.state = {
-      isSignedIn: this.props.auth.isSignedIn
-    };
-  } */
 
   componentDidUpdate() {}
 
   componentDidMount() {
-    console.log('Mother o fa M ount / ' + this.state.isSignedIn);
   }
 
   render() {

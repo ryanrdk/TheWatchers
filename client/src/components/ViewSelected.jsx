@@ -1,9 +1,12 @@
 import React from 'react';
 import SelectorSelected from './SelectorSelected';
-//import SelectorDays from './SelectorDays';
 import Header from './Header';
 import ActiveStudent from '../containers/activeStudent';
-// import { GET_ALL_BOOTCAMPERS } from '../queries';
+
+/**
+ * The Selected View displays our tables that displays the students listed 
+ * with a checkbox that is selected or not selected for enrollment.
+ */
 
 class ViewSelected extends React.Component {
   constructor(props) {
@@ -28,7 +31,6 @@ class ViewSelected extends React.Component {
   componentDidMount() {
     let studentNode = document.getElementById('student').lastChild;
     document.getElementById('curr-view').appendChild(studentNode);
-    // GET_ALL_BOOTCAMPERS(this.selectedSelectorElement);
   }
 
   render() {
@@ -42,12 +44,6 @@ class ViewSelected extends React.Component {
               ref={this.selectedSelectorElement}
               active_selection={this.state.active_selection}
             />
-            {/* <div style={{ float: 'right' }}> */}
-            {/* <SelectorDays
-              ref={this.daysSelectorElement}
-              days_selection={this.state.days_selection}
-            /> */}
-            {/* </div> */}
           </div>
         </div>
       </div>

@@ -1,22 +1,29 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-// import 'semantic-ui-css/semantic.min.css';
 
 /**
  * DownloadCSV BUTTON ~~~ Downloads relevant data
  * State -> data
  */
 class DownloadCSV extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       data: []
     };
   }
+
   updateStats(data) {
     this.setState({ data: data });
-    // if (data.capetown.male && data.capetown.female && data.johannesburg.male && data.johannesburg.female) { console.log("popop", [data.capetown.male, data.capetown.female, data.johannesburg.male, data.johannesburg.female]); }
   }
+
+/**
+ *  Using some simple string manipulation, we constructed the data that gets inputted
+ *  from our tables into this funny method that will format it as a csv file.
+ *  We used a blob data type which are file-like objects that can hold raw data.
+ */
+
   objectToCSV(data) {
     const csvRows = [];
     const headers = [];
@@ -24,6 +31,7 @@ class DownloadCSV extends React.Component {
       const escapedHead = ('' + headElem).replace(/"/g, '\\"');
       headers.push(`"${escapedHead}"`);
     }
+
     csvRows.push(headers.join(','));
     for (let elem in data) {
       if (elem !== 0) {
@@ -37,6 +45,7 @@ class DownloadCSV extends React.Component {
     }
     return csvRows.join('\n');
   }
+
   download(data) {
     const blob = new Blob([data], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -48,10 +57,12 @@ class DownloadCSV extends React.Component {
     a.click();
     document.body.removeChild(a);
   }
+
   onClick = e => {
     const cd = this.objectToCSV(this.state.data);
     this.download(cd);
   };
+
   render() {
     return (
       <div>

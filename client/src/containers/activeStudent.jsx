@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { populateBootcampers } from '../actions';
 
+/**
+ *  We call this container a lot. This is where we pass through refs of our other data tables (components)
+ *  to this one in order to push that data to the redux store in the case it is not already there.
+ */
+
 class ActiveStudent extends React.Component {
     componentDidMount() {
         if (!this.props.activeStudent.isPopulated) {
@@ -15,7 +20,6 @@ class ActiveStudent extends React.Component {
             }
             populateData();
         }
-        // console.log("stateerr", this.props)
     }
     render() {
         return null;

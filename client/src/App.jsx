@@ -12,9 +12,16 @@ import Authorise from './containers/Authorise';
 
 let loggedIn;
 
+/**
+ *  Our App class. This is our first typical react component.
+ *  The App class is also where you typically handle your routing and navigation.
+ *  Because routing is located here, 
+ *  I take advantage of that and implement our auth restrictions on those routes.
+ *  If our auth state in our Redux store is false, well you may try to force a route and fail.
+ */
+
 class App extends Component {
   authorise() {
-    //if (this.props.auth.isSignedIn !== null) {
     if (this.props.auth.isSignedIn) {
       loggedIn = true;
     } else if (!this.props.auth.isSignedIn) {
@@ -76,6 +83,10 @@ class App extends Component {
     );
   }
 }
+
+/**
+ *  The mapStateToProps is a very nifty way of globalising our auth state within this class.
+ */
 
 function mapStateToProps(state) {
   // Whatever gets returned from here will show up as props auth

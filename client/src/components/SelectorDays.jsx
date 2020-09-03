@@ -3,6 +3,10 @@ import { Dropdown } from 'semantic-ui-react';
 import TableDays from './TableDays';
 import { GET_ALL_MARKS_FOR_DAY } from '../queries';
 
+/**
+ * This selector class controls our filters for the student evaluations (marking) table.
+ */
+
 class SelectorDays extends React.Component {
   constructor(props) {
     super(props);
@@ -17,38 +21,16 @@ class SelectorDays extends React.Component {
   }
 
   componentDidMount() {
-    //const jay = require('../selected.json');
-    //this.setState({ data: jay, filteredData: jay });
-    //this.tableSelectedElement.current.updateStats(jay);
   }
 
   updateStats(data) {
     this.setState({ data: data, filteredData: data });
-    // this.tableSelectedElement.current.updateStats(data);
-    // this.tableSelectedElement.current.componentDidMount();
   }
 
   onChange = (e, data) => {
-    // const filt = this.state.data.filter(elem => {
-    //     if (data.value === 'All') {
-    //         return elem;
-    //     } else if (data.value === 'Selected') {
-    //         if (elem.active === 'selected') {
-    //             return elem;
-    //         }
-    //     } else if (data.value === 'Not Selected') {
-    //         if (elem.active !== 'selected') {
-    //             return elem;
-    //         }
-    //     }
-    //     return null;
-    // });
-
-    // this.tableSelectedElement.current.updateStats(filt);
     this.setState({
       select: data.value,
       searchQuery: ''
-      // filteredData: filt
     });
     if (data.value !== 'None') {
       GET_ALL_MARKS_FOR_DAY(this.tableDaysElement, data.value);

@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 
 class GoogleAuth extends React.Component {
+  /**
+   *  Taking a look at our Google Authentication class.
+   *  We make use of the most used lifecycle method here: componentDidMount()
+   *  Think of it as when the component is ready, do this.
+   *  'This' being: initialising the G API client with our client secret and specified domain.
+   */
   componentDidMount() {
     window.gapi.load('client:auth2', () => {
       window.gapi.client
@@ -37,6 +43,11 @@ class GoogleAuth extends React.Component {
     this.auth.signOut();
   };
 
+/**
+ *  This is where we render the sign in button and style it briefly
+ *  Depending on our auth state, it can be a sign in or logout button.
+ *  It is quite nifty and reusable.
+ */
   renderAuthButton() {
     if (this.props.isSignedIn === null) {
       return null;

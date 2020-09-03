@@ -2,6 +2,11 @@ import React from 'react';
 import { Grid, Header, Image, Segment } from 'semantic-ui-react';
 import GoogleAuth from '../containers/GoogleAuth';
 
+/**
+ *  This is simply a basic login view, or rather component that we use at the beginning of the user journey.
+ *  It is the parent component to the Google Auth button that handles our authentication.
+ */
+
 class LoginView extends React.Component {
   render() {
     return (

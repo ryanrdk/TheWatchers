@@ -17,6 +17,9 @@ import ActiveStudent from '../containers/activeStudent';
  * DownloadCSV ~~ Download the data
  */
 
+ /**
+  * The Demographic View holds the tables for our initial screen.
+  */
 class Demographics extends React.Component {
   constructor(props) {
     super(props);
@@ -77,7 +80,6 @@ class Demographics extends React.Component {
   }
 
   componentDidMount() {
-    // GET_ALL_BOOTCAMPERS(this.statusSelectorElement);
     GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'male', 'capetown');
     GET_BOOTCAMPERS_BY_GENDER(this.campusSelectorElement, 'female', 'capetown');
     GET_BOOTCAMPERS_BY_GENDER(

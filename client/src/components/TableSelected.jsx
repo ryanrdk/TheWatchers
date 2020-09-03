@@ -5,6 +5,11 @@ import DownloadCSV from './DownloadCSV';
 import { Loader } from 'semantic-ui-react';
 import { GET_BOOTCAMPER_DAYS, UPDATE_STATUS } from '../queries';
 
+/**
+ * The selected table holds our student information and logic for mutating 
+ * a students eligibility status with a checkbox.
+ */
+
 class TableSelected extends React.Component {
   constructor(props) {
     super(props);
@@ -21,14 +26,12 @@ class TableSelected extends React.Component {
       isSearch: false
     };
 
-    // this.handleChange = this.handleChange.bind(this);
     this.handleSingleCheckboxChange = this.handleSingleCheckboxChange.bind(
       this
     );
   }
 
   updateStats(data) {
-    // console.log('Update Stats returns: ' + data[12].active);
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
     let newCheck = [];
@@ -51,19 +54,6 @@ class TableSelected extends React.Component {
       filteredSub: data
     });
   }
-
-  // handleChange = () => {
-  //   let selectAll = !this.state.selectAll;
-  //   this.setState({ selectAll: selectAll });
-  //   let newCheck = [];
-  //   this.state.data.forEach(function (e, index) {
-  //     newCheck.push(selectAll);
-  //   });
-
-  //   this.setState({
-  //     checked: newCheck
-  //   });
-  // };
 
   handleSingleCheckboxChange = index => {
     let newCheck = this.state.checked;
@@ -95,7 +85,7 @@ class TableSelected extends React.Component {
     }
 
     this.setState({
-      data: newData, //maybe not necessary
+      data: newData, 
       checked: newCheck,
       selectAll: selectAll
     });
@@ -154,7 +144,6 @@ class TableSelected extends React.Component {
       {
         Header: 'Selected',
         Cell: row => (
-          // console.log("checkingOut", this.state.checked, row.index),
           <input
             type='checkbox'
             checked={this.state.checked[row.index]}
@@ -186,10 +175,6 @@ class TableSelected extends React.Component {
         Header: 'Username',
         accessor: 'Username'
       },
-      // {
-      //   Header: 'Campus',
-      //   accessor: 'Campus'
-      // },
       {
         Header: 'Day',
         accessor: 'Day'
@@ -266,14 +251,12 @@ class TableSelected extends React.Component {
                 onClick: (e, handleOriginal) => {
                   if (column.Expander) {
                     GET_BOOTCAMPER_DAYS(this, rowInfo.original.username);
-                    // this.expand_row(rowInfo);
                     handleOriginal();
                   }
                 }
               };
             }}
             onExpandedChange={(newExpanded, index, event) => {
-              // console.log("popo", newExpanded, index)
               if (newExpanded[index[0]] === false) {
                 newExpanded = {};
               } else {

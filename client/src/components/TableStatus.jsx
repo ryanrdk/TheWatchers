@@ -3,6 +3,13 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import DownloadCSV from './DownloadCSV';
 
+/**
+ *  For generating tables the new-school way instead of td's and tr's, we used react-table.
+ *  You have to define the column headers that is passed as an attribute and read as an array.
+ *  You can see like most other tables it imports our Download CSV component that allows you 
+ *  to download the content of the table into a .csv file.
+ */
+
 class TableStatus extends React.Component {
   constructor(props) {
     super(props);

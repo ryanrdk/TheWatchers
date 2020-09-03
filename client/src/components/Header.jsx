@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleAuth from '../containers/GoogleAuth';
 
+/** Our Header component, which allows us to apply a Header to whichever
+ *  part of the application we choose.
+ *  It contains the links for basic navigation of the application.
+ *  We also use the Google Auth Button here as you will only allowed to view a Header when logged in.
+ *  Therefore the Auth button in the Header is always a logout button.
+ */
+
 class Header extends React.Component {
   render() {
     return (

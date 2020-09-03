@@ -2,6 +2,10 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import TableStatus from './TableStatus';
 
+/**
+ * This selector class controls our filters for the student status table.
+ */
+
 class SelectorStatus extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +17,6 @@ class SelectorStatus extends React.Component {
       demoData: [],
       filteredData: []
     };
-    // console.log("StatProppies", this.state)
   }
 
   updateStats(data) {
@@ -22,10 +25,7 @@ class SelectorStatus extends React.Component {
   }
 
   onChange = (e, data) => {
-    // console.log(data.value);
-    // console.log('data', data);
     const filt = this.state.demoData.filter(elem => {
-      //  console.log("arr", elem.ethnicity);
       if (data.value === 'allstatus') {
         return elem;
       } else if (data.value === 'active') {
@@ -52,7 +52,6 @@ class SelectorStatus extends React.Component {
   };
 
   onSearchChange = (e, data) => {
-    // console.log(data.searchQuery);
     this.setState({ searchQuery: data.searchQuery });
   };
   render() {

@@ -3,6 +3,11 @@ import { Button } from 'semantic-ui-react';
 import Popup from "reactjs-popup";
 import { DELETE_BOOTCAMPER } from '../queries';
 
+/**
+ *  This class handles our DELETE function. Clicking on 'Delete entry' will bring up the popup
+ *  that will call one of our queries to our backend to delete said entry from the Bootcampers table.
+ */
+
 class DeleteEntry extends React.Component {
   constructor(props) {
     super(props);
@@ -16,8 +21,6 @@ class DeleteEntry extends React.Component {
   }
   onClick = e => {
     console.log("To add entry");
-    // const cd = this.objectToCSV(this.state.data);
-    // this.download(cd);
   };
   onSubmit = e => {
       console.log(this.props.auth, this.state.delete_username);

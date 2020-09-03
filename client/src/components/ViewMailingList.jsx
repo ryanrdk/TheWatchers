@@ -3,6 +3,10 @@ import TableMailingList from './TableMailingList';
 import Header from './Header';
 import ActiveStudent from '../containers/activeStudent';
 
+/**
+ *  This is our mailing list view for displaying all the student contact information in one place.
+ */
+
 class ViewMailingList extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +21,6 @@ class ViewMailingList extends React.Component {
   componentDidMount() {
     let mailingNode = document.getElementById('mail').lastChild;
     document.getElementById('curr-view').appendChild(mailingNode);
-    // GET_ALL_BOOTCAMPERS(this.mailingListTableElement);
   }
 
   render() {

@@ -2,6 +2,10 @@ import React from 'react';
 import ReactTable from 'react-table';
 import DownloadCSV from './DownloadCSV';
 
+/**
+ * This is where we form our our table component for our Mailing list and contact data of our students
+ */
+
 class TableMailingList extends React.Component {
   constructor(props) {
     super(props);
@@ -16,13 +20,11 @@ class TableMailingList extends React.Component {
   updateStats(data) {
     this.setState({ data: data, filtered: data });
     this.downloadCSVElement.current.updateStats(data);
-    console.log('compo', this.state.filtered);
   }
 
   updateChange(data) {
     this.setState({ filtered: data });
     this.downloadCSVElement.current.updateStats(data);
-    console.log('compoChange', data);
   }
 
   onTableViewChange = async () => {
