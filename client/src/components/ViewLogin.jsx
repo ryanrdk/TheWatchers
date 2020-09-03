@@ -11,7 +11,6 @@ class LoginView extends React.Component {
   render() {
     return (
       <Grid
-        textAlign='center'
         style={{ height: '100%', width: '100%' }}
         verticalAlign='middle'
         textAlign='center'>
@@ -25,6 +24,7 @@ class LoginView extends React.Component {
           </Header>
           <Segment raised>
             <img
+              alt='google'
               height='192'
               width='192'
               src='https://lh3.googleusercontent.com/-v0soe-ievYE/AAAAAAAAAAI/AAAAAAAAAAA/OixOH_h84Po/s1344-p-rw/photo.jpg'

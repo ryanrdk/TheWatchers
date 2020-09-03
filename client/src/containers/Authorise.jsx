@@ -13,7 +13,6 @@ class Autherise extends React.Component {
   render() {
     return (
       <Grid
-        textAlign='center'
         style={{ height: '100%', width: '100%' }}
         verticalAlign='middle'
         textAlign='center'>
